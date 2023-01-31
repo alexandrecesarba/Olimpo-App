@@ -18,6 +18,7 @@
 		972F148A29860614002087AF /* TrophyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148929860614002087AF /* TrophyView.swift */; };
 		972F148C29860627002087AF /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148B29860627002087AF /* PersonView.swift */; };
 		972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148D298608A1002087AF /* JugglingExplanationView.swift */; };
+		972F1490298712F9002087AF /* CurrentTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148F298712F9002087AF /* CurrentTab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		972F148929860614002087AF /* TrophyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyView.swift; sourceTree = "<group>"; };
 		972F148B29860627002087AF /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		972F148D298608A1002087AF /* JugglingExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JugglingExplanationView.swift; sourceTree = "<group>"; };
+		972F148F298712F9002087AF /* CurrentTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				972F1485298601AD002087AF /* Challenge.swift */,
+				972F148F298712F9002087AF /* CurrentTab.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
 				972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */,
+				972F1490298712F9002087AF /* CurrentTab.swift in Sources */,
 				972F14842985FE3B002087AF /* ChallengeView.swift in Sources */,
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 			);

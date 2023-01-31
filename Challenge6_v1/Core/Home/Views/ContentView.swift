@@ -10,17 +10,31 @@ import SwiftUI
 struct ContentView: View {
 
 //    @Binding var showContent: Bool
+    @State var selectedTab: Tab = .challenges
+    @State var showContent:Bool = false
 
     var body: some View {
 
         ZStack{
+            Color.theme.background
             VStack{
-                ChallengeView()
+                if selectedTab == .challenges{
+                    ChallengeView(showContent: $showContent)
+                }
+                if selectedTab == .trophy {
+                    TrophyView()
+                }
+                if selectedTab == .person {
+                    PersonView()
+                }
                 Spacer()
-                TabBar()
-                    .padding()
+
+                if !showContent{
+                    TabBar(selectedTab: $selectedTab)
+                        .padding(.bottom, 50)
+                }
             }
-        }
+        }.ignoresSafeArea()
 
 
     }
@@ -79,14 +93,5 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
         }
     }
 
-    var view: any View{
-        switch self {
-        case .trophy:
-            return TrophyView()
-        case .challenges:
-            return ChallengeView()
-        case .person:
-            return PersonView()
-        }
-    }
+
 }

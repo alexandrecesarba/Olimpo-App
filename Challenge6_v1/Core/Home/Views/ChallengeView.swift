@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ChallengeView: View {
 
-    var challenge = Challenge.challengeData
-    @State var showContent = false
+    @State var challenge = Challenge.challengeData
+    @Binding var showContent:Bool
 
     var body: some View {
         if !showContent {
@@ -21,35 +21,51 @@ struct ChallengeView: View {
                         VStack(alignment: .leading) {
                             Text("Challenges")
                                 .font(.largeTitle)
+                                .fontWeight(.semibold)
 
                             Text("Choose what's best for you")
-                                .foregroundColor(.gray)
+                                .font(.title3)
+                                .foregroundColor(Color.theme.gray)
+                                .fontWeight(.medium)
+                                .padding(.top, -20)
+
                         }
                         Spacer()
                     }
                     .padding(.leading,40)
+                    .padding(.top, 50)
 
 
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 30) {
                             ForEach(challenge) { item in
-                                Button(action: { self.showContent.toggle() }) {
+                                Button(action: {
+                                    withAnimation(.linear(duration: 0.5)) {
+
+                                        if item.opacity == 1{
+                                            self.showContent.toggle()
+                                        }
+                                    }
+                                }) {
                                     GeometryReader { geometry in
                                         ChallengeScroll(title: item.title,
                                                         subtitle: item.subTitle,
                                                         image: item.image,
                                                         color: item.color,
                                                         shadowColor: item.shadowColor)
-                                        .rotation3DEffect(Angle(degrees:
-                                                                    Double(geometry.frame(in: .global).minX - 30) / -40), axis: (x: 0, y: 10.0, z: 0))
+                                        .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 50 ) / 10)
+                                                , axis: (x: 0, y: -30, z: 0))
+                                        .opacity(item.opacity)
+
 
                                     }
-                                    .frame(width: 246, height: 360)
+                                    .frame(width: 246, height: 425)
                                 }
                             }
                         }
-                        .padding(.leading, 30)
+//                        .padding(.leading, 30)
+                        .padding([.leading,.trailing], 40)
                         .padding(.top, 100)
                         .padding(.bottom, 70)
                         Spacer()
@@ -59,7 +75,13 @@ struct ChallengeView: View {
             }
         }
         else {
-            JugglingExplanationView()
+            // TODO: especificar as views
+            ForEach(challenge) { item in
+                if item.opacity == 1{
+                    JugglingExplanationView(challenge: $challenge[0])
+                }
+            }
+//                .transition(.scale)
         }
     }
 }
@@ -67,7 +89,7 @@ struct ChallengeView: View {
 #if DEBUG
 struct ChallengeView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeView()
+        ChallengeView(showContent: .constant(false))
     }
 }
 #endif
@@ -79,6 +101,7 @@ struct ChallengeScroll: View {
     var image = "Illustration1"
     var color = Color.theme.green
     var shadowColor = Color("backgroundShadow3")
+    var opacity = 0.0
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -86,7 +109,7 @@ struct ChallengeScroll: View {
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 246, height: 150)
+                .frame(width: 246, height: 300)
                 .padding(.bottom, 30)
 
             Spacer()
@@ -107,7 +130,7 @@ struct ChallengeScroll: View {
         .background(color)
         .cornerRadius(30)
         .frame(width: 246, height: 360)
-        .shadow(color: shadowColor.opacity(0.4), radius: 20, x: 0, y: 20)
+        .shadow(color: shadowColor.opacity(0.4), radius: 15, x: 0, y: 0)
 
     }
 }
