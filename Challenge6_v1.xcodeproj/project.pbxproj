@@ -33,6 +33,7 @@
 		97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A824298AF25500BA92A2 /* CurrentExerciseView.swift */; };
 		97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */; };
 		97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A829298B0C9E00BA92A2 /* ViewController.swift */; };
+		97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A82B298BDE0000BA92A2 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		97A7A826298AF62D00BA92A2 /* Challenge6-v1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Challenge6-v1-Info.plist"; sourceTree = SOURCE_ROOT; };
 		97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		97A7A829298B0C9E00BA92A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97A7A82B298BDE0000BA92A2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,9 @@
 		972F147B2985EB54002087AF /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				97A7A7FA2989B6B400BA92A2 /* DiogoVideo.mov */,
+				972F14812985ECB6002087AF /* TabBar.swift */,
+				97A7A82B298BDE0000BA92A2 /* LoadingView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -161,12 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				972F146C2985EADE002087AF /* ContentView.swift */,
-				972F14812985ECB6002087AF /* TabBar.swift */,
 				972F14832985FE3B002087AF /* ChallengeView.swift */,
 				972F148929860614002087AF /* TrophyView.swift */,
 				972F148B29860627002087AF /* PersonView.swift */,
 				972F148D298608A1002087AF /* JugglingExplanationView.swift */,
-				97A7A7FA2989B6B400BA92A2 /* DiogoVideo.mov */,
 				97A7A824298AF25500BA92A2 /* CurrentExerciseView.swift */,
 			);
 			path = Views;
@@ -187,7 +190,6 @@
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
 				97A7A801298ADADF00BA92A2 /* Direction.swift */,
-				97A7A81B298ADAF200BA92A2 /* Assets.xcassets */,
 				97A7A806298ADADF00BA92A2 /* Extensions.swift */,
 				97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */,
 				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
@@ -276,6 +278,7 @@
 				972F146D2985EADE002087AF /* ContentView.swift in Sources */,
 				972F1486298601AE002087AF /* Challenge.swift in Sources */,
 				97A7A81F298ADC6900BA92A2 /* Model.mlmodel in Sources */,
+				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,

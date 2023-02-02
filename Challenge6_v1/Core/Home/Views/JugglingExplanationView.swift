@@ -29,20 +29,41 @@ struct JugglingExplanationView: View {
     @State var endOffsetY: CGFloat = 0.0
     @State var currentDragOffsetY: CGFloat = 0.0
     @State var openCamera:Bool = false
+    @State private var isLoading: Bool = true
 
 
     var body: some View {
 
         if !returnScreen && !openCamera {
             ZStack{
+                
 
-                PlayerView()
 
-                backButton
+                if isLoading{
+                    ZStack{
+                        Color.theme.background
+                        LoadingView()
+                        backButton
 
-                draggableExerciseView
+                        draggableExerciseView
+                    }
+                }
 
-            }.ignoresSafeArea(edges: .bottom)
+                else {
+                    PlayerView()
+
+
+                    backButton
+
+                    draggableExerciseView
+
+                }
+
+            }     .onAppear{
+                startLoading()
+            }
+
+            .ignoresSafeArea(edges: .bottom)
         }
 
 
@@ -203,6 +224,13 @@ struct JugglingExplanationView: View {
         .padding()
         .padding(.horizontal, 15)
 
+    }
+
+    private func startLoading() {
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            isLoading = false
+        }
     }
 }
 

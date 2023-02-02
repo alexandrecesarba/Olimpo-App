@@ -8,12 +8,35 @@
 import SwiftUI
 
 struct CurrentExerciseView: View {
+    @State private var isLoading:Bool = true
     var body: some View {
         ZStack{
-            ExerciseView()
-        }.ignoresSafeArea()
+
+            if isLoading{
+                ZStack{
+                    Color.theme.background
+                    LoadingView()
+                }
+            }
+
+            else {
+                ExerciseView()
+            }
+        }
+        .onAppear{startLoading()}
+        .ignoresSafeArea()
     }
+
+    private func startLoading() {
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            isLoading = false
+        }
+    }
+
 }
+
+
 
 struct CurrentExerciseView_Previews: PreviewProvider {
     static var previews: some View {
