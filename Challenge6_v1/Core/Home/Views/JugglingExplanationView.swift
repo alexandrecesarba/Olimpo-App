@@ -52,7 +52,6 @@ struct JugglingExplanationView: View {
                 else {
                     PlayerView()
 
-
                     backButton
 
                     draggableExerciseView
@@ -119,6 +118,7 @@ struct JugglingExplanationView: View {
             RoundedRectangle(cornerRadius: 6)
                 .frame(width: 100, height: 4)
                 .foregroundColor(Color.theme.gray)
+                .padding(.top, 20)
 
 
             uponDivider
@@ -129,7 +129,7 @@ struct JugglingExplanationView: View {
 
 
         }
-        .padding(.top, 40)
+        .padding(.bottom, 450)
 
         .frame(maxWidth: .infinity, idealHeight: screenHeight)
         //                .shadow(color: challenge.shadowColor, radius: 20, x: 0, y: -4)
@@ -228,7 +228,7 @@ struct JugglingExplanationView: View {
 
     private func startLoading() {
         isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             isLoading = false
         }
     }
