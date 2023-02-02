@@ -45,11 +45,13 @@ class ObjectDetectionViewController: ViewController {
             let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
                 DispatchQueue.main.async(execute: {
                     // perform all the UI updates on the main queue
+                    
                     if let results = request.results {
                         self.drawVisionRequestResults(results)
                     }
                 })
             })
+//            objectRecognition.imageCropAndScaleOption = .scaleFill
             self.requests = [objectRecognition]
         } catch let error as NSError {
             print("Model loading went wrong: \(error)")
@@ -70,7 +72,6 @@ class ObjectDetectionViewController: ViewController {
         else{
             biggestObject = VNRecognizedObjectObservation(boundingBox: CGRect(origin: .zero, size: .zero))
         }
-        
         for observation in results where observation is VNRecognizedObjectObservation{
             let object = observation as! VNRecognizedObjectObservation
             if biggestObject.boundingBox.area < object.boundingBox.area{
@@ -95,11 +96,11 @@ class ObjectDetectionViewController: ViewController {
                 
                 switch direction {
                     case .upwards:
-                        if objectBounds.midX > lastHeight + objectBounds.height/6 {
+                        if objectBounds.midX > lastHeight + objectBounds.height/5 {
                             direction = .downwards
                         }
                     case .downwards:
-                        if objectBounds.midX < lastHeight - objectBounds.height/6 {
+                        if objectBounds.midX < lastHeight - objectBounds.height/5 {
                             direction = .upwards
                             numberOfKeepyUps += 1
                             pointCounter.bounceAnimation()
@@ -170,19 +171,18 @@ class ObjectDetectionViewController: ViewController {
             var targetHeight:CGFloat {target.frame.size.height}
             var targetWidth:CGFloat {target.frame.size.width}
             
-            target.frame.size.height = self.view.frame.height * biggestSide
-            target.frame.size.width = self.view.frame.width * biggestSide
+            target.frame.size.height = self.view.frame.height * biggestSide * sqrt(2)
+            target.frame.size.width = self.view.frame.width * biggestSide * sqrt(2)
             
             
 //            target.layer.cornerRadius = targetWidth/2
             
-            target.frame.origin.x = box.origin.y * self.view.frame.width
-            target.frame.origin.y = box.origin.x * self.view.frame.height
-            
-            (targetHeight>targetWidth) ? (target.frame.origin.x -= increment) : (target.frame.origin.y  -= increment)
+            target.frame.origin.x = (box.origin.x-box.width) * self.bufferSize.width
+            target.frame.origin.y = abs(5*box.height/4+box.origin.y-1) * self.view.frame.height
+//            (targetHeight>targetWidth) ? (target.frame.origin.x -= increment) : (target.frame.origin.y  -= increment)
             
             (targetHeight<targetWidth) ? (target.frame.size.height = targetWidth) : (target.frame.size.width = targetHeight)
-            
+            target.layer.cornerRadius = target.frame.height/2
 //            print("originMinha = \(target.frame.center)")
             
 //            target.layer.cornerRadius = target.frame.height/2

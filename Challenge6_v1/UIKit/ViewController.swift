@@ -15,10 +15,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var bufferSize: CGSize = .zero
     var rootLayer: CALayer! = nil
     var direction: Direction = .stopped
-    @IBOutlet weak private var previewView: UIView!
+    var previewView: UIView = UIView(frame: UIScreen.main.bounds)
     private let session = AVCaptureSession()
-    private var previewLayer: AVCaptureVideoPreviewLayer! = nil
-    private let videoDataOutput = AVCaptureVideoDataOutput()
+    var previewLayer: AVCaptureVideoPreviewLayer! = nil
+    let videoDataOutput = AVCaptureVideoDataOutput()
     
     var videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
     
@@ -78,7 +78,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.viewDidLoad()
 //        setupAVCapture()
         
-        
+        previewView.translatesAutoresizingMaskIntoConstraints = false
         
         var panGesture = UIPanGestureRecognizer()
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
@@ -104,11 +104,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         miliseconds = 0
         setupAVCapture()
         pointCounter.centerViews()
-        self.view.addSubview(resetButton)
+        
+        
+        
+        self.view.addSubview(previewView)
         for circle in pointCounter.circles{
             self.view.addSubview(circle)
         }
-        
+        self.view.addSubview(resetButton)
         self.view.addSubview(directionLabel)
         self.view.addSubview(targetScoreView)
         self.view.addSubview(ballLabel)
@@ -116,6 +119,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
         ballXCenterHistory = [CGFloat]()
      
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        previewLayer.frame = self.view.bounds
     }
     
     @objc func resetButtonPressed() {
@@ -192,8 +200,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         rootLayer = previewView.layer
-        previewLayer.frame = rootLayer.bounds
+        rootLayer.bounds = previewView.bounds
+//        previewLayer.frame = rootLayer.bounds
         rootLayer.addSublayer(previewLayer)
+//        previewView.layer.addSublayer(previewLayer)
     }
     
     func startCaptureSession() {

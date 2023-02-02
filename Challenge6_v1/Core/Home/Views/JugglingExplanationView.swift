@@ -28,20 +28,34 @@ struct JugglingExplanationView: View {
     @State var startOffsetY: CGFloat = screenHeight * 0.90
     @State var endOffsetY: CGFloat = 0.0
     @State var currentDragOffsetY: CGFloat = 0.0
+    @State var openCamera:Bool = false
 
 
     var body: some View {
 
-        if !returnScreen {
+        if !returnScreen && !openCamera {
             ZStack{
+
                 PlayerView()
+
+                backButton
+
                 draggableExerciseView
 
             }.ignoresSafeArea(edges: .bottom)
         }
 
+
+
         else{
-            ContentView()
+            if openCamera{
+                CurrentExerciseView()
+            }
+
+            else {
+                ContentView()
+
+            }
         }
 
 
@@ -83,6 +97,8 @@ struct JugglingExplanationView: View {
         VStack(spacing: 20){
             RoundedRectangle(cornerRadius: 6)
                 .frame(width: 100, height: 4)
+                .foregroundColor(Color.theme.gray)
+
 
             uponDivider
 
@@ -153,6 +169,7 @@ struct JugglingExplanationView: View {
 
 
         HStack{
+            
             VStack{
                 Text(challenge.title)
                     .foregroundColor(Color.theme.activity)
@@ -168,6 +185,20 @@ struct JugglingExplanationView: View {
 
             }
             Spacer()
+
+            Button {
+                withAnimation(.easeOut(duration: 1)){
+                    self.openCamera.toggle()
+                }
+            } label: {
+                RoundedRectangle(cornerRadius: 30)
+                  .fill(Color(red: 0.09, green: 0.78, blue: 0.39)) // essa cor só existe aqui
+                  .frame(width: 81.00, height: 60.00)
+                  .shadow(color: Color(red: 0.02, green: 0.53, blue: 0.40), radius: 20, x: 0, y: 0)
+                  .overlay(Image(systemName: "arrowtriangle.right.fill")
+                    .frame(width: 32, height: 32)
+                    .foregroundColor(Color(hex: 0xF1F3F5)))
+            }
         }
         .padding()
         .padding(.horizontal, 15)
