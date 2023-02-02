@@ -26,7 +26,6 @@ extension Color {
     }
 }
 
-
 struct ColorTheme {
 
     let primary = Color("Primary")
@@ -34,8 +33,11 @@ struct ColorTheme {
     let green = Color("Green")
     let greenCard = Color("GreenCard")
     let gray = Color("Gray")
-    let activity = Color("Activity") // juggling, crossbar...
-    let description = Color("Description") // soccer/football
+    /// Juggling, crossbar...
+    let activity = Color("Activity")
+    /// Soccer/football
+    let description = Color("Description")
+    
 
 }
 

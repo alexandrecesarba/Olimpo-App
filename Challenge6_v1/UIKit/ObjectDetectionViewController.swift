@@ -124,7 +124,7 @@ class ObjectDetectionViewController: ViewController {
                 if ballXCenterHistory.count == 5 {
                     ballXCenterHistory = [averageFromArray]
                 }
-                let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.green)
+                let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
                 
 //                let basicAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
                 detectionOverlay.addSublayer(shapeLayer)

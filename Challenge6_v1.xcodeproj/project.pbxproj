@@ -187,6 +187,7 @@
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
 				97A7A801298ADADF00BA92A2 /* Direction.swift */,
+				97A7A81B298ADAF200BA92A2 /* Assets.xcassets */,
 				97A7A806298ADADF00BA92A2 /* Extensions.swift */,
 				97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */,
 				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
