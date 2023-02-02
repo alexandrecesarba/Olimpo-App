@@ -111,7 +111,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         self.view.addSubview(directionLabel)
         self.view.addSubview(targetScoreView)
-        self.view.addSubview(ballLabel)
+//        self.view.addSubview(ballLabel)
 
 
         ballXCenterHistory = [CGFloat]()
