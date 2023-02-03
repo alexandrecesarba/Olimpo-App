@@ -32,15 +32,26 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }()
     
     let switchCamera = UIButton()
-    let directionLabel = UILabel()
+    let directionLabel: UILabel = {
+        let directionLabel = UILabel()
+        directionLabel.layer.cornerRadius = 20
+        directionLabel.layer.masksToBounds = true
+        directionLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        directionLabel.frame = CGRect()
+        directionLabel.textColor = .black
+        directionLabel.textAlignment = .center
+        directionLabel.translatesAutoresizingMaskIntoConstraints = false
+        return directionLabel
+    }()
     let viewOnTop = UIView()
     let startButton = UIButton()
     let targetScoreView: UILabel = {
         let targetScore = UILabel()
         targetScore.layer.cornerRadius = 20
         targetScore.layer.masksToBounds = true
+        targetScore.translatesAutoresizingMaskIntoConstraints = false
         targetScore.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        targetScore.frame = CGRect(x: 40, y: 40, width: 120, height: 60)
+//        targetScore.frame = CGRect(x: .zero, y: .zero, width: 120, height: 60)
         targetScore.textColor = .black
         targetScore.text = "Target: 0"
         targetScore.textAlignment = .center
@@ -56,7 +67,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         resetButton.titleLabel?.textAlignment = .center
         resetButton.setTitle("Reset Score", for: .normal)
         resetButton.setTitleColor(.black, for: .normal)
-        resetButton.frame = CGRect(x: 20, y: UIScreen.screens.first!.bounds.size.height - 100, width: UIScreen.screens.first!.bounds.size.width - 30, height: 60)
+//        resetButton.frame = CGRect(x: 20, y: UIScreen.screens.first!.bounds.size.height - 100, width: UIScreen.screens.first!.bounds.size.width - 30, height: 60)
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         return resetButton
     }()
@@ -84,14 +96,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
         pointCounter.addRecognizer(panGesture, label: pointCounter.hitbox)
         
-        directionLabel.layer.cornerRadius = 20
-        directionLabel.layer.masksToBounds = true
-        directionLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        directionLabel.frame = CGRect(x: UIScreen.screens.first!.bounds.size.width - 140, y: 40, width: 120, height: 60)
-        directionLabel.textColor = .black
-        directionLabel.textAlignment = .center
-        directionLabel.text = direction.rawValue.capitalized
+//        resetButton.centerXAnchor.constrain, multiplier: <#T##CGFloat#>).isActive = true
+
         
+//        resetButton.centerXAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        
+        
+        
+        directionLabel.text = direction.rawValue.capitalized
+
         switchCamera.layer.cornerRadius = 20
         switchCamera.layer.masksToBounds = true
         switchCamera.backgroundColor = UIColor.white.withAlphaComponent(0.5)
@@ -116,9 +129,24 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.view.addSubview(targetScoreView)
 //        self.view.addSubview(ballLabel)
 
-
+        
         ballXCenterHistory = [CGFloat]()
-     
+        targetScoreView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        targetScoreView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        directionLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        directionLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        resetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        resetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
+        
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self.targetScoreView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.25, constant: 0),
+            NSLayoutConstraint(item: self.targetScoreView, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
+            NSLayoutConstraint(item: self.directionLabel, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.75, constant: 0),
+            NSLayoutConstraint(item: self.directionLabel, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
+            NSLayoutConstraint(item: self.resetButton, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: self.resetButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 0.9, constant: 0)
+        ])
     }
     
     override func viewDidLayoutSubviews() {
