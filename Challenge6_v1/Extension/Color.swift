@@ -37,6 +37,7 @@ struct ColorTheme {
     let activity = Color("Activity")
     /// Soccer/football
     let description = Color("Description")
+    let blackButton = Color("BlackButton")
     
 
 }
