@@ -43,7 +43,9 @@ struct JugglingExplanationView: View {
                     ZStack{
                         Color.theme.background
                         LoadingView()
-                        backButton
+//                        backButton
+//                            .padding(.top, 100)
+
 
                         draggableExerciseView
                     }
@@ -53,6 +55,7 @@ struct JugglingExplanationView: View {
                     PlayerView()
 
                     backButton
+                        .padding(.top, 100)
 
                     draggableExerciseView
 
@@ -175,7 +178,7 @@ struct JugglingExplanationView: View {
                     Image(systemName: "arrow.left")
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(Color.theme.primary)
+                        .foregroundColor(Color.theme.blackButton)
                         .frame(width: screenWidth/14)
                 }
                 Spacer()
