@@ -18,7 +18,6 @@ class JuggleChallengeController: UIViewController {
         view = juggleChallengeView
         juggleChallengeView.directionView.text = model.direction.rawValue.capitalized
         juggleChallengeView.targetView.text = "Target: \(model.target)"
-        
     }
     
     

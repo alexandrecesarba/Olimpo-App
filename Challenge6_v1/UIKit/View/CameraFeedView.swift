@@ -10,8 +10,7 @@ import UIKit
 import AVFoundation
 import Vision
 
-class ObjectDetectionView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
+class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     private let session = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer! = nil
@@ -32,7 +31,7 @@ class ObjectDetectionView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate 
         }
         
         session.beginConfiguration()
-        session.sessionPreset = .vga640x480 // Model image size is smaller.
+        session.sessionPreset = .medium // Model image size is smaller.
     
         // Add a video input
         guard session.canAddInput(deviceInput) else {
@@ -70,9 +69,9 @@ class ObjectDetectionView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate 
         session.commitConfiguration()
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        rootLayer = self.layer
-        rootLayer.bounds = self.bounds
-        rootLayer.addSublayer(previewLayer)
+        previewLayer.frame = self.frame
+        self.layer.bounds = self.bounds
+        self.layer.addSublayer(previewLayer)
     }
     
     func startCaptureSession() {

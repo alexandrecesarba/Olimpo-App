@@ -13,9 +13,10 @@
 		064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B5A298DF0F8007BA722 /* ResetButtonController.swift */; };
 		064E7B5D298DF989007BA722 /* BallStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B5C298DF989007BA722 /* BallStatusView.swift */; };
 		064E7B5F298DFD31007BA722 /* JuggleChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B5E298DFD31007BA722 /* JuggleChallengeController.swift */; };
-		064E7B61298E008B007BA722 /* ObjectDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B60298E008B007BA722 /* ObjectDetectionView.swift */; };
+		064E7B61298E008B007BA722 /* CameraFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B60298E008B007BA722 /* CameraFeedView.swift */; };
 		064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B62298E0329007BA722 /* JuggleChallengeModel.swift */; };
 		064E7B65298E03D9007BA722 /* BallTrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B64298E03D9007BA722 /* BallTrackingStatus.swift */; };
+		064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B66298F0805007BA722 /* VisionDetectionView.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -52,9 +53,10 @@
 		064E7B5A298DF0F8007BA722 /* ResetButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonController.swift; sourceTree = "<group>"; };
 		064E7B5C298DF989007BA722 /* BallStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallStatusView.swift; sourceTree = "<group>"; };
 		064E7B5E298DFD31007BA722 /* JuggleChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeController.swift; sourceTree = "<group>"; };
-		064E7B60298E008B007BA722 /* ObjectDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionView.swift; sourceTree = "<group>"; };
+		064E7B60298E008B007BA722 /* CameraFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFeedView.swift; sourceTree = "<group>"; };
 		064E7B62298E0329007BA722 /* JuggleChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeModel.swift; sourceTree = "<group>"; };
 		064E7B64298E03D9007BA722 /* BallTrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallTrackingStatus.swift; sourceTree = "<group>"; };
+		064E7B66298F0805007BA722 /* VisionDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetectionView.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,7 +117,8 @@
 				064E7B58298DF0A5007BA722 /* ResetButtonView.swift */,
 				97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */,
 				064E7B5C298DF989007BA722 /* BallStatusView.swift */,
-				064E7B60298E008B007BA722 /* ObjectDetectionView.swift */,
+				064E7B60298E008B007BA722 /* CameraFeedView.swift */,
+				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				97A7A81F298ADC6900BA92A2 /* Model.mlmodel in Sources */,
 				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,
+				064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */,
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
@@ -346,7 +350,7 @@
 				97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */,
 				064E7B5D298DF989007BA722 /* BallStatusView.swift in Sources */,
 				97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */,
-				064E7B61298E008B007BA722 /* ObjectDetectionView.swift in Sources */,
+				064E7B61298E008B007BA722 /* CameraFeedView.swift in Sources */,
 				064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */,
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 				97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */,

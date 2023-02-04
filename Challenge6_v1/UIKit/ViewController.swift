@@ -198,8 +198,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         var deviceInput: AVCaptureDeviceInput!
         
         // Select a video device, make an input
-       
-
         do {
         
             deviceInput = try AVCaptureDeviceInput(device: videoDevice!)
