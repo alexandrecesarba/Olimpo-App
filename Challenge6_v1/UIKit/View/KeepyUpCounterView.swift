@@ -12,16 +12,11 @@ import UIKit
 let circleRadius:CGFloat = 60
 let sizeIncreaser:CGFloat = 40
 var centerPoint: CGPoint = CGPoint(x: 0, y: 0)
-
-
-
 let innerRadius: CGFloat = circleRadius + sizeIncreaser
 let outerRadius: CGFloat = circleRadius + 2*sizeIncreaser
 let pointCircleRadius: CGFloat = circleRadius
 
 class KeepyUpCounterView: UIView {
-    
-    
     var circles: [UIView] {[outerCircle, innerCircle, pointCounterView, hitbox]}
     var visibleCircles: [UIView] {[outerCircle, innerCircle, pointCounterView]}
     
@@ -143,6 +138,16 @@ class KeepyUpCounterView: UIView {
             
         })
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.centerViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
 func createColoredCircle(color: UIColor, radius: CGFloat = circleRadius, borderWidth:CGFloat = 1, isTransparent:Bool = false)->UILabel {

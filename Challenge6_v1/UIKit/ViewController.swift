@@ -19,6 +19,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     private let session = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer! = nil
     let videoDataOutput = AVCaptureVideoDataOutput()
+    var test = JuggleChallengeView()
     
     var videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
     
@@ -64,7 +65,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         directionLabel.translatesAutoresizingMaskIntoConstraints = false
         return directionLabel
     }()
-    let viewOnTop = UIView()
     let startButton = UIButton()
     let targetScoreView: UILabel = {
         let targetScore = UILabel()
@@ -128,37 +128,35 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         
         self.view.addSubview(previewView)
-        for circle in pointCounter.circles{
-            self.view.addSubview(circle)
-        }
-        self.view.addSubview(resetButton)
-        self.view.addSubview(ballTrackingCondition)
-        self.view.addSubview(directionLabel)
-        self.view.addSubview(targetScoreView)
+        
+//        self.view.addSubview(resetButton)
+//        self.view.addSubview(ballTrackingCondition)
+//        self.view.addSubview(directionLabel)
+//        self.view.addSubview(targetScoreView)
 //        self.view.addSubview(ballLabel)
-
+        self.view.addSubview(test)
         
         ballXCenterHistory = [CGFloat]()
-        targetScoreView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        targetScoreView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        directionLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        directionLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        resetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        resetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
-        ballTrackingCondition.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        ballTrackingCondition.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: self.targetScoreView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.25, constant: 0),
-            NSLayoutConstraint(item: self.targetScoreView, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
-            NSLayoutConstraint(item: self.directionLabel, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.75, constant: 0),
-            NSLayoutConstraint(item: self.directionLabel, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
-            NSLayoutConstraint(item: self.resetButton, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self.resetButton, attribute: .bottom, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -10),
-            NSLayoutConstraint(item: self.ballTrackingCondition, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.5, constant: 0),
-            NSLayoutConstraint(item: self.ballTrackingCondition, attribute: .top, relatedBy: .equal, toItem: self.targetScoreView, attribute: .bottom, multiplier: 1, constant: 20)
-        ])
+//        targetScoreView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+//        targetScoreView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        directionLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
+//        directionLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        resetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        resetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
+//        ballTrackingCondition.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        ballTrackingCondition.widthAnchor.constraint(equalToConstant: 200).isActive = true
+//        
+//        
+//        NSLayoutConstraint.activate([
+//            NSLayoutConstraint(item: self.targetScoreView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.25, constant: 0),
+//            NSLayoutConstraint(item: self.targetScoreView, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
+//            NSLayoutConstraint(item: self.directionLabel, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.75, constant: 0),
+//            NSLayoutConstraint(item: self.directionLabel, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
+//            NSLayoutConstraint(item: self.resetButton, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0),
+//            NSLayoutConstraint(item: self.resetButton, attribute: .bottom, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -10),
+//            NSLayoutConstraint(item: self.ballTrackingCondition, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.5, constant: 0),
+//            NSLayoutConstraint(item: self.ballTrackingCondition, attribute: .top, relatedBy: .equal, toItem: self.targetScoreView, attribute: .bottom, multiplier: 1, constant: 20)
+//        ])
     }
     
     override func viewDidLayoutSubviews() {
