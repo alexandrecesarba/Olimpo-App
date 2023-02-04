@@ -13,6 +13,9 @@
 		064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B5A298DF0F8007BA722 /* ResetButtonController.swift */; };
 		064E7B5D298DF989007BA722 /* BallStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B5C298DF989007BA722 /* BallStatusView.swift */; };
 		064E7B5F298DFD31007BA722 /* JuggleChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B5E298DFD31007BA722 /* JuggleChallengeController.swift */; };
+		064E7B61298E008B007BA722 /* ObjectDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B60298E008B007BA722 /* ObjectDetectionView.swift */; };
+		064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B62298E0329007BA722 /* JuggleChallengeModel.swift */; };
+		064E7B65298E03D9007BA722 /* BallTrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B64298E03D9007BA722 /* BallTrackingStatus.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -49,6 +52,9 @@
 		064E7B5A298DF0F8007BA722 /* ResetButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonController.swift; sourceTree = "<group>"; };
 		064E7B5C298DF989007BA722 /* BallStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallStatusView.swift; sourceTree = "<group>"; };
 		064E7B5E298DFD31007BA722 /* JuggleChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeController.swift; sourceTree = "<group>"; };
+		064E7B60298E008B007BA722 /* ObjectDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionView.swift; sourceTree = "<group>"; };
+		064E7B62298E0329007BA722 /* JuggleChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeModel.swift; sourceTree = "<group>"; };
+		064E7B64298E03D9007BA722 /* BallTrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallTrackingStatus.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 		064E7B51298DD26E007BA722 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				064E7B62298E0329007BA722 /* JuggleChallengeModel.swift */,
+				97A7A801298ADADF00BA92A2 /* Direction.swift */,
+				064E7B64298E03D9007BA722 /* BallTrackingStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,6 +115,7 @@
 				064E7B58298DF0A5007BA722 /* ResetButtonView.swift */,
 				97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */,
 				064E7B5C298DF989007BA722 /* BallStatusView.swift */,
+				064E7B60298E008B007BA722 /* ObjectDetectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,7 +242,6 @@
 				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
-				97A7A801298ADADF00BA92A2 /* Direction.swift */,
 				97A7A806298ADADF00BA92A2 /* Extensions.swift */,
 				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
 				97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */,
@@ -337,12 +346,15 @@
 				97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */,
 				064E7B5D298DF989007BA722 /* BallStatusView.swift in Sources */,
 				97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */,
+				064E7B61298E008B007BA722 /* ObjectDetectionView.swift in Sources */,
+				064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */,
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 				97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */,
 				97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */,
 				064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */,
 				064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */,
 				97A7A80F298ADAE000BA92A2 /* Direction.swift in Sources */,
+				064E7B65298E03D9007BA722 /* BallTrackingStatus.swift in Sources */,
 				97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */,
 				064E7B5F298DFD31007BA722 /* JuggleChallengeController.swift in Sources */,
 			);

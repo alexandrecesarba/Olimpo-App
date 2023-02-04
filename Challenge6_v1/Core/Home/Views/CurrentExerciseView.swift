@@ -45,15 +45,15 @@ struct CurrentExerciseView_Previews: PreviewProvider {
 }
 
 struct ExerciseView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> ObjectDetectionViewController {
-        return ObjectDetectionViewController()
+    func makeUIViewController(context: Context) -> JuggleChallengeController {
+        return JuggleChallengeController()
     }
 
-    func updateUIViewController(_ uiViewController: ObjectDetectionViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: JuggleChallengeController, context: Context) {
 
     }
 
-    typealias UIViewControllerType = ObjectDetectionViewController
+    typealias UIViewControllerType = JuggleChallengeController
 
 
 }

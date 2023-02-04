@@ -15,16 +15,22 @@ class JuggleChallengeView: UIView {
     let ballStatusView = BallStatusView()
     let resetButtonView = ResetButtonView()
     let keepyUpCounterView = KeepyUpCounterView()
+    let objectDetectionView = ObjectDetectionView(frame: UIScreen.main.bounds)
+    
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        objectDetectionView.setupAVCapture()
+        objectDetectionView.startCaptureSession()
         addSubview(targetView)
         addSubview(directionView)
         addSubview(ballStatusView)
         addSubview(resetButtonView)
+        addSubview(objectDetectionView)
         for circle in keepyUpCounterView.circles{
             addSubview(circle)
         }
+        
         
         targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true

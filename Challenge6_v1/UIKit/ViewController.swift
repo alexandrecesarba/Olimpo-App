@@ -122,7 +122,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         targetScoreView.text = "Target: \(targetScore)"
         
         miliseconds = 0
-        setupAVCapture()
+//        setupAVCapture()
         pointCounter.centerViews()
         
         

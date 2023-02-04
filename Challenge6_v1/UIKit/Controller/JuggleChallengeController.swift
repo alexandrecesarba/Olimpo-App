@@ -7,3 +7,19 @@
 
 import Foundation
 import UIKit
+
+class JuggleChallengeController: UIViewController {
+    
+    let model = JuggleChallengeModel(target: 10)
+    let juggleChallengeView = JuggleChallengeView()
+    
+    override func loadView() {
+        super.loadView()
+        view = juggleChallengeView
+        juggleChallengeView.directionView.text = model.direction.rawValue.capitalized
+        juggleChallengeView.targetView.text = "Target: \(model.target)"
+        
+    }
+    
+    
+}
