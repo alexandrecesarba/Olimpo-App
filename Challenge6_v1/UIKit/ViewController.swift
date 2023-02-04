@@ -31,7 +31,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return ballLabel
     }()
     
-    let switchCamera = UIButton()
+    let ballTrackingCondition: UILabel = {
+        let ballTrackingCondition = UILabel()
+        ballTrackingCondition.layer.cornerRadius = 20
+        ballTrackingCondition.layer.masksToBounds = true
+        ballTrackingCondition.backgroundColor = .red.withAlphaComponent(0.5)
+        ballTrackingCondition.text = "❌ Ball not found"
+        ballTrackingCondition.textAlignment = .center
+        ballTrackingCondition.textColor = .white
+        ballTrackingCondition.translatesAutoresizingMaskIntoConstraints = false
+        return ballTrackingCondition
+    }()
+    
+    let switchCamera: UIButton = {
+        let switchCamera = UIButton()
+        switchCamera.layer.cornerRadius = 20
+        switchCamera.layer.masksToBounds = true
+        switchCamera.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        switchCamera.frame = CGRect(x: UIScreen.screens.first!.bounds.size.width/2 - 30, y: 40, width: 60, height: 60)
+        switchCamera.imageView?.image = UIImage(systemName: "arrow.triangle.2.circlepath.camera.fill")?.withTintColor(.black, renderingMode: .alwaysTemplate)
+        switchCamera.addTarget(self, action: #selector(switchCameraAction), for: .touchUpInside)
+        return switchCamera
+    }()
     let directionLabel: UILabel = {
         let directionLabel = UILabel()
         directionLabel.layer.cornerRadius = 20
@@ -51,7 +72,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         targetScore.layer.masksToBounds = true
         targetScore.translatesAutoresizingMaskIntoConstraints = false
         targetScore.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-//        targetScore.frame = CGRect(x: .zero, y: .zero, width: 120, height: 60)
+        targetScore.frame = CGRect(x: .zero, y: .zero, width: 120, height: 60)
         targetScore.textColor = .black
         targetScore.text = "Target: 0"
         targetScore.textAlignment = .center
@@ -95,23 +116,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         var panGesture = UIPanGestureRecognizer()
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
         pointCounter.addRecognizer(panGesture, label: pointCounter.hitbox)
-        
-//        resetButton.centerXAnchor.constrain, multiplier: <#T##CGFloat#>).isActive = true
 
-        
-//        resetButton.centerXAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        
-        
-        
         directionLabel.text = direction.rawValue.capitalized
 
-        switchCamera.layer.cornerRadius = 20
-        switchCamera.layer.masksToBounds = true
-        switchCamera.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        switchCamera.frame = CGRect(x: UIScreen.screens.first!.bounds.size.width/2 - 30, y: 40, width: 60, height: 60)
-        switchCamera.imageView?.image = UIImage(systemName: "arrow.triangle.2.circlepath.camera.fill")?.withTintColor(.black, renderingMode: .alwaysTemplate)
-        switchCamera.addTarget(self, action: #selector(switchCameraAction), for: .touchUpInside)
-        
         targetScoreView.text = "Target: \(targetScore)"
         
         miliseconds = 0
@@ -125,6 +132,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.view.addSubview(circle)
         }
         self.view.addSubview(resetButton)
+        self.view.addSubview(ballTrackingCondition)
         self.view.addSubview(directionLabel)
         self.view.addSubview(targetScoreView)
 //        self.view.addSubview(ballLabel)
@@ -137,6 +145,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         directionLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         resetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         resetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
+        ballTrackingCondition.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        ballTrackingCondition.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
         
         NSLayoutConstraint.activate([
@@ -145,7 +155,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             NSLayoutConstraint(item: self.directionLabel, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.75, constant: 0),
             NSLayoutConstraint(item: self.directionLabel, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
             NSLayoutConstraint(item: self.resetButton, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self.resetButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 0.9, constant: 0)
+            NSLayoutConstraint(item: self.resetButton, attribute: .bottom, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -10),
+            NSLayoutConstraint(item: self.ballTrackingCondition, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 0.5, constant: 0),
+            NSLayoutConstraint(item: self.ballTrackingCondition, attribute: .top, relatedBy: .equal, toItem: self.targetScoreView, attribute: .bottom, multiplier: 1, constant: 20)
         ])
     }
     
@@ -168,10 +180,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         setupAVCapture()
     }
     
+    var latestVibrationPosition = CGPoint.zero
+    var totalDistance = 0.0
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
         self.view.bringSubviewToFront(pointCounter.hitbox)
         let translation = sender.translation(in: self.view)
-        vibration.selectionChanged()
+        totalDistance += latestVibrationPosition.distance(to: translation)
+        if Int(totalDistance) > 6 {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            totalDistance = 0
+        }
+        latestVibrationPosition = translation
+//        vibration.selectionChanged()
         pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
         sender.setTranslation(CGPoint.zero, in: self.view)
     }

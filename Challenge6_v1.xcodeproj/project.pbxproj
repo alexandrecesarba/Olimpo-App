@@ -79,6 +79,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		064E7B51298DD26E007BA722 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		064E7B52298DD27F007BA722 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		064E7B53298DD28F007BA722 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		972F145E2985EADE002087AF = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +207,9 @@
 		97A7A81A298ADAEA00BA92A2 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				064E7B53298DD28F007BA722 /* Controller */,
+				064E7B52298DD27F007BA722 /* View */,
+				064E7B51298DD26E007BA722 /* Model */,
 				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
