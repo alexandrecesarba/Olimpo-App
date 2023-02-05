@@ -21,19 +21,58 @@ class JuggleChallengeController: UIViewController {
         juggleChallengeView.visionDetectionView.delegate = self
     }
     
+    override func viewDidLoad() {
+        var panGesture = UIPanGestureRecognizer()
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
+        juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: juggleChallengeView.keepyUpCounterView.hitbox)
+    }
     
+    @objc func draggedView(_ sender:UIPanGestureRecognizer){
+        let pointCounter = self.juggleChallengeView.keepyUpCounterView
+        self.view.bringSubviewToFront(pointCounter.hitbox)
+        let translation = sender.translation(in: self.view)
+//        totalDistance += latestVibrationPosition.distance(to: translation)
+//        if Int(totalDistance) > 6 {
+//            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+//            totalDistance = 0
+//        }
+//        latestVibrationPosition = translation
+//        vibration.selectionChanged()
+        pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
     
 }
 
-extension JuggleChallengeController: VisionCommunication {
-    func changeStatusView() {
-        UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
+extension JuggleChallengeController: VisionResultsDelegate {
+    func changeStatusView(_ amountOfResults: Int) {
+        
+        let framesToConfirm = 20
+        
+        // if it sees the ball, adds one, else, resets
+        if amountOfResults > 0 {
+            self.model.framesWithBall += 1
+        }
+        
+        else {
+            self.model.framesWithBall = 0
+            self.model.ballTrackingStatus = .notFound
+        }
+        
+        if self.model.framesWithBall > 0 && self.model.framesWithBall < framesToConfirm {
             self.model.ballTrackingStatus = .finding
-            self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
-            self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
-        })
+        }
+        else if self.model.framesWithBall >= framesToConfirm {
+            self.model.ballTrackingStatus = .found
+        }
+        
+        
+        UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
+                   self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
+                   self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
+               })
     }
     
-    
 }
+
 

@@ -33,6 +33,7 @@ class KeepyUpCounterView: UIView {
         amountOfKeepyUps.adjustsFontSizeToFitWidth = false
         amountOfKeepyUps.adjustsFontForContentSizeCategory = false
         amountOfKeepyUps.textAlignment = .center
+        amountOfKeepyUps.text = "0"
         return amountOfKeepyUps
     }()
     

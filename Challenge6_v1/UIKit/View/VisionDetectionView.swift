@@ -10,12 +10,13 @@ import Vision
 import UIKit
 import AVFoundation
 
-protocol VisionCommunication: AnyObject {
-func changeStatusView() }
+protocol VisionResultsDelegate: AnyObject {
+    func changeStatusView(_ amountOfResults: Int)
+}
 
 class VisionDetectionView: CameraFeedView {
     
-    weak var delegate: VisionCommunication?
+    weak var delegate: VisionResultsDelegate?
     var detectionOverlay: CALayer! = nil
 //    var bufferSize: CGSize = .zero
     var requests = [VNRequest]()
@@ -44,7 +45,7 @@ class VisionDetectionView: CameraFeedView {
                     // perform all the UI updates on the main queue
                     
                     if let results = request.results {
-                        self.delegate?.changeStatusView()
+                        self.delegate?.changeStatusView(results.count)
                         self.drawVisionRequestResults(results)
                     }
                 })
