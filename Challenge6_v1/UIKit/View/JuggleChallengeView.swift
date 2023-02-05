@@ -15,14 +15,28 @@ class JuggleChallengeView: UIView {
     let ballStatusView = BallStatusView()
     let resetButtonView = ResetButtonView()
     let keepyUpCounterView = KeepyUpCounterView()
-    let objectDetectionView = CameraFeedView(frame: UIScreen.main.bounds)
+    let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
+    let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
     
+    
+    func setupEverything() {
+        cameraFeedView.setupAVCapture()
+        visionDetectionView.bufferSize = cameraFeedView.bufferSize
+        visionDetectionView.setupAVCapture()
+        // setup Vision parts
+        visionDetectionView.setupLayers()
+        visionDetectionView.updateLayerGeometry()
+        print(visionDetectionView.setupVision() ?? "no error")
+        
+        // start the capture
+        visionDetectionView.startCaptureSession()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        objectDetectionView.setupAVCapture()
-        objectDetectionView.startCaptureSession()
-        addSubview(objectDetectionView)
+        setupEverything()
+//        addSubview(cameraFeedView)
+        addSubview(visionDetectionView)
         addSubview(targetView)
         addSubview(directionView)
         addSubview(ballStatusView)

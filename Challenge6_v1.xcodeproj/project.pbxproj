@@ -119,6 +119,7 @@
 				064E7B5C298DF989007BA722 /* BallStatusView.swift */,
 				064E7B60298E008B007BA722 /* CameraFeedView.swift */,
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
+				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,7 +247,6 @@
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
 				97A7A806298ADADF00BA92A2 /* Extensions.swift */,
-				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
 				97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */,
 				97A7A7FF298ADADF00BA92A2 /* Main.storyboard */,
 				97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */,

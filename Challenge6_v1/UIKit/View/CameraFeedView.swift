@@ -31,7 +31,7 @@ class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         
         session.beginConfiguration()
-        session.sessionPreset = .medium // Model image size is smaller.
+        session.sessionPreset = .vga640x480 // Model image size is smaller.
     
         // Add a video input
         guard session.canAddInput(deviceInput) else {
@@ -79,5 +79,32 @@ class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
             self?.session.startRunning()
         }
         
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // to be implemented in the subclass
+    }
+    
+    public func exifOrientationFromDeviceOrientation() -> CGImagePropertyOrientation {
+        let curDeviceOrientation = UIDevice.current.orientation
+        let exifOrientation: CGImagePropertyOrientation
+        
+        switch curDeviceOrientation {
+        case UIDeviceOrientation.portraitUpsideDown:  // Device oriented vertically, home button on the top
+            exifOrientation = .left
+        case UIDeviceOrientation.landscapeLeft:       // Device oriented horizontally, home button on the right
+            exifOrientation = .upMirrored
+        case UIDeviceOrientation.landscapeRight:      // Device oriented horizontally, home button on the left
+            exifOrientation = .down
+        case UIDeviceOrientation.portrait:            // Device oriented vertically, home button on the bottom
+            exifOrientation = .up
+        default:
+            exifOrientation = .up
+        }
+        return exifOrientation
+    }
+    
+    func getBufferSize()->CGSize {
+        return bufferSize
     }
 }
