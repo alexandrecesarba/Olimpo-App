@@ -13,5 +13,6 @@ struct JuggleChallengeModel {
     var pointCounter: Int = 0
     var target: Int
     var ballTrackingStatus: BallTrackingStatus = .notFound
+    var framesWithBall: Int = 0
     
 }

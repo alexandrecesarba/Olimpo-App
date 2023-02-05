@@ -10,8 +10,12 @@ import Vision
 import UIKit
 import AVFoundation
 
+protocol VisionCommunication: AnyObject {
+func changeStatusView() }
+
 class VisionDetectionView: CameraFeedView {
     
+    weak var delegate: VisionCommunication?
     var detectionOverlay: CALayer! = nil
 //    var bufferSize: CGSize = .zero
     var requests = [VNRequest]()
@@ -40,6 +44,7 @@ class VisionDetectionView: CameraFeedView {
                     // perform all the UI updates on the main queue
                     
                     if let results = request.results {
+                        self.delegate?.changeStatusView()
                         self.drawVisionRequestResults(results)
                     }
                 })
@@ -53,32 +58,21 @@ class VisionDetectionView: CameraFeedView {
     }
     
     
+    
     func drawVisionRequestResults(_ results: [Any]) {
         CATransaction.begin()
         //MARK: resetting all objects
         detectionOverlay.sublayers = nil
         
-        var biggestObject: VNRecognizedObjectObservation
-        if results.count > 0 {
-            biggestObject = results[0] as! VNRecognizedObjectObservation
-        }
-        else{
-            biggestObject = VNRecognizedObjectObservation(boundingBox: CGRect(origin: .zero, size: .zero))
-        }
-        for observation in results where observation is VNRecognizedObjectObservation{
-            let object = observation as! VNRecognizedObjectObservation
-            if biggestObject.boundingBox.area < object.boundingBox.area{
-                biggestObject = object
-            }
-            
-        }
-        
-        for label in biggestObject.labels{
-            print(label.identifier)
-        }
+      
+        var biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
+//
+//        for label in biggestObject.labels{
+//            print(label.identifier)
+//        }
         
             /// Pega a boundingbox do objectObservation e cria uma let
-            var normalizedBoundingBox = biggestObject.boundingBox
+            let normalizedBoundingBox = biggestObject.boundingBox
             /// Retângulo normalizado a partir da boundingBox e do tamanho da tela
             let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
@@ -135,6 +129,26 @@ class VisionDetectionView: CameraFeedView {
 //        pointCounter.pointCounterView.text = "\(numberOfKeepyUps)"
         self.updateLayerGeometry()
         CATransaction.commit()
+    }
+    
+    func getBiggestObject(_ results: [Any]) -> VNRecognizedObjectObservation {
+        
+        var biggestObject: VNRecognizedObjectObservation
+        if results.count > 0 {
+            biggestObject = results[0] as! VNRecognizedObjectObservation
+        }
+        else{
+            biggestObject = VNRecognizedObjectObservation(boundingBox: CGRect(origin: .zero, size: .zero))
+        }
+        for observation in results where observation is VNRecognizedObjectObservation{
+            let object = observation as! VNRecognizedObjectObservation
+            if biggestObject.boundingBox.area < object.boundingBox.area{
+                biggestObject = object
+            }
+            
+        }
+        
+        return biggestObject
     }
     
     override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
