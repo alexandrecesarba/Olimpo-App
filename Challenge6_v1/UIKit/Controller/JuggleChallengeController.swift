@@ -25,6 +25,7 @@ class JuggleChallengeController: UIViewController {
         var panGesture = UIPanGestureRecognizer()
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
         juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: juggleChallengeView.keepyUpCounterView.hitbox)
+        self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
     }
     
     func addScore(){
@@ -41,6 +42,12 @@ class JuggleChallengeController: UIViewController {
         self.model.lastHeight = lastHeight
     }
     
+    @objc func resetButtonPressed() {
+        self.model.pointCounter = 0
+        self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
+        self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
+        self.juggleChallengeView.keepyUpCounterView.paintBalls(color: .whiteCircle)
+    }
     
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
         let pointCounter = self.juggleChallengeView.keepyUpCounterView
@@ -64,7 +71,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
     
     func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat) {
         
-        guard self.model.ballTrackingStatus == .found else {return}
+//        guard self.model.ballTrackingStatus == .found else {return}
         
         switch self.model.direction {
             case .upwards:
@@ -74,7 +81,9 @@ extension JuggleChallengeController: VisionResultsDelegate {
             case .downwards:
                 if currentHeight < self.model.lastHeight - objectVerticalSize/5 {
                     self.model.direction = .upwards
-                    addScore()
+                    if (self.model.ballTrackingStatus == .found){
+                        addScore()
+                    }
                 }
             case .stopped:
                 currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
@@ -90,21 +99,38 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         let framesToConfirm = 50
         
+        // two behaviours, one before a ball is located, another when a ball has already been located
+        
         // if it sees the ball, adds one, else, resets
-        if amountOfResults > 0 {
-            self.model.framesWithBall += 1
+        
+        if self.model.ballTrackingStatus != .found {
+            
+            if amountOfResults > 0 {
+                self.model.framesWithBall += 1
+            }
+            
+            else {
+                self.model.framesWithBall = 0
+                self.model.ballTrackingStatus = .notFound
+            }
+            
+            if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm {
+                self.model.ballTrackingStatus = .finding
+            }
+            else if self.model.framesWithBall >= framesToConfirm {
+                self.model.ballTrackingStatus = .found
+            }
         }
         
         else {
-            self.model.framesWithBall = 0
-            self.model.ballTrackingStatus = .notFound
-        }
-        
-        if self.model.framesWithBall > 0 && self.model.framesWithBall < framesToConfirm {
-            self.model.ballTrackingStatus = .finding
-        }
-        else if self.model.framesWithBall >= framesToConfirm {
-            self.model.ballTrackingStatus = .found
+            if amountOfResults == 0 {
+                self.model.framesWithBall -= 2
+                if self.model.framesWithBall < 0 {self.model.framesWithBall = 0}
+            }
+            
+            if self.model.framesWithBall == 0 {
+                self.model.ballTrackingStatus = .notFound
+            }
         }
         
         
