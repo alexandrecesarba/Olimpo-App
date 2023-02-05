@@ -14,8 +14,8 @@ class BallStatusView: UILabel {
         super.init(frame: frame)
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
-        self.backgroundColor = .red.withAlphaComponent(0.5)
-        self.text = "❌ Ball not found"
+        self.backgroundColor = .red.withAlphaComponent(0.3)
+        self.text = "❌ Ball not found."
         self.textAlignment = .center
         self.textColor = .white
         self.translatesAutoresizingMaskIntoConstraints = false
