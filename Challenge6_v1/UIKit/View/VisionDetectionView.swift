@@ -11,7 +11,8 @@ import UIKit
 import AVFoundation
 
 protocol VisionResultsDelegate: AnyObject {
-    func changeStatusView(_ amountOfResults: Int)
+    func updateStatusView (_ amountOfResults: Int)
+    func updateDirectionStatus (objectVerticalSize: CGFloat, currentHeight: CGFloat)
 }
 
 class VisionDetectionView: CameraFeedView {
@@ -45,8 +46,9 @@ class VisionDetectionView: CameraFeedView {
                     // perform all the UI updates on the main queue
                     
                     if let results = request.results {
-                        self.delegate?.changeStatusView(results.count)
+                        self.delegate?.updateStatusView(results.count)
                         self.drawVisionRequestResults(results)
+                       
                     }
                 })
             })
@@ -76,7 +78,8 @@ class VisionDetectionView: CameraFeedView {
             let normalizedBoundingBox = biggestObject.boundingBox
             /// Retângulo normalizado a partir da boundingBox e do tamanho da tela
             let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
-            
+        
+            self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX)
 //            if biggestObject.confidence > 0.96 {
 //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)
 //

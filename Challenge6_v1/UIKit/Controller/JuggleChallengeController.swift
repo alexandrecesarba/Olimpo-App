@@ -27,6 +27,21 @@ class JuggleChallengeController: UIViewController {
         juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: juggleChallengeView.keepyUpCounterView.hitbox)
     }
     
+    func addScore(){
+        self.model.pointCounter += 1
+        self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
+        if self.model.pointCounter == self.model.target {
+            self.juggleChallengeView.keepyUpCounterView.paintBalls(color: .greenCircle)
+        }
+        self.juggleChallengeView.keepyUpCounterView.setScore(score: self.model.pointCounter)
+    }
+    
+    
+    func setLastHeight(_ lastHeight: CGFloat){
+        self.model.lastHeight = lastHeight
+    }
+    
+    
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
         let pointCounter = self.juggleChallengeView.keepyUpCounterView
         self.view.bringSubviewToFront(pointCounter.hitbox)
@@ -45,9 +60,35 @@ class JuggleChallengeController: UIViewController {
 }
 
 extension JuggleChallengeController: VisionResultsDelegate {
-    func changeStatusView(_ amountOfResults: Int) {
+    
+    
+    func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat) {
         
-        let framesToConfirm = 20
+        guard self.model.ballTrackingStatus == .found else {return}
+        
+        switch self.model.direction {
+            case .upwards:
+                if currentHeight > self.model.lastHeight + objectVerticalSize/5 {
+                    self.model.direction = .downwards
+                }
+            case .downwards:
+                if currentHeight < self.model.lastHeight - objectVerticalSize/5 {
+                    self.model.direction = .upwards
+                    addScore()
+                }
+            case .stopped:
+                currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+        }
+        
+        self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
+        
+        setLastHeight(currentHeight)
+        
+    }
+    
+    func updateStatusView(_ amountOfResults: Int) {
+        
+        let framesToConfirm = 50
         
         // if it sees the ball, adds one, else, resets
         if amountOfResults > 0 {
@@ -72,6 +113,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
                    self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
                })
     }
+    
     
 }
 

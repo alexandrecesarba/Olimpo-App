@@ -49,6 +49,10 @@ class KeepyUpCounterView: UIView {
         centerPoint = CGPoint(x: point.x + translation.x, y: point.y + translation.y)
     }
     
+    func setScore(score: Int) {
+        pointCounterView.text = String(score)
+    }
+    
     func centerViews(){
         for circle in circles {
             circle.center = UIScreen.main.bounds.center
