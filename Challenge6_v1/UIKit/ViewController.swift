@@ -115,7 +115,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         var panGesture = UIPanGestureRecognizer()
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
-        pointCounter.addRecognizer(panGesture, label: pointCounter.hitbox)
+//        pointCounter.addRecognizer(panGesture, label: pointCounter.hitbox)
 
         directionLabel.text = direction.rawValue.capitalized
 

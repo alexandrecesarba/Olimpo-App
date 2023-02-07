@@ -17,13 +17,13 @@ let outerRadius: CGFloat = circleRadius + 2*sizeIncreaser
 let pointCircleRadius: CGFloat = circleRadius
 
 class KeepyUpCounterView: UIView {
-    var circles: [UIView] {[outerCircle, innerCircle, pointCounterView, hitbox]}
+    var circles: [UIView] {[backgroundCircle, outerCircle, innerCircle, pointCounterView, hitbox]}
     var visibleCircles: [UIView] {[outerCircle, innerCircle, pointCounterView]}
     
     var pointCounterView: UILabel = {
         let amountOfKeepyUps = UILabel()
         amountOfKeepyUps.font = UIFont.preferredFont(forTextStyle: .title1, compatibleWith: UITraitCollection(legibilityWeight: .bold))
-//        amountOfKeepyUps.font = UIFont.systemFont(ofSize: 15)
+        //        amountOfKeepyUps.font = UIFont.systemFont(ofSize: 15)
         amountOfKeepyUps.layer.masksToBounds = true
         amountOfKeepyUps.backgroundColor = UIColor.whiteCircle
         amountOfKeepyUps.frame = CGRect(x: 20, y: 40, width: circleRadius, height: circleRadius)
@@ -37,9 +37,11 @@ class KeepyUpCounterView: UIView {
         return amountOfKeepyUps
     }()
     
-    var innerCircle: UILabel = createColoredCircle(color: .whiteCircle, radius: innerRadius)
-    var outerCircle: UILabel = createColoredCircle(color: .whiteCircle, radius: outerRadius)
-    var hitbox: UILabel = createColoredCircle(color: UIColor.clear, radius: circleRadius + 40, borderWidth: 0, isTransparent: true)
+    var innerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: innerRadius)
+    var outerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: outerRadius)
+    var backgroundCircle: UIView = createColoredCircle(color: .greenCircle, radius: 0,borderWidth: 0, isTransparent: true)
+    var rightAnswerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: outerRadius)
+    var hitbox: UIView = createColoredCircle(color: UIColor.clear, radius: circleRadius + 40, borderWidth: 0, isTransparent: true)
     
     
     func repositionViews(point:CGPoint, translation: CGPoint){
@@ -64,9 +66,25 @@ class KeepyUpCounterView: UIView {
         label.addGestureRecognizer(recognizer)
     }
     
+    func hideBackgroundCircle(){
+        backgroundCircle.alpha = 0
+    }
+    
+    func showBackgroundCircle(color: UIColor){
+        
+        UIView.animate(withDuration: 0.45, delay: .zero, animations: { [self] in
+            backgroundCircle.backgroundColor = .greenCircle.withAlphaComponent(0.7)
+            backgroundCircle.frame.size.width = outerRadius
+            backgroundCircle.frame.size.height = outerRadius
+            backgroundCircle.center = outerCircle.center
+            backgroundCircle.layer.cornerRadius = backgroundCircle.frame.width/2
+            backgroundCircle.alpha = 1
+        })
+        backgroundCircle.center = outerCircle.center
+    }
     func paintBalls(color: UIColor){
         for circle in visibleCircles {
-            circle.backgroundColor = color.withAlphaComponent(0.2)
+            circle.backgroundColor = color
             if circle == pointCounterView{
                 circle.backgroundColor = color
             }
@@ -105,6 +123,10 @@ class KeepyUpCounterView: UIView {
             self.outerCircle.frame.size.height *= expandConstant
             self.outerCircle.layer.cornerRadius = self.outerCircle.frame.width/2
             self.outerCircle.center = centerPoint
+            self.backgroundCircle.frame.size.width *= expandConstant
+            self.backgroundCircle.frame.size.height *= expandConstant
+            self.backgroundCircle.layer.cornerRadius = self.outerCircle.frame.width/2
+            self.backgroundCircle.center = centerPoint
         })
         
         UIView.animate(withDuration: defaultDuration/2, delay: .zero, options: .curveEaseInOut ,animations: {
@@ -126,6 +148,11 @@ class KeepyUpCounterView: UIView {
                 self.outerCircle.frame.size = CGSize(width: outerRadius, height: outerRadius)
                 self.outerCircle.layer.cornerRadius = self.outerCircle.frame.width/2
                 self.outerCircle.center = centerPoint
+                
+                    self.backgroundCircle.frame.size = CGSize(width: outerRadius, height: outerRadius)
+                    self.backgroundCircle.layer.cornerRadius = self.outerCircle.frame.width/2
+                    self.backgroundCircle.center = centerPoint
+                
             })
             
             UIView.animate(withDuration: defaultDuration/2, delay: .zero, options: .curveEaseInOut ,animations: {

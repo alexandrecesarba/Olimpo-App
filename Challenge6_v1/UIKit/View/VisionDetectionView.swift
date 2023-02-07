@@ -10,12 +10,9 @@ import Vision
 import UIKit
 import AVFoundation
 
-protocol VisionResultsDelegate: AnyObject {
-    func updateStatusView (_ amountOfResults: Int)
-    func updateDirectionStatus (objectVerticalSize: CGFloat, currentHeight: CGFloat)
-}
 
 class VisionDetectionView: CameraFeedView {
+    
     
     weak var delegate: VisionResultsDelegate?
     var detectionOverlay: CALayer! = nil
@@ -35,7 +32,6 @@ class VisionDetectionView: CameraFeedView {
     func setupVision() -> NSError? {
         // Setup Vision parts
         let error: NSError! = nil
-        
         guard let modelURL = Bundle.main.url(forResource: "Model", withExtension: "mlmodelc") else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
@@ -68,69 +64,16 @@ class VisionDetectionView: CameraFeedView {
         detectionOverlay.sublayers = nil
         
       
-        var biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
-//
-//        for label in biggestObject.labels{
-//            print(label.identifier)
-//        }
+        let biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
+        //        if biggestObject.confidence > 0.96 {
+        //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)}
         
-            /// Pega a boundingbox do objectObservation e cria uma let
-            let normalizedBoundingBox = biggestObject.boundingBox
-            /// Retângulo normalizado a partir da boundingBox e do tamanho da tela
-            let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
+        let normalizedBoundingBox = biggestObject.boundingBox
+        let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
+        self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, confidence: CGFloat(biggestObject.confidence))
         
-            self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX)
-//            if biggestObject.confidence > 0.96 {
-//                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)
-//
-//
-//
-//                switch direction {
-//                    case .upwards:
-//                        if objectBounds.midX > lastHeight + objectBounds.height/5 {
-//                            direction = .downwards
-//                        }
-//                    case .downwards:
-//                        if objectBounds.midX < lastHeight - objectBounds.height/5 {
-//                            direction = .upwards
-//                            numberOfKeepyUps += 1
-//                            pointCounter.bounceAnimation()
-//                            if numberOfKeepyUps == targetScore {
-//                                pointCounter.paintBalls(color: .greenCircle)
-//                            }
-//                        }
-//                    case .stopped:
-//                        objectBounds.midX > lastHeight + objectBounds.height/7 ? (direction = .downwards) : (direction = .upwards)
-//                }
-//
-//
-////                print("midX: \(objectBounds.midX), LH: \(lastHeight + objectBounds.height/5)")
-//
-//                lastHeight = objectBounds.midX
-//
-//                directionLabel.text = direction.rawValue.capitalized
-//
-//                ballXCenterHistory.append(objectBounds.midX)
-//                normalizedBoundingBox.origin.y = averageFromArray
-//                if ballXCenterHistory.count == 5 {
-//                    ballXCenterHistory = [averageFromArray]
-//                }
-                let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
-//
-////                let basicAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
-                detectionOverlay.addSublayer(shapeLayer)
-////                print(ballXCenterHistory)
-//
-//            }
-            // adiciona o ponto médio Y (eixo X real) do objectBounds, que é o retangulo normalizado da bola
-            //contabiliza qualquer coisa, independente do nivel de confiança
-//        print(objectBounds.height/2)
-            
-        
-//
-//        animateTarget(target: ballLabel, position: objectBounds, box: biggestObject.boundingBox)
-//
-//        pointCounter.pointCounterView.text = "\(numberOfKeepyUps)"
+        let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
+        detectionOverlay.addSublayer(shapeLayer)
         self.updateLayerGeometry()
         CATransaction.commit()
     }

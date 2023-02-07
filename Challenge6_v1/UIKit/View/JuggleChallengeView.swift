@@ -17,7 +17,7 @@ class JuggleChallengeView: UIView {
     let keepyUpCounterView = KeepyUpCounterView()
     let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
     let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
-    
+    let ballNotFoundView = BallNotFoundView()
     
     func setupEverything() {
         cameraFeedView.setupAVCapture()
@@ -41,10 +41,11 @@ class JuggleChallengeView: UIView {
         addSubview(directionView)
         addSubview(ballStatusView)
         addSubview(resetButtonView)
+        
         for circle in keepyUpCounterView.circles{
             addSubview(circle)
         }
-        
+        addSubview(ballNotFoundView)
         
         targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -54,7 +55,17 @@ class JuggleChallengeView: UIView {
         resetButtonView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
         ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+//     
         
+        
+        
+        
+//        ballNotFoundView.translatesAutoresizingMaskIntoConstraints = false
+        ballNotFoundView.ball.translatesAutoresizingMaskIntoConstraints = false
+        ballNotFoundView.ball.heightAnchor.constraint(equalTo: self.ballNotFoundView.heightAnchor, multiplier: 0.2).isActive = true
+        ballNotFoundView.ball.widthAnchor.constraint(equalTo: self.ballNotFoundView.widthAnchor, multiplier: 0.2).isActive = true
+        ballNotFoundView.ball.centerXAnchor.constraint(equalTo: self.ballNotFoundView.centerXAnchor).isActive = true
+        ballNotFoundView.ball.centerYAnchor.constraint(equalTo: self.ballNotFoundView.centerYAnchor).isActive = true
         
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.targetView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),

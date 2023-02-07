@@ -12,7 +12,7 @@ class JuggleChallengeController: UIViewController {
     
     var model = JuggleChallengeModel(target: 10)
     let juggleChallengeView = JuggleChallengeView()
-   
+
     override func loadView() {
         super.loadView()
         view = juggleChallengeView
@@ -22,31 +22,63 @@ class JuggleChallengeController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         var panGesture = UIPanGestureRecognizer()
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
-        juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: juggleChallengeView.keepyUpCounterView.hitbox)
-        self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
+        self.juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: self.juggleChallengeView.keepyUpCounterView.hitbox as! UILabel)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+            self.animateBall(105)
+        }
+        
+        
+       
+        
+    }
+    
+    func animateBall(_ amount: Double){
+        let transformTest = CGAffineTransform(translationX: 1.0, y: (amount<0) ? 1.0 : 1.5)
+        self.juggleChallengeView.ballNotFoundView.ball.transform = transformTest
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.animateBall(-amount)
+        }
+//            self.juggleChallengeView.ballNotFoundView.ball.center.y = self.juggleChallengeView.ballNotFoundView.ball.center.y * 1.5
+        
     }
     
     func addScore(){
         self.model.pointCounter += 1
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
         if self.model.pointCounter == self.model.target {
-            self.juggleChallengeView.keepyUpCounterView.paintBalls(color: .greenCircle)
+            self.juggleChallengeView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
         }
         self.juggleChallengeView.keepyUpCounterView.setScore(score: self.model.pointCounter)
     }
     
-    
     func setLastHeight(_ lastHeight: CGFloat){
         self.model.lastHeight = lastHeight
+    }
+    
+    func updateNotFoundView(state: BallTrackingStatus){
+        
+        var found = false
+        
+        if state != .notFound {
+            found.toggle()
+        }
+        
+        UIView.animate(withDuration: 0.7, delay: .zero, options: .curveEaseInOut, animations: {
+            //FIXME: fix opacity
+            self.juggleChallengeView.ballNotFoundView.alpha = (found) ? 0.0 : 1.0
+        })
+        
     }
     
     @objc func resetButtonPressed() {
         self.model.pointCounter = 0
         self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
-        self.juggleChallengeView.keepyUpCounterView.paintBalls(color: .whiteCircle)
+        self.juggleChallengeView.keepyUpCounterView.hideBackgroundCircle()
     }
     
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
@@ -68,31 +100,32 @@ class JuggleChallengeController: UIViewController {
 
 extension JuggleChallengeController: VisionResultsDelegate {
     
-    
-    func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat) {
+    func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
+        
+        let minimumConfidence = 0.96
         
 //        guard self.model.ballTrackingStatus == .found else {return}
-        
-        switch self.model.direction {
-            case .upwards:
-                if currentHeight > self.model.lastHeight + objectVerticalSize/5 {
-                    self.model.direction = .downwards
-                }
-            case .downwards:
-                if currentHeight < self.model.lastHeight - objectVerticalSize/5 {
-                    self.model.direction = .upwards
-                    if (self.model.ballTrackingStatus == .found){
-                        addScore()
+        if confidence > minimumConfidence {
+            switch self.model.direction {
+                case .upwards:
+                    if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
+                        self.model.direction = .downwards
                     }
-                }
-            case .stopped:
-                currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+                case .downwards:
+                    if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
+                        self.model.direction = .upwards
+                        if (self.model.ballTrackingStatus == .found){
+                            addScore()
+                        }
+                    }
+                case .stopped:
+                    currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+            }
+            
+            self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
+            
+            setLastHeight(currentHeight)
         }
-        
-        self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
-        
-        setLastHeight(currentHeight)
-        
     }
     
     func updateStatusView(_ amountOfResults: Int) {
@@ -133,13 +166,16 @@ extension JuggleChallengeController: VisionResultsDelegate {
             }
         }
         
+        // new loading view tests
+        
+            self.updateNotFoundView(state: self.model.ballTrackingStatus)
+        
         
         UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
                    self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
                    self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
                })
     }
-    
     
 }
 
