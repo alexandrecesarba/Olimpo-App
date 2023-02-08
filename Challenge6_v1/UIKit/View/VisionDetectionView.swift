@@ -62,8 +62,7 @@ class VisionDetectionView: CameraFeedView {
         CATransaction.begin()
         //MARK: resetting all objects
         detectionOverlay.sublayers = nil
-        
-      
+//        filterResults(results: results)
         let biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
         //        if biggestObject.confidence > 0.96 {
         //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)}
@@ -77,6 +76,16 @@ class VisionDetectionView: CameraFeedView {
         self.updateLayerGeometry()
         CATransaction.commit()
     }
+    
+    func filterResults(results: [Any]){
+        
+        for observation in results where observation is VNRecognizedObjectObservation{
+            let object = observation as! VNRecognizedObjectObservation
+            print(object.labels)
+        }
+        
+    }
+    
     
     func getBiggestObject(_ results: [Any]) -> VNRecognizedObjectObservation {
         

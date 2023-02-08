@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class JuggleChallengeController: UIViewController {
+class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
     var model = JuggleChallengeModel(target: 10)
     let juggleChallengeView = JuggleChallengeView()
@@ -24,9 +24,14 @@ class JuggleChallengeController: UIViewController {
     override func viewDidLoad() {
         self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         var panGesture = UIPanGestureRecognizer()
+        juggleChallengeView.keepyUpCounterView.isUserInteractionEnabled = true
+//        juggleChallengeView.isUserInteractionEnabled = true
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedView(_:)))
-        self.juggleChallengeView.addGestureRecognizer(panGesture)
-        
+        panGesture.delegate = self
+        juggleChallengeView.keepyUpCounterView.addGestureRecognizer(panGesture)
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.scalePiece(_:)))
+        pinchGesture.delegate = self
+        self.juggleChallengeView.keepyUpCounterView.addGestureRecognizer(pinchGesture)
      
         
        
@@ -70,6 +75,30 @@ class JuggleChallengeController: UIViewController {
         self.juggleChallengeView.keepyUpCounterView.hideBackgroundCircle()
     }
     
+    @objc func scalePiece(_ gestureRecognizer : UIPinchGestureRecognizer) {   guard gestureRecognizer.view != nil else { return }
+        
+        var keepyUpView: UIView = gestureRecognizer.view!
+        var centerPoint: CGPoint
+      
+        centerPoint = keepyUpView.center
+        
+       if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+           print(gestureRecognizer.scale)
+        
+//        keepyUpView.transform = CGAffineTransform(scaleX: gestureRecognizer.scale, y: gestureRecognizer.scale)
+           let originalSize = keepyUpView.frame
+           let newSize = originalSize.applying(keepyUpView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))
+
+           if newSize.width > 140 {
+               keepyUpView.transform = (keepyUpView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))
+           }
+           
+          gestureRecognizer.scale = 1.0
+       }
+        
+        keepyUpView.center = centerPoint
+    }
+    
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
         let pointCounter = self.juggleChallengeView.keepyUpCounterView
         let center = pointCounter.hitbox.frame.customCenter
@@ -88,7 +117,8 @@ class JuggleChallengeController: UIViewController {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             self.model.pointCounterLastPosition = center
         }
-        pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
+        pointCounter.center = pointCounter.center + translation
+//        pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
     

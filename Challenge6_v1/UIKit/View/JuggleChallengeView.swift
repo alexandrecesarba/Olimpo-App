@@ -37,8 +37,11 @@ class JuggleChallengeView: UIView {
         visionDetectionView.startCaptureSession()
     }
     
+    override func willMove(toSuperview newSuperview: UIView?) {
+        keepyUpCounterView.frame = CGRect(x: self.frame.midX - 70, y: self.frame.midY - 70, width: 140, height: 140)
+    }
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: frame)
         setupEverything()
 //        addSubview(cameraFeedView)
         addSubview(visionDetectionView)
@@ -52,6 +55,9 @@ class JuggleChallengeView: UIView {
 //        }
 //        addSubview(ballNotFoundView)
         addSubview(ballBouncingView)
+        
+        keepyUpCounterView.translatesAutoresizingMaskIntoConstraints = true
+
         targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         directionView.widthAnchor.constraint(equalToConstant: 120).isActive = true
@@ -60,18 +66,7 @@ class JuggleChallengeView: UIView {
         resetButtonView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
         ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//     
-        
-        
-        
-        
-//        ballNotFoundView.translatesAutoresizingMaskIntoConstraints = false
-//        ballNotFoundView.ball.translatesAutoresizingMaskIntoConstraints = false
-//        ballNotFoundView.ball.heightAnchor.constraint(equalTo: self.ballNotFoundView.heightAnchor, multiplier: 0.2).isActive = true
-//        ballNotFoundView.ball.widthAnchor.constraint(equalTo: self.ballNotFoundView.widthAnchor, multiplier: 0.2).isActive = true
-//        ballNotFoundView.ball.centerXAnchor.constraint(equalTo: self.ballNotFoundView.centerXAnchor).isActive = true
-//        ballNotFoundView.ball.centerYAnchor.constraint(equalTo: self.ballNotFoundView.centerYAnchor).isActive = true
-//
+
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.targetView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),
             NSLayoutConstraint(item: self.targetView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),

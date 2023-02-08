@@ -73,6 +73,10 @@ extension CGPoint {
         return (self.x - to.x) * (self.x - to.x) + (self.y - to.y) * (self.y - to.y)
     }
     
+    static func + (_ lhs: Self, _ rhs: Self)-> CGPoint {
+        return add(lhs, rhs)
+    }
+    
     static func add(_ first: CGPoint, _ second: CGPoint)-> CGPoint {
         return CGPoint (x: (first.x + second.x),y: (first.y + second.y))
     }
