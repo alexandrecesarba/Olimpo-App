@@ -18,7 +18,7 @@ class JuggleChallengeView: UIView {
     let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
     let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
     let ballNotFoundView = BallNotFoundView()
-    let ballBouncingView = BallBouncingController().view!
+    let ballBouncingView = BallBouncingView()
     
     
     var infoViews: [UIView] {[targetView, directionView, ballStatusView, resetButtonView, keepyUpCounterView, cameraFeedView]}
