@@ -36,7 +36,7 @@ class BallBouncingView: SKView {
     
     
     func alertImageConfiguration(){
-        alertImageView.tintColor = .systemOrange
+        alertImageView.tintColor = .alertOrange
         alertImageView.contentMode = .scaleAspectFit
     }
     

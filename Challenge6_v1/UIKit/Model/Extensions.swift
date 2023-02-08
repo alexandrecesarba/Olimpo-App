@@ -18,6 +18,7 @@ extension UIColor {
     static var whiteCircle = UIColor(named: "whiteCircle")!
     static var greenCircle = UIColor(named: "greenCircle")!
     static var pointColor = UIColor(named: "pointColor")!
+    static var alertOrange = UIColor(named: "alertOrange")!
     
     static func getMixedColor(color1: UIColor, color2: UIColor)-> UIColor{
         
