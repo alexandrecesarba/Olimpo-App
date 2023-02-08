@@ -25,7 +25,7 @@ class JuggleChallengeController: UIViewController {
         self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         var panGesture = UIPanGestureRecognizer()
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedView(_:)))
-        self.juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: self.juggleChallengeView.keepyUpCounterView.hitbox as! UILabel)
+        self.juggleChallengeView.addGestureRecognizer(panGesture)
         
      
         
@@ -54,15 +54,10 @@ class JuggleChallengeController: UIViewController {
             found.toggle()
         }
         
-        UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: {
-            //FIXME: fix opacity
+        UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: { [self] in
             self.juggleChallengeView.ballBouncingView.alpha = (found) ? 0.0 : 1.0
             for view in self.juggleChallengeView.infoViews{
                 view.alpha = (found) ? 1.0 : 0.0
-            }
-            
-            for circle in self.juggleChallengeView.keepyUpCounterView.circles{
-                circle.alpha = (found) ? 1.0 : 0.0
             }
         })
         

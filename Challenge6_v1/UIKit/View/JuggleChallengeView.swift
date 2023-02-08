@@ -46,10 +46,10 @@ class JuggleChallengeView: UIView {
         addSubview(directionView)
         addSubview(ballStatusView)
         addSubview(resetButtonView)
-        
-        for circle in keepyUpCounterView.circles{
-            addSubview(circle)
-        }
+        addSubview(keepyUpCounterView)
+//        for circle in keepyUpCounterView.circles{
+//            addSubview(circle)
+//        }
 //        addSubview(ballNotFoundView)
         addSubview(ballBouncingView)
         targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true

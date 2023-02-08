@@ -39,7 +39,7 @@ class KeepyUpCounterView: UIView {
     
     var innerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: innerRadius)
     var outerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: outerRadius)
-    var backgroundCircle: UIView = createColoredCircle(color: .greenCircle, radius: 0,borderWidth: 0, isTransparent: true)
+    var backgroundCircle: UIView = createColoredCircle(color: .greenCircle, radius: 0, borderWidth: 0, isTransparent: true)
     var rightAnswerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: outerRadius)
     var hitbox: UIView = createColoredCircle(color: UIColor.clear, radius: circleRadius + 40, borderWidth: 0, isTransparent: true)
     
@@ -62,10 +62,6 @@ class KeepyUpCounterView: UIView {
         centerPoint = UIScreen.main.bounds.customCenter
     }
     
-    func addRecognizer(_ recognizer: UIPanGestureRecognizer, label: UILabel){
-        label.addGestureRecognizer(recognizer)
-    }
-    
     func hideBackgroundCircle(){
         backgroundCircle.alpha = 0
         backgroundCircle.frame.size.width = 0
@@ -83,36 +79,6 @@ class KeepyUpCounterView: UIView {
             backgroundCircle.alpha = 1
         })
         backgroundCircle.center = outerCircle.center
-    }
-//    func paintBalls(color: UIColor){
-//        for circle in visibleCircles {
-//            circle.backgroundColor = color
-//            if circle == pointCounterView{
-//                circle.backgroundColor = color
-//            }
-//            
-//        }
-//    }
-    
-    func animateBall(ball: UIView){
-        let originalSize =  ball.frame.size
-        UIView.animate(withDuration: 0.1, delay: .zero, options: .curveEaseInOut ,animations: {
-            ball.frame.size.width *= 1.6
-            ball.frame.size.height *= 1.6
-            ball.layer.cornerRadius = ball.frame.width/2
-            ball.center = centerPoint
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.2, delay: .zero, options: .curveEaseInOut ,animations: {
-                ball.center = centerPoint
-                ball.frame.size.width = originalSize.width
-                ball.frame.size.height = originalSize.height
-                ball.layer.cornerRadius = ball.frame.width/2
-                ball.center = centerPoint
-            })
-        })
-    
-        
-        
     }
     
     func bounceAnimation(){
@@ -176,6 +142,9 @@ class KeepyUpCounterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.centerViews()
+        for circle in circles {
+            addSubview(circle)
+        }
     }
     
     required init?(coder: NSCoder) {
