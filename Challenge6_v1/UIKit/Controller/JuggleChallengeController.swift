@@ -67,9 +67,16 @@ class JuggleChallengeController: UIViewController {
             found.toggle()
         }
         
-        UIView.animate(withDuration: 0.7, delay: .zero, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: {
             //FIXME: fix opacity
-            self.juggleChallengeView.ballNotFoundView.alpha = (found) ? 0.0 : 1.0
+            self.juggleChallengeView.ballBouncingView.alpha = (found) ? 0.0 : 1.0
+            for view in self.juggleChallengeView.infoViews{
+                view.alpha = (found) ? 1.0 : 0.0
+            }
+            
+            for circle in self.juggleChallengeView.keepyUpCounterView.circles{
+                circle.alpha = (found) ? 1.0 : 0.0
+            }
         })
         
     }

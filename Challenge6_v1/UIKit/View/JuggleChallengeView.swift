@@ -18,6 +18,11 @@ class JuggleChallengeView: UIView {
     let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
     let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
     let ballNotFoundView = BallNotFoundView()
+    let ballBouncingView = BallBouncingController().view!
+    
+    
+    var infoViews: [UIView] {[targetView, directionView, ballStatusView, resetButtonView, keepyUpCounterView, cameraFeedView]}
+    
     
     func setupEverything() {
         cameraFeedView.setupAVCapture()
@@ -45,8 +50,8 @@ class JuggleChallengeView: UIView {
         for circle in keepyUpCounterView.circles{
             addSubview(circle)
         }
-        addSubview(ballNotFoundView)
-        
+//        addSubview(ballNotFoundView)
+        addSubview(ballBouncingView)
         targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         directionView.widthAnchor.constraint(equalToConstant: 120).isActive = true

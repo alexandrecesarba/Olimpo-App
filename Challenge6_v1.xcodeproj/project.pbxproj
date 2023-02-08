@@ -20,6 +20,9 @@
 		066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001AF299016C700E82177 /* KeepyUpCounterController.swift */; };
 		066001B229917CB700E82177 /* VisionResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B129917CB700E82177 /* VisionResultsDelegate.swift */; };
 		066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B329917CEB00E82177 /* BallNotFoundView.swift */; };
+		069151E1299330CD0088F135 /* BallBouncingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151DF299330CC0088F135 /* BallBouncingController.swift */; };
+		069151E2299330CD0088F135 /* BallBouncingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E0299330CC0088F135 /* BallBouncingScene.swift */; };
+		069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 069151E32993348E0088F135 /* BallBouncingScene.sks */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		066001AF299016C700E82177 /* KeepyUpCounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterController.swift; sourceTree = "<group>"; };
 		066001B129917CB700E82177 /* VisionResultsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultsDelegate.swift; sourceTree = "<group>"; };
 		066001B329917CEB00E82177 /* BallNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallNotFoundView.swift; sourceTree = "<group>"; };
+		069151DF299330CC0088F135 /* BallBouncingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallBouncingController.swift; sourceTree = "<group>"; };
+		069151E0299330CC0088F135 /* BallBouncingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallBouncingScene.swift; sourceTree = "<group>"; };
+		069151E32993348E0088F135 /* BallBouncingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallBouncingScene.sks; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 		064E7B52298DD27F007BA722 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				069151E0299330CC0088F135 /* BallBouncingScene.swift */,
 				064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */,
 				064E7B56298DEE70007BA722 /* RoundedLabelView.swift */,
 				064E7B58298DF0A5007BA722 /* ResetButtonView.swift */,
@@ -139,6 +146,8 @@
 				064E7B5E298DFD31007BA722 /* JuggleChallengeController.swift */,
 				066001AF299016C700E82177 /* KeepyUpCounterController.swift */,
 				066001B129917CB700E82177 /* VisionResultsDelegate.swift */,
+				069151E32993348E0088F135 /* BallBouncingScene.sks */,
+				069151DF299330CC0088F135 /* BallBouncingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,6 +336,7 @@
 				972F146F2985EAE1002087AF /* Assets.xcassets in Resources */,
 				97A7A7FB2989B6B400BA92A2 /* DiogoVideo.mov in Resources */,
 				97A7A819298ADAE000BA92A2 /* LaunchScreen.storyboard in Resources */,
+				069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */,
 				97A7A80D298ADAE000BA92A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +359,7 @@
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
+				069151E1299330CD0088F135 /* BallBouncingController.swift in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
 				97A7A813298ADAE000BA92A2 /* AppDelegate.swift in Sources */,
@@ -368,6 +379,7 @@
 				97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */,
 				064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */,
 				064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */,
+				069151E2299330CD0088F135 /* BallBouncingScene.swift in Sources */,
 				97A7A80F298ADAE000BA92A2 /* Direction.swift in Sources */,
 				064E7B65298E03D9007BA722 /* BallTrackingStatus.swift in Sources */,
 				97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */,

@@ -45,6 +45,23 @@ extension UIColor {
     }
 }
 
+extension UIFont {
+    static func getRoundedFont(size: CGFloat, weight: UIFont.Weight)-> UIFont{
+        let systemFont = UIFont.systemFont(ofSize: size, weight: .semibold)
+        let roundedFont: UIFont
+        
+        if let descriptor = systemFont.fontDescriptor.withDesign(.rounded)?.addingAttributes([.traits: [
+            UIFontDescriptor.TraitKey.weight: weight]
+          ]) {
+            roundedFont = UIFont(descriptor: descriptor, size: size)
+        } else {
+            roundedFont = systemFont
+        }
+        roundedFont.withSize(size)
+        return roundedFont
+    }
+}
+
 extension CGPoint {
     func distance(to: CGPoint) -> CGFloat {
         return (self.x - to.x) * (self.x - to.x) + (self.y - to.y) * (self.y - to.y)

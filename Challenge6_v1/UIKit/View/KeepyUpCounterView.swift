@@ -68,6 +68,8 @@ class KeepyUpCounterView: UIView {
     
     func hideBackgroundCircle(){
         backgroundCircle.alpha = 0
+        backgroundCircle.frame.size.width = 0
+        backgroundCircle.frame.size.height = 0
     }
     
     func showBackgroundCircle(color: UIColor){
