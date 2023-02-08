@@ -17,7 +17,7 @@ class JuggleChallengeView: UIView {
     let keepyUpCounterView = KeepyUpCounterView()
     let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
     let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
-    let ballNotFoundView = BallNotFoundView()
+//    let ballNotFoundView = BallNotFoundView()
     let ballBouncingView = BallBouncingView()
     
     
@@ -66,12 +66,12 @@ class JuggleChallengeView: UIView {
         
         
 //        ballNotFoundView.translatesAutoresizingMaskIntoConstraints = false
-        ballNotFoundView.ball.translatesAutoresizingMaskIntoConstraints = false
-        ballNotFoundView.ball.heightAnchor.constraint(equalTo: self.ballNotFoundView.heightAnchor, multiplier: 0.2).isActive = true
-        ballNotFoundView.ball.widthAnchor.constraint(equalTo: self.ballNotFoundView.widthAnchor, multiplier: 0.2).isActive = true
-        ballNotFoundView.ball.centerXAnchor.constraint(equalTo: self.ballNotFoundView.centerXAnchor).isActive = true
-        ballNotFoundView.ball.centerYAnchor.constraint(equalTo: self.ballNotFoundView.centerYAnchor).isActive = true
-        
+//        ballNotFoundView.ball.translatesAutoresizingMaskIntoConstraints = false
+//        ballNotFoundView.ball.heightAnchor.constraint(equalTo: self.ballNotFoundView.heightAnchor, multiplier: 0.2).isActive = true
+//        ballNotFoundView.ball.widthAnchor.constraint(equalTo: self.ballNotFoundView.widthAnchor, multiplier: 0.2).isActive = true
+//        ballNotFoundView.ball.centerXAnchor.constraint(equalTo: self.ballNotFoundView.centerXAnchor).isActive = true
+//        ballNotFoundView.ball.centerYAnchor.constraint(equalTo: self.ballNotFoundView.centerYAnchor).isActive = true
+//
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.targetView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),
             NSLayoutConstraint(item: self.targetView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),

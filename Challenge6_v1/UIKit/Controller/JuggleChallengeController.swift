@@ -24,25 +24,12 @@ class JuggleChallengeController: UIViewController {
     override func viewDidLoad() {
         self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         var panGesture = UIPanGestureRecognizer()
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(_:)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedView(_:)))
         self.juggleChallengeView.keepyUpCounterView.addRecognizer(panGesture, label: self.juggleChallengeView.keepyUpCounterView.hitbox as! UILabel)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
-            self.animateBall(105)
-        }
-        
+     
         
        
-        
-    }
-    
-    func animateBall(_ amount: Double){
-        let transformTest = CGAffineTransform(translationX: 1.0, y: (amount<0) ? 1.0 : 1.5)
-        self.juggleChallengeView.ballNotFoundView.ball.transform = transformTest
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.animateBall(-amount)
-        }
-//            self.juggleChallengeView.ballNotFoundView.ball.center.y = self.juggleChallengeView.ballNotFoundView.ball.center.y * 1.5
         
     }
     
@@ -90,15 +77,22 @@ class JuggleChallengeController: UIViewController {
     
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
         let pointCounter = self.juggleChallengeView.keepyUpCounterView
+        let center = pointCounter.hitbox.frame.customCenter
+        
         self.view.bringSubviewToFront(pointCounter.hitbox)
         let translation = sender.translation(in: self.view)
-//        totalDistance += latestVibrationPosition.distance(to: translation)
-//        if Int(totalDistance) > 6 {
-//            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-//            totalDistance = 0
-//        }
-//        latestVibrationPosition = translation
-//        vibration.selectionChanged()
+        
+        let distance :CGFloat = abs((center.x + translation.x) - self.model.pointCounterLastPosition.x) + abs((center.y + translation.y) - self.model.pointCounterLastPosition.y)
+        
+        print(center)
+        print(self.model.pointCounterLastPosition)
+        
+        print(distance)
+        
+        if Int(distance) > 7 {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            self.model.pointCounterLastPosition = center
+        }
         pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
@@ -111,7 +105,6 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         let minimumConfidence = 0.96
         
-//        guard self.model.ballTrackingStatus == .found else {return}
         if confidence > minimumConfidence {
             switch self.model.direction {
                 case .upwards:
@@ -152,6 +145,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
             else {
                 self.model.framesWithBall = 0
                 self.model.ballTrackingStatus = .notFound
+                self.resetButtonPressed()
             }
             
             if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm {
@@ -170,6 +164,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
             
             if self.model.framesWithBall == 0 {
                 self.model.ballTrackingStatus = .notFound
+                self.resetButtonPressed()
             }
         }
         

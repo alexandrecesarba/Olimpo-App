@@ -9,8 +9,12 @@ import Foundation
 import UIKit
 
 extension CGRect {
-    var center:CGPoint {
+    var customCenter:CGPoint {
         return CGPoint(x: self.midX, y: self.midY)
+    }
+    
+    var area: CGFloat {
+        return self.height * self.width
     }
 }
 
@@ -20,6 +24,7 @@ extension UIColor {
     static var pointColor = UIColor(named: "pointColor")!
     static var alertOrange = UIColor(named: "alertOrange")!
     
+    /// Not working.
     static func getMixedColor(color1: UIColor, color2: UIColor)-> UIColor{
         
         var colorRGBA1: (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
@@ -67,4 +72,9 @@ extension CGPoint {
     func distance(to: CGPoint) -> CGFloat {
         return (self.x - to.x) * (self.x - to.x) + (self.y - to.y) * (self.y - to.y)
     }
+    
+    static func add(_ first: CGPoint, _ second: CGPoint)-> CGPoint {
+        return CGPoint (x: (first.x + second.x),y: (first.y + second.y))
+    }
+    
 }

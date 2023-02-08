@@ -57,9 +57,9 @@ class KeepyUpCounterView: UIView {
     
     func centerViews(){
         for circle in circles {
-            circle.center = UIScreen.main.bounds.center
+            circle.center = UIScreen.main.bounds.customCenter
         }
-        centerPoint = UIScreen.main.bounds.center
+        centerPoint = UIScreen.main.bounds.customCenter
     }
     
     func addRecognizer(_ recognizer: UIPanGestureRecognizer, label: UILabel){
@@ -84,15 +84,15 @@ class KeepyUpCounterView: UIView {
         })
         backgroundCircle.center = outerCircle.center
     }
-    func paintBalls(color: UIColor){
-        for circle in visibleCircles {
-            circle.backgroundColor = color
-            if circle == pointCounterView{
-                circle.backgroundColor = color
-            }
-            
-        }
-    }
+//    func paintBalls(color: UIColor){
+//        for circle in visibleCircles {
+//            circle.backgroundColor = color
+//            if circle == pointCounterView{
+//                circle.backgroundColor = color
+//            }
+//            
+//        }
+//    }
     
     func animateBall(ball: UIView){
         let originalSize =  ball.frame.size

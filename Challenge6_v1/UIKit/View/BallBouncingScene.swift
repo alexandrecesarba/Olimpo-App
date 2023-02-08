@@ -19,7 +19,7 @@ class BallBouncingScene: SKScene {
     
     
     lazy var ballLabel: SKSpriteNode = {
-        var ball = SKSpriteNode(imageNamed: "soccerball")
+        var ball = SKSpriteNode(imageNamed: "strokeballnofill")
         ball.size = CGSize(width: 100, height: 100)
         return ball
     }()
