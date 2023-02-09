@@ -136,7 +136,7 @@ class KeepyUpCounterView: UIView {
             circle.isUserInteractionEnabled = true
         }
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .red
+//        self.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
