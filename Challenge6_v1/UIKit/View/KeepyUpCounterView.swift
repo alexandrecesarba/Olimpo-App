@@ -39,7 +39,7 @@ class KeepyUpCounterView: UIView {
     
     var innerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: innerRadius)
     var outerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: outerRadius)
-    var backgroundCircle: UIView = createColoredCircle(color: .greenCircle, radius: 0, borderWidth: 0, isTransparent: true)
+    var backgroundCircle: UIView = createColoredCircle(color: .greenCircle, radius: outerRadius, borderWidth: 0, isTransparent: true)
     var rightAnswerCircle: UIView = createColoredCircle(color: .whiteCircle, radius: outerRadius)
     var hitbox: UIView = createColoredCircle(color: UIColor.clear, radius: circleRadius + 40, borderWidth: 0, isTransparent: true)
     
@@ -67,18 +67,14 @@ class KeepyUpCounterView: UIView {
     
     func hideBackgroundCircle(){
         backgroundCircle.alpha = 0
-        backgroundCircle.frame.size.width = 0
-        backgroundCircle.frame.size.height = 0
+//        backgroundCircle.frame.size.width = 0
+//        backgroundCircle.frame.size.height = 0
     }
     
     func showBackgroundCircle(color: UIColor){
-        
-        UIView.animate(withDuration: 0.45, delay: .zero, animations: { [self] in
-            backgroundCircle.backgroundColor = .greenCircle.withAlphaComponent(0.7)
-            backgroundCircle.frame.size.width = outerRadius
-            backgroundCircle.frame.size.height = outerRadius
-//            backgroundCircle.center = outerCircle.center + CGPoint(x: outerCircle.center.x/2, y: outerCircle.center.y/2)
-            backgroundCircle.layer.cornerRadius = backgroundCircle.frame.width/2
+        self.backgroundCircle.transform = CGAffineTransform(scaleX: 0, y: 0)
+        UIView.animate(withDuration: 0.2, delay: .zero, animations: { [self] in
+            self.backgroundCircle.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             backgroundCircle.alpha = 1
         })
         backgroundCircle.center = outerCircle.center
@@ -137,6 +133,7 @@ class KeepyUpCounterView: UIView {
         }
         self.translatesAutoresizingMaskIntoConstraints = false
 //        self.backgroundColor = .red
+//        self.backgroundCircle.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
@@ -155,7 +152,8 @@ func createColoredCircle(color: UIColor, radius: CGFloat = circleRadius, borderW
     circle.layer.borderColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1.0)
         print(color)
         if (isTransparent) {
-            circle.backgroundColor = color.withAlphaComponent(0)
+            circle.backgroundColor = color.withAlphaComponent(0.7)
+            circle.alpha = 0
         }
         else {
             circle.backgroundColor = color.withAlphaComponent(0.2)
