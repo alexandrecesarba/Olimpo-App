@@ -29,7 +29,7 @@ struct CurrentExerciseView: View {
 
     private func startLoading() {
         isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             isLoading = false
         }
     }

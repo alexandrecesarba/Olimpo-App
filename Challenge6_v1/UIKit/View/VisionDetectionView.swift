@@ -56,6 +56,59 @@ class VisionDetectionView: CameraFeedView {
         return error
     }
     
+    func switchCameraTapped() {
+        //Change camera source
+        //Indicate that some changes will be made to the session
+        session.beginConfiguration()
+
+        //Remove existing input
+        guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
+            return
+        }
+
+
+        //Get new input
+        var newCamera: AVCaptureDevice! = nil
+        if let input = currentCameraInput as? AVCaptureDeviceInput {
+            if (input.device.position == .back) {
+                newCamera = cameraWithPosition(position: .front)
+                self.previewLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
+
+                
+                
+            } else {
+                newCamera = cameraWithPosition(position: .back)
+                self.previewLayer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
+            }
+        }
+
+        //Add input to session
+        var err: NSError?
+        var newVideoInput: AVCaptureDeviceInput!
+        do {
+            newVideoInput = try AVCaptureDeviceInput(device: newCamera)
+        } catch let err1 as NSError {
+            err = err1
+            newVideoInput = nil
+        }
+
+        if let inputs = session.inputs as? [AVCaptureDeviceInput] {
+            for input in inputs {
+                session.removeInput(input)
+            }
+        }
+
+
+        if newVideoInput == nil || err != nil {
+            print("Error creating capture device input: \(err?.localizedDescription)")
+        } else {
+            session.addInput(newVideoInput)
+        }
+
+        //Commit all the configuration changes at once
+        session.commitConfiguration()
+    }
+
     
     
     func drawVisionRequestResults(_ results: [Any]) {

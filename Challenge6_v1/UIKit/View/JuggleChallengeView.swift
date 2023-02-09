@@ -12,6 +12,7 @@ class JuggleChallengeView: UIView {
     
     let targetView = RoundedLabelView.create(name: "")
     let directionView = RoundedLabelView.create(name: "")
+    let cameraSwitch = CameraSwitchView()
     let ballStatusView = BallStatusView()
     let resetButtonView = ResetButtonView()
     let keepyUpCounterView = KeepyUpCounterView()
@@ -44,29 +45,32 @@ class JuggleChallengeView: UIView {
         super.init(frame: frame)
         setupEverything()
 //        addSubview(cameraFeedView)
+        
         addSubview(visionDetectionView)
         addSubview(targetView)
         addSubview(directionView)
         addSubview(ballStatusView)
         addSubview(resetButtonView)
         addSubview(keepyUpCounterView)
-//        for circle in keepyUpCounterView.circles{
-//            addSubview(circle)
-//        }
-//        addSubview(ballNotFoundView)
         addSubview(ballBouncingView)
-        
+        addSubview(cameraSwitch)
+       
         keepyUpCounterView.translatesAutoresizingMaskIntoConstraints = true
 
+        
+        cameraSwitch.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        cameraSwitch.heightAnchor.constraint(equalToConstant: 60).isActive = true
         targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         directionView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         directionView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         resetButtonView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        resetButtonView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX - 30).isActive = true
+        resetButtonView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
         ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
 
+        cameraSwitch.layer.cornerRadius = cameraSwitch.frame.height/2
+        
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.targetView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),
             NSLayoutConstraint(item: self.targetView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
@@ -75,7 +79,9 @@ class JuggleChallengeView: UIView {
             NSLayoutConstraint(item: self.resetButtonView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: self.resetButtonView, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -10),
             NSLayoutConstraint(item: self.ballStatusView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.5, constant: 0),
-            NSLayoutConstraint(item: self.ballStatusView, attribute: .top, relatedBy: .equal, toItem: self.targetView, attribute: .bottom, multiplier: 1, constant: 20)
+            NSLayoutConstraint(item: self.ballStatusView, attribute: .top, relatedBy: .equal, toItem: self.targetView, attribute: .bottom, multiplier: 1, constant: 20),
+            NSLayoutConstraint(item: self.cameraSwitch, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -15),
+            NSLayoutConstraint(item: self.cameraSwitch, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.95, constant: 0)
         ])
     }
     

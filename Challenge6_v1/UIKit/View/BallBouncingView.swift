@@ -86,7 +86,7 @@ class BallBouncingView: SKView {
         self.allowsTransparency = true
         self.presentScene(ballBouncingScene)
         ballBouncingScene.view!.allowsTransparency = true
-        ballBouncingScene.backgroundColor = .black.withAlphaComponent(0.7)
+        ballBouncingScene.backgroundColor = .black.withAlphaComponent(0.9)
         self.ignoresSiblingOrder = true
 //        viewConverted.showsFPS = true
 //        viewConverted.showsNodeCount = true

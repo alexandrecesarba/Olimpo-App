@@ -23,6 +23,7 @@
 		069151E2299330CD0088F135 /* BallBouncingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E0299330CC0088F135 /* BallBouncingScene.swift */; };
 		069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 069151E32993348E0088F135 /* BallBouncingScene.sks */; };
 		069151E629934CE20088F135 /* BallBouncingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E529934CE20088F135 /* BallBouncingView.swift */; };
+		069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151F329956DC40088F135 /* CameraSwitchView.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		069151E0299330CC0088F135 /* BallBouncingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallBouncingScene.swift; sourceTree = "<group>"; };
 		069151E32993348E0088F135 /* BallBouncingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallBouncingScene.sks; sourceTree = "<group>"; };
 		069151E529934CE20088F135 /* BallBouncingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallBouncingView.swift; sourceTree = "<group>"; };
+		069151F329956DC40088F135 /* CameraSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSwitchView.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				064E7B5C298DF989007BA722 /* BallStatusView.swift */,
 				064E7B60298E008B007BA722 /* CameraFeedView.swift */,
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
+				069151F329956DC40088F135 /* CameraSwitchView.swift */,
 				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
 				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
 			);
@@ -353,6 +356,7 @@
 				069151E629934CE20088F135 /* BallBouncingView.swift in Sources */,
 				064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */,
 				97A7A81F298ADC6900BA92A2 /* Model.mlmodel in Sources */,
+				069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */,
 				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
 				066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */,
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,

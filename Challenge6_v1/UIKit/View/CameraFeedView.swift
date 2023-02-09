@@ -12,10 +12,10 @@ import Vision
 
 class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    private let session = AVCaptureSession()
+    let session = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer! = nil
     var bufferSize: CGSize = .zero
-    private let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
+    let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
     let videoDataOutput = AVCaptureVideoDataOutput()
     var videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
     var rootLayer: CALayer! = nil
@@ -83,6 +83,19 @@ class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         // to be implemented in the subclass
+    }
+    
+
+    // Find a camera with the specified AVCaptureDevicePosition, returning nil if one is not found
+    func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
+        for device in discoverySession.devices {
+            if device.position == position {
+                return device
+            }
+        }
+
+        return nil
     }
     
     public func exifOrientationFromDeviceOrientation() -> CGImagePropertyOrientation {

@@ -23,6 +23,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
+        self.juggleChallengeView.cameraSwitch.button.addTarget(self, action: #selector(cameraSwitchPressed), for: .touchUpInside)
         var panGesture = UIPanGestureRecognizer()
         juggleChallengeView.keepyUpCounterView.isUserInteractionEnabled = true
 //        juggleChallengeView.isUserInteractionEnabled = true
@@ -68,6 +69,11 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    @objc func cameraSwitchPressed() {
+        self.juggleChallengeView.visionDetectionView.switchCameraTapped()
+        print("tapped")
+    }
+    
     @objc func resetButtonPressed() {
         self.model.pointCounter = 0
         self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
@@ -77,7 +83,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func scalePiece(_ gestureRecognizer : UIPinchGestureRecognizer) {   guard gestureRecognizer.view != nil else { return }
         
-        var keepyUpView: UIView = gestureRecognizer.view!
+        let keepyUpView: UIView = gestureRecognizer.view!
         var centerPoint: CGPoint
       
         centerPoint = keepyUpView.center
