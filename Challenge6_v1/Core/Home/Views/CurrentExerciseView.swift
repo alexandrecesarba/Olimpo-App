@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct CurrentExerciseView: View {
+    
     @State private var isLoading:Bool = true
+    // Solution: Observable Object sent to UIKit
+    // With that, we can use the same value in both frameworks (UIKit and SwiftUI)
     var body: some View {
         ZStack{
 

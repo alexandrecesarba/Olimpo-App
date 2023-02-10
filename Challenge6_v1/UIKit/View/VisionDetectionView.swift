@@ -15,6 +15,7 @@ class VisionDetectionView: CameraFeedView {
     
     
     weak var delegate: VisionResultsDelegate?
+    var cameraPosition: AVCaptureDevice.Position = .back
     var detectionOverlay: CALayer! = nil
 //    var bufferSize: CGSize = .zero
     var requests = [VNRequest]()
@@ -56,6 +57,33 @@ class VisionDetectionView: CameraFeedView {
         return error
     }
     
+    
+
+    
+    
+    func drawVisionRequestResults(_ results: [Any]) {
+        CATransaction.begin()
+        //MARK: resetting all objects
+        detectionOverlay.sublayers = nil
+        //        filterResults(results: results)
+        let biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
+        //        if biggestObject.confidence > 0.96 {
+        //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)}
+        
+        let normalizedBoundingBox = biggestObject.boundingBox
+        let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
+        self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, confidence: CGFloat(biggestObject.confidence))
+        
+        let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
+//        if cameraPosition == .front {
+//            shapeLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
+//        }
+        
+        detectionOverlay.addSublayer(shapeLayer)
+        self.updateLayerGeometry()
+        CATransaction.commit()
+    }
+    
     func switchCameraTapped() {
         //Change camera source
         //Indicate that some changes will be made to the session
@@ -72,13 +100,16 @@ class VisionDetectionView: CameraFeedView {
         if let input = currentCameraInput as? AVCaptureDeviceInput {
             if (input.device.position == .back) {
                 newCamera = cameraWithPosition(position: .front)
-                self.previewLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
+                cameraPosition = .front
+//                self.previewLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
+                
 
                 
                 
             } else {
                 newCamera = cameraWithPosition(position: .back)
-                self.previewLayer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
+                cameraPosition = .back
+//                self.previewLayer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
             }
         }
 
@@ -94,40 +125,22 @@ class VisionDetectionView: CameraFeedView {
 
         if let inputs = session.inputs as? [AVCaptureDeviceInput] {
             for input in inputs {
-                session.removeInput(input)
+                UIView.animate(withDuration: 2.0, animations: { [self] in
+                    session.removeInput(input)
+                })
+               
             }
         }
 
 
         if newVideoInput == nil || err != nil {
-            print("Error creating capture device input: \(err?.localizedDescription)")
+            print("Error creating capture device input.")
         } else {
             session.addInput(newVideoInput)
         }
 
         //Commit all the configuration changes at once
         session.commitConfiguration()
-    }
-
-    
-    
-    func drawVisionRequestResults(_ results: [Any]) {
-        CATransaction.begin()
-        //MARK: resetting all objects
-        detectionOverlay.sublayers = nil
-//        filterResults(results: results)
-        let biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
-        //        if biggestObject.confidence > 0.96 {
-        //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)}
-        
-        let normalizedBoundingBox = biggestObject.boundingBox
-        let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
-        self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, confidence: CGFloat(biggestObject.confidence))
-        
-        let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
-        detectionOverlay.addSublayer(shapeLayer)
-        self.updateLayerGeometry()
-        CATransaction.commit()
     }
     
     func filterResults(results: [Any]){
@@ -190,7 +203,13 @@ class VisionDetectionView: CameraFeedView {
 //        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         
         // rotate the layer into screen orientation and scale and mirror
-        detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
+        if cameraPosition == .front {
+            detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: scale))
+        }
+        
+        else {
+            detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
+        }
         // center the layer
         detectionOverlay.position = CGPoint (x: bounds.midX, y: bounds.midY)
         
@@ -210,6 +229,12 @@ class VisionDetectionView: CameraFeedView {
 //            print("originDele = \(circlePath.bounds.center)")
             path.append(circlePath)
             path.usesEvenOddFillRule = true
+            
+            if cameraPosition == .front {
+//                let transform = CGAffineTransform(translationX: 1.0, y: -1.0)
+                path.apply(transform)
+                circlePath.apply(transform)
+            }
 
             let fillLayer = CAShapeLayer()
             fillLayer.path = path.cgPath
