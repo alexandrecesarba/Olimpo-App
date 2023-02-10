@@ -43,7 +43,7 @@ class JuggleChallengeController: UIViewController {
     }
     
     @objc func resetButtonPressed() {
-        self.model.pointCounter = 0
+        self.model.pointCounter = 0  // contador aqui 
         self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
         self.juggleChallengeView.keepyUpCounterView.paintBalls(color: .whiteCircle)
