@@ -10,14 +10,12 @@ import Vision
 import UIKit
 import AVFoundation
 
-protocol VisionResultsDelegate: AnyObject {
-    func updateStatusView (_ amountOfResults: Int)
-    func updateDirectionStatus (objectVerticalSize: CGFloat, currentHeight: CGFloat)
-}
 
 class VisionDetectionView: CameraFeedView {
     
+    
     weak var delegate: VisionResultsDelegate?
+    var cameraPosition: AVCaptureDevice.Position = .back
     var detectionOverlay: CALayer! = nil
 //    var bufferSize: CGSize = .zero
     var requests = [VNRequest]()
@@ -35,7 +33,6 @@ class VisionDetectionView: CameraFeedView {
     func setupVision() -> NSError? {
         // Setup Vision parts
         let error: NSError! = nil
-        
         guard let modelURL = Bundle.main.url(forResource: "Model", withExtension: "mlmodelc") else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
@@ -61,79 +58,100 @@ class VisionDetectionView: CameraFeedView {
     }
     
     
+
+    
     
     func drawVisionRequestResults(_ results: [Any]) {
         CATransaction.begin()
         //MARK: resetting all objects
         detectionOverlay.sublayers = nil
+        //        filterResults(results: results)
+        let biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
+        //        if biggestObject.confidence > 0.96 {
+        //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)}
         
-      
-        var biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
-//
-//        for label in biggestObject.labels{
-//            print(label.identifier)
+        let normalizedBoundingBox = biggestObject.boundingBox
+        let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
+        self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, confidence: CGFloat(biggestObject.confidence))
+        
+        let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
+//        if cameraPosition == .front {
+//            shapeLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
 //        }
         
-            /// Pega a boundingbox do objectObservation e cria uma let
-            let normalizedBoundingBox = biggestObject.boundingBox
-            /// Retângulo normalizado a partir da boundingBox e do tamanho da tela
-            let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
-        
-            self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX)
-//            if biggestObject.confidence > 0.96 {
-//                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)
-//
-//
-//
-//                switch direction {
-//                    case .upwards:
-//                        if objectBounds.midX > lastHeight + objectBounds.height/5 {
-//                            direction = .downwards
-//                        }
-//                    case .downwards:
-//                        if objectBounds.midX < lastHeight - objectBounds.height/5 {
-//                            direction = .upwards
-//                            numberOfKeepyUps += 1
-//                            pointCounter.bounceAnimation()
-//                            if numberOfKeepyUps == targetScore {
-//                                pointCounter.paintBalls(color: .greenCircle)
-//                            }
-//                        }
-//                    case .stopped:
-//                        objectBounds.midX > lastHeight + objectBounds.height/7 ? (direction = .downwards) : (direction = .upwards)
-//                }
-//
-//
-////                print("midX: \(objectBounds.midX), LH: \(lastHeight + objectBounds.height/5)")
-//
-//                lastHeight = objectBounds.midX
-//
-//                directionLabel.text = direction.rawValue.capitalized
-//
-//                ballXCenterHistory.append(objectBounds.midX)
-//                normalizedBoundingBox.origin.y = averageFromArray
-//                if ballXCenterHistory.count == 5 {
-//                    ballXCenterHistory = [averageFromArray]
-//                }
-                let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
-//
-////                let basicAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
-                detectionOverlay.addSublayer(shapeLayer)
-////                print(ballXCenterHistory)
-//
-//            }
-            // adiciona o ponto médio Y (eixo X real) do objectBounds, que é o retangulo normalizado da bola
-            //contabiliza qualquer coisa, independente do nivel de confiança
-//        print(objectBounds.height/2)
-            
-        
-//
-//        animateTarget(target: ballLabel, position: objectBounds, box: biggestObject.boundingBox)
-//
-//        pointCounter.pointCounterView.text = "\(numberOfKeepyUps)"
+        detectionOverlay.addSublayer(shapeLayer)
         self.updateLayerGeometry()
         CATransaction.commit()
     }
+    
+    func switchCameraTapped() {
+        //Change camera source
+        //Indicate that some changes will be made to the session
+        session.beginConfiguration()
+
+        //Remove existing input
+        guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
+            return
+        }
+
+
+        //Get new input
+        var newCamera: AVCaptureDevice! = nil
+        if let input = currentCameraInput as? AVCaptureDeviceInput {
+            if (input.device.position == .back) {
+                newCamera = cameraWithPosition(position: .front)
+                cameraPosition = .front
+//                self.previewLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
+                
+
+                
+                
+            } else {
+                newCamera = cameraWithPosition(position: .back)
+                cameraPosition = .back
+//                self.previewLayer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
+            }
+        }
+
+        //Add input to session
+        var err: NSError?
+        var newVideoInput: AVCaptureDeviceInput!
+        do {
+            newVideoInput = try AVCaptureDeviceInput(device: newCamera)
+        } catch let err1 as NSError {
+            err = err1
+            newVideoInput = nil
+        }
+
+        if let inputs = session.inputs as? [AVCaptureDeviceInput] {
+            for input in inputs {
+                UIView.animate(withDuration: 2.0, animations: { [self] in
+                    session.removeInput(input)
+                })
+               
+            }
+        }
+
+
+        if newVideoInput == nil || err != nil {
+            print("Error creating capture device input.")
+        } else {
+            session.addInput(newVideoInput)
+        }
+
+        //Commit all the configuration changes at once
+        session.commitConfiguration()
+    }
+    
+    func filterResults(results: [Any]){
+        
+        for observation in results where observation is VNRecognizedObjectObservation{
+            let object = observation as! VNRecognizedObjectObservation
+            print(object.labels)
+        }
+        
+    }
+    
     
     func getBiggestObject(_ results: [Any]) -> VNRecognizedObjectObservation {
         
@@ -185,7 +203,13 @@ class VisionDetectionView: CameraFeedView {
 //        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         
         // rotate the layer into screen orientation and scale and mirror
-        detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
+        if cameraPosition == .front {
+            detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: scale))
+        }
+        
+        else {
+            detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
+        }
         // center the layer
         detectionOverlay.position = CGPoint (x: bounds.midX, y: bounds.midY)
         
@@ -205,6 +229,12 @@ class VisionDetectionView: CameraFeedView {
 //            print("originDele = \(circlePath.bounds.center)")
             path.append(circlePath)
             path.usesEvenOddFillRule = true
+            
+            if cameraPosition == .front {
+//                let transform = CGAffineTransform(translationX: 1.0, y: -1.0)
+                path.apply(transform)
+                circlePath.apply(transform)
+            }
 
             let fillLayer = CAShapeLayer()
             fillLayer.path = path.cgPath

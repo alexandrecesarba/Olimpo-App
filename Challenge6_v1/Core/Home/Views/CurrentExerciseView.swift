@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct CurrentExerciseView: View {
+    
     @State private var isLoading:Bool = true
+    // Solution: Observable Object sent to UIKit
+    // With that, we can use the same value in both frameworks (UIKit and SwiftUI)
     var body: some View {
         ZStack{
 
@@ -29,7 +32,7 @@ struct CurrentExerciseView: View {
 
     private func startLoading() {
         isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             isLoading = false
         }
     }
