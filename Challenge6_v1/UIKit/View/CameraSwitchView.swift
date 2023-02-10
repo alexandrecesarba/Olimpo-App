@@ -14,11 +14,14 @@ class CameraSwitchView: UIView {
     
     override func layoutSubviews() {
         self.layer.cornerRadius = self.frame.height/2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.cgColor
+
     }
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         self.translatesAutoresizingMaskIntoConstraints = false
         addSubview(getCameraSwitchButton())
         self.button.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -34,7 +37,7 @@ class CameraSwitchView: UIView {
     func getCameraSwitchButton () -> UIButton {
         button.layer.masksToBounds = true
         button.imageView?.layer.masksToBounds = true
-        button.tintColor = .black
+        button.tintColor = .white
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         button.contentMode = .scaleAspectFill
