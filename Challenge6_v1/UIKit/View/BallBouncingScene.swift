@@ -20,7 +20,7 @@ class BallBouncingScene: SKScene {
     
     lazy var ballLabel: SKSpriteNode = {
         var ball = SKSpriteNode(imageNamed: "ball_inverted")
-        ball.size = CGSize(width: 100, height: 100)
+        ball.size = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
         return ball
     }()
     
