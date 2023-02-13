@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0606D59C299AB1B8009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59B299AB1B8009F126E /* .gitignore */; };
+		0606D5A0299AB935009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59F299AB935009F126E /* .gitignore */; };
 		064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */; };
 		064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B56298DEE70007BA722 /* RoundedLabelView.swift */; };
 		064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B58298DF0A5007BA722 /* ResetButtonView.swift */; };
@@ -45,17 +46,21 @@
 		97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */; };
 		97A7A819298ADAE000BA92A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */; };
 		97A7A81D298ADBF900BA92A2 /* Model2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */; };
-		97A7A81F298ADC6900BA92A2 /* Model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A81E298ADC6800BA92A2 /* Model.mlmodel */; };
+		97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */; };
 		97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */; };
 		97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */; };
 		97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A824298AF25500BA92A2 /* CurrentExerciseView.swift */; };
 		97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */; };
 		97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A829298B0C9E00BA92A2 /* ViewController.swift */; };
 		97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A82B298BDE0000BA92A2 /* LoadingView.swift */; };
+		97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A6F2991999C0097A723 /* Model4.mlmodel */; };
+		97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */; };
+		97EE2A832996DB950097A723 /* Model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A822996DB950097A723 /* Model.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0606D59B299AB1B8009F126E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0606D59F299AB935009F126E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeView.swift; sourceTree = "<group>"; };
 		064E7B56298DEE70007BA722 /* RoundedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabelView.swift; sourceTree = "<group>"; };
 		064E7B58298DF0A5007BA722 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
@@ -94,7 +99,7 @@
 		97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterView.swift; sourceTree = "<group>"; };
 		97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model2.mlmodel; sourceTree = "<group>"; };
-		97A7A81E298ADC6800BA92A2 /* Model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model.mlmodel; sourceTree = "<group>"; };
+		97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model_Original.mlmodel; sourceTree = "<group>"; };
 		97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YoloConvertedNoCricketReal.mlmodel; sourceTree = "<group>"; };
 		97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BallGams.mlmodel; sourceTree = "<group>"; };
 		97A7A824298AF25500BA92A2 /* CurrentExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentExerciseView.swift; sourceTree = "<group>"; };
@@ -102,6 +107,9 @@
 		97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		97A7A829298B0C9E00BA92A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		97A7A82B298BDE0000BA92A2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		97EE2A6F2991999C0097A723 /* Model4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model4.mlmodel; sourceTree = "<group>"; };
+		97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMessenger.swift; sourceTree = "<group>"; };
+		97EE2A822996DB950097A723 /* Model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Model.mlmodel; path = ../../../../../../../Downloads/Model.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +126,7 @@
 		064E7B51298DD26E007BA722 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */,
 				97A7A806298ADADF00BA92A2 /* Extensions.swift */,
 				064E7B62298E0329007BA722 /* JuggleChallengeModel.swift */,
 				97A7A801298ADADF00BA92A2 /* Direction.swift */,
@@ -140,7 +149,8 @@
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
 				069151F329956DC40088F135 /* CameraSwitchView.swift */,
 				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
-				97A7A81E298ADC6800BA92A2 /* Model.mlmodel */,
+				97EE2A822996DB950097A723 /* Model.mlmodel */,
+				97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				0606D59B299AB1B8009F126E /* .gitignore */,
+				0606D59F299AB935009F126E /* .gitignore */,
 				972F14692985EADE002087AF /* Challenge6_v1 */,
 				972F14682985EADE002087AF /* Products */,
 			);
@@ -244,6 +255,7 @@
 		972F147D2985EB6B002087AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97EE2A87299952BB0097A723 /* Test */,
 				972F146C2985EADE002087AF /* ContentView.swift */,
 				972F14832985FE3B002087AF /* ChallengeView.swift */,
 				972F148929860614002087AF /* TrophyView.swift */,
@@ -265,19 +277,35 @@
 		97A7A81A298ADAEA00BA92A2 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				97EE2A862999527D0097A723 /* ML Models */,
 				064E7B53298DD28F007BA722 /* Controller */,
 				064E7B52298DD27F007BA722 /* View */,
 				064E7B51298DD26E007BA722 /* Model */,
-				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
-				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
 				97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */,
 				97A7A7FF298ADADF00BA92A2 /* Main.storyboard */,
-				97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */,
 				97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */,
 				97A7A829298B0C9E00BA92A2 /* ViewController.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		97EE2A862999527D0097A723 /* ML Models */ = {
+			isa = PBXGroup;
+			children = (
+				97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */,
+				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
+				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
+				97EE2A6F2991999C0097A723 /* Model4.mlmodel */,
+			);
+			path = "ML Models";
+			sourceTree = "<group>";
+		};
+		97EE2A87299952BB0097A723 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0606D5A0299AB935009F126E /* .gitignore in Resources */,
 				972F14722985EAE1002087AF /* Preview Assets.xcassets in Resources */,
 				0606D59C299AB1B8009F126E /* .gitignore in Resources */,
 				972F146F2985EAE1002087AF /* Assets.xcassets in Resources */,
@@ -359,7 +388,7 @@
 				972F1486298601AE002087AF /* Challenge.swift in Sources */,
 				069151E629934CE20088F135 /* BallBouncingView.swift in Sources */,
 				064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */,
-				97A7A81F298ADC6900BA92A2 /* Model.mlmodel in Sources */,
+				97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */,
 				069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */,
 				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
 				066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */,
@@ -368,10 +397,13 @@
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
+				97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */,
+				97EE2A832996DB950097A723 /* Model.mlmodel in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
 				97A7A813298ADAE000BA92A2 /* AppDelegate.swift in Sources */,
 				972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */,
+				97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */,
 				97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */,
 				972F1490298712F9002087AF /* CurrentTab.swift in Sources */,
 				97A7A81D298ADBF900BA92A2 /* Model2.mlmodel in Sources */,

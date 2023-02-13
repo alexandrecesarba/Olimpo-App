@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct Challenge6_v1App: App {
     @StateObject var selectedTab = CurrentTab()
+    @StateObject var notifier = EventMessenger()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(selectedTab)
+                .environmentObject(self.notifier)
         }
     }
 }
