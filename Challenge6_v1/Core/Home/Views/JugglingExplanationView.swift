@@ -20,7 +20,7 @@ struct JugglingExplanationView: View {
     var title:String {challenge.title}
     var subtitle:String {challenge.subTitle}
     var description:String {challenge.description}
-    var image:String {challenge.image }
+    var image:String {challenge.image}
     var color:Color {challenge.color}
     var shadowColor: Color {challenge.shadowColor}
     var opacity:Double {challenge.opacity}
@@ -31,6 +31,8 @@ struct JugglingExplanationView: View {
     @State var openCamera:Bool = false
     @State private var isLoading: Bool = true
 
+
+    @EnvironmentObject var notifier: EventMessenger
 
     var body: some View {
 
@@ -155,13 +157,39 @@ struct JugglingExplanationView: View {
                 .padding(.vertical, 20)
                 .padding(.leading, -20)
 
-            Image("Medal")
-                .resizable()
-                .scaledToFit()
-                .frame(width: screenWidth/2.25, height: screenHeight/2.25)
-                .padding(.leading, -150)
-                .padding(.vertical, -60)
+            
+
+            HStack(spacing: 20) {
+                Image("Medal")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: screenWidth/2.00, height: screenHeight/2.00)
+                    .padding(.vertical, -60)
+                    .padding(.top, 50)
+                    .overlay {
+                            Text("\(EventMessenger.shared.highScore)")
+                            .bold()
+                            .font(.title2)
+                            .foregroundColor(Color.theme.blackButton)
+                            .padding(.bottom, 10)
+                    }
+
+                VStack(spacing: 20){
+                    Text("Best Score:")
+                        .fontWeight(.regular) +
+                        Text("\(EventMessenger.shared.highScore)")
+                        .bold()
+                    Text("Last Score: ")
+
+                }
+                .font(.title3)
+                .foregroundColor(Color.theme.gray)
+
+
+            }
+            .padding(.vertical, -50)
         }
+
     }
 
 

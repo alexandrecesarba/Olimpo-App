@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -26,31 +27,33 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         self.juggleChallengeView.cameraSwitch.button.addTarget(self, action: #selector(cameraSwitchPressed), for: .touchUpInside)
         var panGesture = UIPanGestureRecognizer()
         juggleChallengeView.keepyUpCounterView.isUserInteractionEnabled = true
-//        juggleChallengeView.isUserInteractionEnabled = true
+        //        juggleChallengeView.isUserInteractionEnabled = true
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedView(_:)))
         panGesture.delegate = self
         juggleChallengeView.keepyUpCounterView.addGestureRecognizer(panGesture)
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.scalePiece(_:)))
         pinchGesture.delegate = self
         self.juggleChallengeView.keepyUpCounterView.addGestureRecognizer(pinchGesture)
-     
-        
-       
-        
     }
+
+
     
     func addScore(){
-        self.model.pointCounter += 1
+        EventMessenger.shared.pointsCounted += 1
+
+        EventMessenger.shared.addScore()
+
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
-        if self.model.pointCounter == self.model.target {
+        if EventMessenger.shared.pointsCounted == self.model.target {
             self.juggleChallengeView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
         }
-        self.juggleChallengeView.keepyUpCounterView.setScore(score: self.model.pointCounter)
+        self.juggleChallengeView.keepyUpCounterView.setScore(score: EventMessenger.shared.pointsCounted)
     }
     
     func setLastHeight(_ lastHeight: CGFloat){
         self.model.lastHeight = lastHeight
     }
+
     
     func updateNotFoundView(state: BallTrackingStatus){
         
@@ -75,7 +78,8 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func resetButtonPressed() {
-        self.model.pointCounter = 0  // contador aqui 
+        EventMessenger.shared.saveHighScore()
+        EventMessenger.shared.pointsCounted = 0
         self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
         self.juggleChallengeView.keepyUpCounterView.hideBackgroundCircle()
@@ -85,22 +89,22 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         
         let keepyUpView: UIView = gestureRecognizer.view!
         var centerPoint: CGPoint
-      
+
         centerPoint = keepyUpView.center
         
-       if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-           print(gestureRecognizer.scale)
-        
-//        keepyUpView.transform = CGAffineTransform(scaleX: gestureRecognizer.scale, y: gestureRecognizer.scale)
-           let originalSize = keepyUpView.frame
-           let newSize = originalSize.applying(keepyUpView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            print(gestureRecognizer.scale)
 
-           if newSize.width > 140 {
-               keepyUpView.transform = (keepyUpView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))
-           }
-           
-          gestureRecognizer.scale = 1.0
-       }
+            //        keepyUpView.transform = CGAffineTransform(scaleX: gestureRecognizer.scale, y: gestureRecognizer.scale)
+            let originalSize = keepyUpView.frame
+            let newSize = originalSize.applying(keepyUpView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))
+
+            if newSize.width > 140 {
+                keepyUpView.transform = (keepyUpView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))
+            }
+
+            gestureRecognizer.scale = 1.0
+        }
         
         keepyUpView.center = centerPoint
     }
@@ -113,10 +117,10 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         let translation = sender.translation(in: self.view)
         
         let distance :CGFloat = abs((center.x + translation.x) - self.model.pointCounterLastPosition.x) + abs((center.y + translation.y) - self.model.pointCounterLastPosition.y)
-        
+
         print(center)
         print(self.model.pointCounterLastPosition)
-        
+
         print(distance)
         
         if Int(distance) > 7 {
@@ -124,7 +128,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
             self.model.pointCounterLastPosition = center
         }
         pointCounter.center = pointCounter.center + translation
-//        pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
+        //        pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
@@ -138,19 +142,19 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         if confidence > minimumConfidence {
             switch self.model.direction {
-                case .upwards:
-                    if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
-                        self.model.direction = .downwards
+            case .upwards:
+                if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
+                    self.model.direction = .downwards
+                }
+            case .downwards:
+                if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
+                    self.model.direction = .upwards
+                    if (self.model.ballTrackingStatus == .found){
+                        addScore()
                     }
-                case .downwards:
-                    if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
-                        self.model.direction = .upwards
-                        if (self.model.ballTrackingStatus == .found){
-                            addScore()
-                        }
-                    }
-                case .stopped:
-                    currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+                }
+            case .stopped:
+                currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
             }
             
             self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
@@ -201,13 +205,13 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         // new loading view tests
         
-            self.updateNotFoundView(state: self.model.ballTrackingStatus)
+        self.updateNotFoundView(state: self.model.ballTrackingStatus)
         
         
         UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
-                   self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
-                   self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
-               })
+            self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
+            self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
+        })
     }
     
 }
