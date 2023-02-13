@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0606D59C299AB1B8009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59B299AB1B8009F126E /* .gitignore */; };
 		064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */; };
 		064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B56298DEE70007BA722 /* RoundedLabelView.swift */; };
 		064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B58298DF0A5007BA722 /* ResetButtonView.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0606D59B299AB1B8009F126E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeView.swift; sourceTree = "<group>"; };
 		064E7B56298DEE70007BA722 /* RoundedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabelView.swift; sourceTree = "<group>"; };
 		064E7B58298DF0A5007BA722 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		972F145E2985EADE002087AF = {
 			isa = PBXGroup;
 			children = (
+				0606D59B299AB1B8009F126E /* .gitignore */,
 				972F14692985EADE002087AF /* Challenge6_v1 */,
 				972F14682985EADE002087AF /* Products */,
 			);
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				972F14722985EAE1002087AF /* Preview Assets.xcassets in Resources */,
+				0606D59C299AB1B8009F126E /* .gitignore in Resources */,
 				972F146F2985EAE1002087AF /* Assets.xcassets in Resources */,
 				97A7A7FB2989B6B400BA92A2 /* DiogoVideo.mov in Resources */,
 				97A7A819298ADAE000BA92A2 /* LaunchScreen.storyboard in Resources */,
