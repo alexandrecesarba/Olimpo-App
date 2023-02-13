@@ -12,6 +12,8 @@ struct ChallengeView: View {
 
     @State var challenge = Challenge.challengeData
     @Binding var showContent:Bool
+    @EnvironmentObject var notifier: EventMessenger
+
 
     var body: some View {
         if !showContent {
@@ -79,6 +81,7 @@ struct ChallengeView: View {
             ForEach(challenge) { item in
                 if item.opacity == 1{
                     JugglingExplanationView(challenge: $challenge[0])
+                        .environmentObject(self.notifier)
                 }
             }
 //                .transition(.scale)
