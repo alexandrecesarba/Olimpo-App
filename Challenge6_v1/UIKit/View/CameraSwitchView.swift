@@ -21,7 +21,7 @@ class CameraSwitchView: UIView {
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        self.backgroundColor = UIColor.whiteCircle.withAlphaComponent(0.2)
         self.translatesAutoresizingMaskIntoConstraints = false
         addSubview(getCameraSwitchButton())
         self.button.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -43,7 +43,7 @@ class CameraSwitchView: UIView {
         button.contentMode = .scaleAspectFill
 //        button.backgroundColor = .red
         button.imageView?.contentMode = .scaleAspectFill
-        button.setImage(UIImage(systemName: "arrow.triangle.2.circlepath")!, for: .normal)
+        button.setImage(UIImage(systemName: "arrow.triangle.2.circlepath.camera")!, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
         

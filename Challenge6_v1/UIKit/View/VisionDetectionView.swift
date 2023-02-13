@@ -74,7 +74,7 @@ class VisionDetectionView: CameraFeedView {
         let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
         self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, confidence: CGFloat(biggestObject.confidence))
         
-        let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: UIColor.yellow)
+        let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: .greenCircle)
 //        if cameraPosition == .front {
 //            shapeLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);
 //        }
