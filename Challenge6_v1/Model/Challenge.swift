@@ -13,7 +13,7 @@ struct Challenge: Identifiable {
     static let challengeData = [
         Challenge(title: "Juggling",
                   subTitle: "Soccer / Football",
-                  description: "Test your ball skills as you use your feet to juggle the ball. Be careful to not let it touch the ground!", image: "Illustration1",
+                  description: "Test your ball skills as you use your feet to juggle the ball. Be careful to not let it touch the ground!", image: "juggling",
                   color: Color.theme.greenCard,
                   shadowColor: Color.theme.primary,
                   opacity: 1.0),

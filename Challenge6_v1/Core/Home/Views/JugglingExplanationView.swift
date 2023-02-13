@@ -168,8 +168,8 @@ struct JugglingExplanationView: View {
                     .padding(.top, 50)
                     .overlay {
                             Text("\(EventMessenger.shared.highScore)")
-                            .bold()
-                            .font(.title2)
+                            .font(.title)
+                            .fontWeight(.heavy)
                             .foregroundColor(Color.theme.blackButton)
                             .padding(.bottom, 10)
                     }
@@ -177,9 +177,12 @@ struct JugglingExplanationView: View {
                 VStack(spacing: 20){
                     Text("Best Score:")
                         .fontWeight(.regular) +
-                        Text("\(EventMessenger.shared.highScore)")
-                        .bold()
+                    Text("\(EventMessenger.shared.highScore)")
+                        .fontWeight(.heavy)
                     Text("Last Score: ")
+                        .fontWeight(.regular) +
+                    Text("\(EventMessenger.shared.lastScore)")
+                        .fontWeight(.heavy)
 
                 }
                 .font(.title3)

@@ -26,6 +26,18 @@ class EventMessenger: ObservableObject {
         }
     }
 
+
+    /// User Last Score
+    public var lastScore: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "lastScore")
+        }
+
+        set{
+            UserDefaults.standard.set(newValue, forKey: "lastScore")
+        }
+    }
+
     /// Increases the number of points
     public func addScore(){
         self.pointsCounted += 1
@@ -36,5 +48,10 @@ class EventMessenger: ObservableObject {
         if self.pointsCounted > self.highScore{
             self.highScore = self.pointsCounted
         }
+    }
+
+    /// Locally stores the last score
+    public func saveLastScore(){
+        self.lastScore = self.pointsCounted
     }
 }

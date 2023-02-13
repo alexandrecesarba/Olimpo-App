@@ -53,7 +53,7 @@
 		97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A82B298BDE0000BA92A2 /* LoadingView.swift */; };
 		97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A6F2991999C0097A723 /* Model4.mlmodel */; };
 		97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */; };
-		97EE2A832996DB950097A723 /* Model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A822996DB950097A723 /* Model.mlmodel */; };
+		97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A8A299ABC290097A723 /* Model.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,7 +105,8 @@
 		97A7A82B298BDE0000BA92A2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		97EE2A6F2991999C0097A723 /* Model4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model4.mlmodel; sourceTree = "<group>"; };
 		97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMessenger.swift; sourceTree = "<group>"; };
-		97EE2A822996DB950097A723 /* Model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Model.mlmodel; path = ../../../../../../../Downloads/Model.mlmodel; sourceTree = "<group>"; };
+		97EE2A8A299ABC290097A723 /* Model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model.mlmodel; sourceTree = "<group>"; };
+		97EE2A8C299ABC2E0097A723 /* Model_utilizado.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model_utilizado.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +146,6 @@
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
 				069151F329956DC40088F135 /* CameraSwitchView.swift */,
 				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
-				97EE2A822996DB950097A723 /* Model.mlmodel */,
-				97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +286,9 @@
 		97EE2A862999527D0097A723 /* ML Models */ = {
 			isa = PBXGroup;
 			children = (
+				97EE2A8C299ABC2E0097A723 /* Model_utilizado.mlmodel */,
+				97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */,
+				97EE2A8A299ABC290097A723 /* Model.mlmodel */,
 				97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */,
 				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
@@ -387,10 +389,10 @@
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,
 				064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */,
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
+				97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
 				97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */,
-				97EE2A832996DB950097A723 /* Model.mlmodel in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
 				97A7A813298ADAE000BA92A2 /* AppDelegate.swift in Sources */,

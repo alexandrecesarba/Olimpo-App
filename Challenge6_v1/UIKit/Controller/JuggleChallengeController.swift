@@ -76,8 +76,15 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func resetButtonPressed() {
+
+        // Save everything
         EventMessenger.shared.saveHighScore()
+        EventMessenger.shared.saveLastScore()
+
+
         EventMessenger.shared.pointsCounted = 0
+
+
         self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
         self.juggleChallengeView.keepyUpCounterView.hideBackgroundCircle()

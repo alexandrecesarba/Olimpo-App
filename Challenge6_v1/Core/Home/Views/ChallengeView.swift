@@ -13,6 +13,7 @@ struct ChallengeView: View {
     @State var challenge = Challenge.challengeData
     @Binding var showContent:Bool
     @EnvironmentObject var notifier: EventMessenger
+    @State private var showingAlert = false
 
 
     var body: some View {
@@ -48,6 +49,12 @@ struct ChallengeView: View {
                                         if item.opacity == 1{
                                             self.showContent.toggle()
                                         }
+
+                                        else{
+                                            self.showingAlert.toggle()
+                                        }
+
+
                                     }
                                 }) {
                                     GeometryReader { geometry in
@@ -73,6 +80,9 @@ struct ChallengeView: View {
                         Spacer()
                     }
                 }
+                .alert("Coming soon!", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) {}
+                }
                 .padding(.top, 30)
             }
         }
@@ -83,6 +93,8 @@ struct ChallengeView: View {
                     JugglingExplanationView(challenge: $challenge[0])
                         .environmentObject(self.notifier)
                 }
+
+
             }
 //                .transition(.scale)
         }
@@ -107,13 +119,15 @@ struct ChallengeScroll: View {
     var opacity = 0.0
 
     var body: some View {
+
+        ZStack{
         VStack(alignment: .leading) {
             Image(image)
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
+                .padding(.top, 50)
                 .frame(width: 246, height: 300)
-                .padding(.bottom, 30)
 
             Spacer()
 
@@ -136,6 +150,7 @@ struct ChallengeScroll: View {
         .shadow(color: shadowColor.opacity(0.4), radius: 15, x: 0, y: 0)
 
     }
+}
 }
 
 
