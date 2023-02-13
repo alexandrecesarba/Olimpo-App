@@ -39,8 +39,6 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
 
     
     func addScore(){
-        EventMessenger.shared.pointsCounted += 1
-
         EventMessenger.shared.addScore()
 
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
