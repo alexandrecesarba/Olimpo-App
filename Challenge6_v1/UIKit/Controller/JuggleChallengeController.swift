@@ -51,20 +51,20 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     func setLastHeight(_ lastHeight: CGFloat){
         self.model.lastHeight = lastHeight
     }
-
     
-    func updateNotFoundView(state: BallTrackingStatus){
+    
+   
+    
+    func updateStatusView(state: BallTrackingStatus){
         
-        var found = false
         
-        if state != .notFound {
-            found.toggle()
-        }
         
+      
         UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: { [self] in
-            self.juggleChallengeView.ballBouncingView.alpha = (found) ? 0.0 : 1.0
+            self.juggleChallengeView.missingBallView.alpha = (state == .notFound) ? 1.0 : 0.0
+            self.juggleChallengeView.findingBallView.alpha = (state == .finding) ? 1.0 : 0.0
             for view in self.juggleChallengeView.infoViews{
-                view.alpha = (found) ? 1.0 : 0.0
+                view.alpha = (state == .found) ? 1.0 : 0.0
             }
         })
         
@@ -210,7 +210,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         // new loading view tests
         
-        self.updateNotFoundView(state: self.model.ballTrackingStatus)
+        self.updateStatusView(state: self.model.ballTrackingStatus)
         
         
         UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {

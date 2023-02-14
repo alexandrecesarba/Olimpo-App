@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-class BallBouncingView: SKView {
+class MissingBallView: SKView {
     let ballBouncingScene = SKScene(fileNamed: "BallBouncingScene")!
     let missingBallTextView = UILabel()
     let instructionTextView = UILabel()
