@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 import SpriteKit
 
-class MissingBallView: SKView {
-    let ballBouncingScene = SKScene(fileNamed: "BallBouncingScene")!
+class MissingBallView: UIView {
+   
     let missingBallTextView = UILabel()
     let instructionTextView = UILabel()
     let alertImageView = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill")!)
@@ -21,13 +21,13 @@ class MissingBallView: SKView {
         addSubview(missingBallTextView)
         addSubview(instructionTextView)
         addSubview(alertImageView)
-        configSKSceneAndView()
         alertImageConfiguration()
         alertImageConstraints()
         ballMissingConfiguration()
         ballMissingConstraints()
         instructionTextConfiguration()
         instructionTextConstraints()
+        self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -81,14 +81,4 @@ class MissingBallView: SKView {
         missingBallTextView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1).isActive = true
     }
     
-    func configSKSceneAndView(){
-        ballBouncingScene.scaleMode = .aspectFill
-        self.allowsTransparency = true
-        self.presentScene(ballBouncingScene)
-        ballBouncingScene.view!.allowsTransparency = true
-        ballBouncingScene.backgroundColor = .black.withAlphaComponent(0.8)
-        self.ignoresSiblingOrder = true
-//        viewConverted.showsFPS = true
-//        viewConverted.showsNodeCount = true
-    }
 }

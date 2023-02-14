@@ -18,6 +18,7 @@ class JuggleChallengeView: UIView {
     let keepyUpCounterView = KeepyUpCounterView()
     let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
     let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
+    let bouncyBallView = BouncyBallView()
     let missingBallView = MissingBallView()
     let findingBallView = FindingBallView()
     
@@ -52,10 +53,10 @@ class JuggleChallengeView: UIView {
         addSubview(ballStatusView)
         addSubview(resetButtonView)
         addSubview(keepyUpCounterView)
+        addSubview(bouncyBallView)
         addSubview(missingBallView)
         addSubview(findingBallView)
         addSubview(cameraSwitch)
-       
         keepyUpCounterView.translatesAutoresizingMaskIntoConstraints = true
 
         

@@ -63,6 +63,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: { [self] in
             self.juggleChallengeView.missingBallView.alpha = (state == .notFound) ? 1.0 : 0.0
             self.juggleChallengeView.findingBallView.alpha = (state == .finding) ? 1.0 : 0.0
+            self.juggleChallengeView.bouncyBallView.alpha = (state != .found) ? 1.0 : 0.0
             for view in self.juggleChallengeView.infoViews{
                 view.alpha = (state == .found) ? 1.0 : 0.0
             }

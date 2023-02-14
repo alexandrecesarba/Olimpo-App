@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0606D59C299AB1B8009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59B299AB1B8009F126E /* .gitignore */; };
 		0606D5A0299AB935009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59F299AB935009F126E /* .gitignore */; };
+		062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC058299C14940036AEA2 /* BouncyBallView.swift */; };
+		062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */; };
 		064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */; };
 		064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B56298DEE70007BA722 /* RoundedLabelView.swift */; };
 		064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B58298DF0A5007BA722 /* ResetButtonView.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		0606D59B299AB1B8009F126E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0606D59F299AB935009F126E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		062EC058299C14940036AEA2 /* BouncyBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyBallView.swift; sourceTree = "<group>"; };
+		062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingProgressBar.swift; sourceTree = "<group>"; };
 		064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeView.swift; sourceTree = "<group>"; };
 		064E7B56298DEE70007BA722 /* RoundedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabelView.swift; sourceTree = "<group>"; };
 		064E7B58298DF0A5007BA722 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				069151E0299330CC0088F135 /* BallBouncingScene.swift */,
 				068FD27D299C0A500085C1E5 /* FindingBallView.swift */,
 				069151E529934CE20088F135 /* MissingBallView.swift */,
+				062EC058299C14940036AEA2 /* BouncyBallView.swift */,
 				064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */,
 				064E7B56298DEE70007BA722 /* RoundedLabelView.swift */,
 				064E7B58298DF0A5007BA722 /* ResetButtonView.swift */,
@@ -151,6 +156,7 @@
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
 				069151F329956DC40088F135 /* CameraSwitchView.swift */,
 				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
+				062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
+				062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */,
 				97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
@@ -407,6 +414,7 @@
 				972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */,
 				97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */,
 				97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */,
+				062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */,
 				972F1490298712F9002087AF /* CurrentTab.swift in Sources */,
 				972F14842985FE3B002087AF /* ChallengeView.swift in Sources */,
 				064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */,

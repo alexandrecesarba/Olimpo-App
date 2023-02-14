@@ -12,16 +12,19 @@ class FindingBallView: UIView {
     
     let keepSteadyTextView = UILabel()
     let instructionTextView = UILabel()
+    let progressBarView = FindingProgressBar()
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        addSubview(progressBarView)
         addSubview(keepSteadyTextView)
         addSubview(instructionTextView)
+       
         keepSteadyConfiguration()
         keepSteadyConstraints()
         instructionTextConfiguration()
         instructionTextConstraints()
-        self.backgroundColor = .black.withAlphaComponent(0.8)
+        self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
