@@ -11,7 +11,7 @@ import SwiftUI
 
 class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
-    var model = JuggleChallengeModel(target: 10)
+    var model = JuggleChallengeModel(target: 10, framesTarget: 40)
     let juggleChallengeView = JuggleChallengeView()
 
     override func loadView() {
@@ -25,6 +25,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         self.juggleChallengeView.cameraSwitch.button.addTarget(self, action: #selector(cameraSwitchPressed), for: .touchUpInside)
+        self.juggleChallengeView.findingBallView.progressBarView.setMaximumValue(self.model.framesTarget)
         var panGesture = UIPanGestureRecognizer()
         juggleChallengeView.keepyUpCounterView.isUserInteractionEnabled = true
         //        juggleChallengeView.isUserInteractionEnabled = true
@@ -171,7 +172,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
     
     func updateStatusView(_ amountOfResults: Int) {
         
-        let framesToConfirm = 50
+        let framesToConfirm = Int(self.model.framesTarget + self.model.framesTarget/3)
         
         // two behaviours, one before a ball is located, another when a ball has already been located
         
@@ -186,18 +187,22 @@ extension JuggleChallengeController: VisionResultsDelegate {
             else {
                 self.model.framesWithBall = 0
                 self.model.ballTrackingStatus = .notFound
+                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: 0)
                 self.resetButtonPressed()
             }
             
             if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm {
+                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: CGFloat(self.model.framesWithBall) - self.model.framesTarget/3)
                 self.model.ballTrackingStatus = .finding
             }
             else if self.model.framesWithBall >= framesToConfirm {
+//                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: CGFloat(framesToConfirm))
                 self.model.ballTrackingStatus = .found
             }
         }
         
         else {
+            
             if amountOfResults == 0 {
                 self.model.framesWithBall -= 2
                 if self.model.framesWithBall < 0 {self.model.framesWithBall = 0}

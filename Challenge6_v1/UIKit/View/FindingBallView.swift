@@ -12,7 +12,7 @@ class FindingBallView: UIView {
     
     let keepSteadyTextView = UILabel()
     let instructionTextView = UILabel()
-    let progressBarView = FindingProgressBar()
+    let progressBarView = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 60)
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -24,11 +24,20 @@ class FindingBallView: UIView {
         keepSteadyConstraints()
         instructionTextConfiguration()
         instructionTextConstraints()
+        progressBarConstraints()
         self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func progressBarConstraints() {
+        progressBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressBarView.size).isActive = true
+        progressBarView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.05).isActive = true
+        progressBarView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        progressBarView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        progressBarView.foregroundBar.setColor(.blue)
     }
     
     func instructionTextConfiguration() {

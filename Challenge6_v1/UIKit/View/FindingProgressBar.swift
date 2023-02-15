@@ -15,14 +15,32 @@ class FindingProgressBar: UIView {
     let foregroundBar = Bar()
     
     /// Size of the bar. Goes from 0.0 to 1.0
-    let size: CGFloat = 0.8
+    let size: CGFloat = 0.9
     
-    var maximumValue:CGFloat = 10
+    var maximumValue:CGFloat = 0
     
     var foregroundBarConstraint: NSLayoutConstraint? = nil
     
-    override init(frame: CGRect) {
+    
+    init(fromFrame frame:CGRect, usingMaximumValueAs: CGFloat, barSize: CGFloat = 0.8){
         super.init(frame: frame)
+        
+        setup(frame: frame,using: usingMaximumValueAs)
+    }
+    
+    private func setup(frame:CGRect, using:CGFloat){
+        self.setup(frame: frame)
+        //TODO: Use the maximum value
+    }
+    
+    override init(frame:CGRect){
+        super.init(frame: frame)
+        
+        setup(frame: frame)
+    }
+    
+    private func setup(frame: CGRect) {
+        //super.init(frame: frame)
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -33,11 +51,11 @@ class FindingProgressBar: UIView {
         
         backgroundBar.setColor(.gray)
         
-        let foregroundBarConstraint = foregroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: size/2)
+        let foregroundBarConstraint = foregroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0)
         self.foregroundBarConstraint = foregroundBarConstraint
         self.foregroundBarConstraint?.isActive = true
         
-        foregroundBar.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.05).isActive = true
+        foregroundBar.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         foregroundBar.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         backgroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: size).isActive = true
@@ -51,7 +69,6 @@ class FindingProgressBar: UIView {
         ])
         
         backgroundBar.leadingAnchor.constraint(equalTo: self.foregroundBar.leadingAnchor).isActive = true
-        //        animateProgress()
         
     }
     
@@ -63,27 +80,27 @@ class FindingProgressBar: UIView {
         self.maximumValue = value
     }
     
-    func getForegroundSize (currentValue: CGFloat) -> CGFloat {
+    func getForegroundSize (value: CGFloat) -> CGFloat {
         
-        return currentValue * size / maximumValue
+        return value * size / maximumValue
         
     }
     
-    func animateProgress(){
+    func animateProgress(newValue: CGFloat){
         print("entered async")
       
-        let newConstraint = foregroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: size - 0.1)
+        let newValue = getForegroundSize(value: newValue)
+        let newConstraint = foregroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: newValue)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-            UIView.animate(withDuration: 0.5, delay: 3.0, animations: { [self] in
+            UIView.animate(withDuration: 0.5, delay: 0, animations: { [self] in
                 
                 self.foregroundBarConstraint?.isActive = false
                 newConstraint.isActive = true
                  self.layoutIfNeeded()
                 })
-        })
         
         
+        self.foregroundBarConstraint = newConstraint
     }
     
 }

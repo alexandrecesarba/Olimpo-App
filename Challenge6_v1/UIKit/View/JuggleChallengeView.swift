@@ -21,7 +21,7 @@ class JuggleChallengeView: UIView {
     let bouncyBallView = BouncyBallView()
     let missingBallView = MissingBallView()
     let findingBallView = FindingBallView()
-    let progressBar = FindingProgressBar()
+//    let progressBar = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 40)
     
     
     var infoViews: [UIView] {[targetView, directionView, ballStatusView, resetButtonView, keepyUpCounterView, cameraFeedView]}
@@ -43,6 +43,7 @@ class JuggleChallengeView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         keepyUpCounterView.frame = CGRect(x: self.frame.midX - 70, y: self.frame.midY - 70, width: 140, height: 140)
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupEverything()
@@ -58,15 +59,15 @@ class JuggleChallengeView: UIView {
         addSubview(missingBallView)
         addSubview(findingBallView)
         addSubview(cameraSwitch)
-        addSubview(progressBar)
+//        addSubview(progressBar)
         
         
         keepyUpCounterView.translatesAutoresizingMaskIntoConstraints = true
 
-        progressBar.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        progressBar.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        progressBar.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        progressBar.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        progressBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressBar.size).isActive = true
+//        progressBar.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.05).isActive = true
+//        progressBar.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        progressBar.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         cameraSwitch.widthAnchor.constraint(equalToConstant: 60).isActive = true
         cameraSwitch.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -79,9 +80,6 @@ class JuggleChallengeView: UIView {
         ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
 
-        
-        
-        progressBar.animateProgress()
         
         cameraSwitch.layer.cornerRadius = cameraSwitch.frame.height/2
         
