@@ -24,6 +24,7 @@
 		066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001AF299016C700E82177 /* KeepyUpCounterController.swift */; };
 		066001B229917CB700E82177 /* VisionResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B129917CB700E82177 /* VisionResultsDelegate.swift */; };
 		066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B329917CEB00E82177 /* BallNotFoundView.swift */; };
+		066BE238299EAC7B00D9195F /* UserGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066BE237299EAC7B00D9195F /* UserGoalView.swift */; };
 		068FD27E299C0A500085C1E5 /* FindingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD27D299C0A500085C1E5 /* FindingBallView.swift */; };
 		069151E2299330CD0088F135 /* BallBouncingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E0299330CC0088F135 /* BallBouncingScene.swift */; };
 		069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 069151E32993348E0088F135 /* BallBouncingScene.sks */; };
@@ -78,6 +79,7 @@
 		066001AF299016C700E82177 /* KeepyUpCounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterController.swift; sourceTree = "<group>"; };
 		066001B129917CB700E82177 /* VisionResultsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultsDelegate.swift; sourceTree = "<group>"; };
 		066001B329917CEB00E82177 /* BallNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallNotFoundView.swift; sourceTree = "<group>"; };
+		066BE237299EAC7B00D9195F /* UserGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalView.swift; sourceTree = "<group>"; };
 		068FD27D299C0A500085C1E5 /* FindingBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingBallView.swift; sourceTree = "<group>"; };
 		069151E0299330CC0088F135 /* BallBouncingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallBouncingScene.swift; sourceTree = "<group>"; };
 		069151E32993348E0088F135 /* BallBouncingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallBouncingScene.sks; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				069151F329956DC40088F135 /* CameraSwitchView.swift */,
 				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
 				062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */,
+				066BE237299EAC7B00D9195F /* UserGoalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 				97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */,
 				068FD27E299C0A500085C1E5 /* FindingBallView.swift in Sources */,
+				066BE238299EAC7B00D9195F /* UserGoalView.swift in Sources */,
 				97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */,
 				064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */,
 				064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */,

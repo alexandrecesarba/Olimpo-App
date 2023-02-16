@@ -21,10 +21,11 @@ class JuggleChallengeView: UIView {
     let bouncyBallView = BouncyBallView()
     let missingBallView = MissingBallView()
     let findingBallView = FindingBallView()
+    let userGoalView = UserGoalView(frame: .zero, goalValue: 40)
 //    let progressBar = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 40)
     
     
-    var infoViews: [UIView] {[targetView, directionView, ballStatusView, resetButtonView, keepyUpCounterView, cameraFeedView]}
+    var infoViews: [UIView] {[targetView, directionView, ballStatusView, resetButtonView, keepyUpCounterView, cameraFeedView, userGoalView]}
     
     
     func setupEverything() {
@@ -59,6 +60,7 @@ class JuggleChallengeView: UIView {
         addSubview(missingBallView)
         addSubview(findingBallView)
         addSubview(cameraSwitch)
+        addSubview(userGoalView)
 //        addSubview(progressBar)
         
         
@@ -79,7 +81,11 @@ class JuggleChallengeView: UIView {
         resetButtonView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
         ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-
+        
+        userGoalView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
+        userGoalView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
+        userGoalView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        
         
         cameraSwitch.layer.cornerRadius = cameraSwitch.frame.height/2
         
@@ -92,10 +98,11 @@ class JuggleChallengeView: UIView {
             NSLayoutConstraint(item: self.directionView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
             NSLayoutConstraint(item: self.resetButtonView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: self.resetButtonView, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -10),
-            NSLayoutConstraint(item: self.ballStatusView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.5, constant: 0),
+            NSLayoutConstraint(item: self.ballStatusView, attribute: .leading, relatedBy: .equal, toItem: self.targetView, attribute: .leading, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: self.ballStatusView, attribute: .top, relatedBy: .equal, toItem: self.targetView, attribute: .bottom, multiplier: 1, constant: 20),
             NSLayoutConstraint(item: self.cameraSwitch, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -15),
-            NSLayoutConstraint(item: self.cameraSwitch, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.95, constant: 0)
+            NSLayoutConstraint(item: self.cameraSwitch, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.95, constant: 0),
+            NSLayoutConstraint(item: self.userGoalView, attribute: .trailing, relatedBy: .equal, toItem: self.layoutMarginsGuide, attribute: .trailing, multiplier: 0.95, constant: 0)
         ])
     }
     

@@ -20,6 +20,8 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         juggleChallengeView.directionView.text = model.direction.rawValue.capitalized
         juggleChallengeView.targetView.text = "Target: \(model.target)"
         juggleChallengeView.visionDetectionView.delegate = self
+        self.model.ballTrackingStatus = .notFound
+        hideOtherViews()
     }
     
     override func viewDidLoad() {
@@ -35,6 +37,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.scalePiece(_:)))
         pinchGesture.delegate = self
         self.juggleChallengeView.keepyUpCounterView.addGestureRecognizer(pinchGesture)
+        self.juggleChallengeView.userGoalView.setGoalValue(EventMessenger.shared.highScore)
     }
 
 
@@ -53,14 +56,17 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         self.model.lastHeight = lastHeight
     }
     
-    
+    /// Hides the finding ball and found ball views. Run by the controller in the start of the app.
+    func hideOtherViews(){
+        for view in juggleChallengeView.infoViews {
+            view.alpha = 0
+        }
+        self.juggleChallengeView.findingBallView.alpha = 0
+    }
    
     
     func updateStatusView(state: BallTrackingStatus){
         
-        
-        
-      
         UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: { [self] in
             self.juggleChallengeView.missingBallView.alpha = (state == .notFound) ? 1.0 : 0.0
             self.juggleChallengeView.findingBallView.alpha = (state == .finding) ? 1.0 : 0.0

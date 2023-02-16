@@ -69,11 +69,11 @@ class FindingProgressBar: UIView {
         
         NSLayoutConstraint.activate([
             
-            NSLayoutConstraint(item: foregroundBar, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0 - size, constant: 0)
+            NSLayoutConstraint(item: backgroundBar, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0 - size, constant: 0)
             
         ])
         
-        backgroundBar.leadingAnchor.constraint(equalTo: self.foregroundBar.leadingAnchor).isActive = true
+        foregroundBar.leadingAnchor.constraint(equalTo: self.backgroundBar.leadingAnchor, constant: 1.03).isActive = true
         
     }
     
@@ -87,7 +87,7 @@ class FindingProgressBar: UIView {
     
     func getForegroundSize (value: CGFloat) -> CGFloat {
         
-        return value * size / maximumValue
+        return value * (size - 0.01) / maximumValue
         
     }
     
