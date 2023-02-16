@@ -12,7 +12,7 @@ class FindingBallView: UIView {
     
     let keepSteadyTextView = UILabel()
     let instructionTextView = UILabel()
-    let progressBarView = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 60)
+    let progressBarView = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 60, color: .greenCircle)
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -20,11 +20,11 @@ class FindingBallView: UIView {
         addSubview(keepSteadyTextView)
         addSubview(instructionTextView)
        
+        progressBarConstraints()
         keepSteadyConfiguration()
         keepSteadyConstraints()
         instructionTextConfiguration()
         instructionTextConstraints()
-        progressBarConstraints()
         self.backgroundColor = .clear
     }
     
@@ -36,8 +36,8 @@ class FindingBallView: UIView {
         progressBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressBarView.size).isActive = true
         progressBarView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.05).isActive = true
         progressBarView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        progressBarView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        progressBarView.foregroundBar.setColor(.blue)
+//        progressBarView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        progressBarView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
     }
     
     func instructionTextConfiguration() {
@@ -68,7 +68,7 @@ class FindingBallView: UIView {
     func keepSteadyConstraints(){
         keepSteadyTextView.translatesAutoresizingMaskIntoConstraints = false
         keepSteadyTextView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
-        keepSteadyTextView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+        keepSteadyTextView.topAnchor.constraint(equalTo: self.progressBarView.bottomAnchor).isActive = true
         keepSteadyTextView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
         keepSteadyTextView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1).isActive = true
     }

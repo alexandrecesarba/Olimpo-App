@@ -144,8 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				069151E0299330CC0088F135 /* BallBouncingScene.swift */,
-				068FD27D299C0A500085C1E5 /* FindingBallView.swift */,
 				069151E529934CE20088F135 /* MissingBallView.swift */,
+				068FD27D299C0A500085C1E5 /* FindingBallView.swift */,
 				062EC058299C14940036AEA2 /* BouncyBallView.swift */,
 				064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */,
 				064E7B56298DEE70007BA722 /* RoundedLabelView.swift */,
