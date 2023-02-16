@@ -60,7 +60,7 @@ class MissingBallView: UIView {
         instructionTextView.translatesAutoresizingMaskIntoConstraints = false
         instructionTextView.topAnchor.constraint(equalTo: missingBallTextView.bottomAnchor, constant: 0).isActive = true
         instructionTextView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
-        instructionTextView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        instructionTextView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 //        instructionTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
 
     }

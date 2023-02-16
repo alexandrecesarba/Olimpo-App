@@ -11,8 +11,8 @@ import CoreFoundation
 
 class FindingProgressBar: UIView {
     
-    let backgroundBar = Bar()
-    let foregroundBar = Bar()
+    private let backgroundBar = Bar()
+    private let foregroundBar = Bar()
     
     /// Size of the bar. Goes from 0.0 to 1.0
     let size: CGFloat = 0.9
@@ -22,24 +22,27 @@ class FindingProgressBar: UIView {
     var foregroundBarConstraint: NSLayoutConstraint? = nil
     
     
-    init(fromFrame frame:CGRect, usingMaximumValueAs: CGFloat, barSize: CGFloat = 0.8){
+    init(fromFrame frame:CGRect, usingMaximumValueAs: CGFloat, barSize: CGFloat = 0.8, color : UIColor = .red){
         super.init(frame: frame)
         
-        setup(frame: frame,using: usingMaximumValueAs)
+        setup(frame: frame,using: usingMaximumValueAs, color: color)
     }
     
-    private func setup(frame:CGRect, using:CGFloat){
-        self.setup(frame: frame)
+    private func setup(frame:CGRect, using:CGFloat, color: UIColor){
+        self.setup(frame: frame, color: color)
         //TODO: Use the maximum value
+        
+        self.backgroundBar.layer.borderWidth = 1
+        self.backgroundBar.layer.borderColor = UIColor.whiteCircle.cgColor
     }
     
     override init(frame:CGRect){
         super.init(frame: frame)
         
-        setup(frame: frame)
+//        setup(frame: frame)
     }
     
-    private func setup(frame: CGRect) {
+    private func setup(frame: CGRect, color: UIColor) {
         //super.init(frame: frame)
         
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -50,17 +53,18 @@ class FindingProgressBar: UIView {
         
         
         backgroundBar.setColor(.gray)
+        setColor(color)
         
         let foregroundBarConstraint = foregroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0)
         self.foregroundBarConstraint = foregroundBarConstraint
         self.foregroundBarConstraint?.isActive = true
         
         foregroundBar.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        foregroundBar.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        foregroundBar.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         backgroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: size).isActive = true
         backgroundBar.heightAnchor.constraint(equalTo: self.foregroundBar.heightAnchor).isActive = true
-        backgroundBar.centerYAnchor.constraint(equalTo: self.foregroundBar.centerYAnchor).isActive = true
+//        backgroundBar.centerYAnchor.constraint(equalTo: self.foregroundBar.centerYAnchor).isActive = true
         
         NSLayoutConstraint.activate([
             
@@ -86,6 +90,10 @@ class FindingProgressBar: UIView {
         
     }
     
+    func setColor (_ color: UIColor) {
+        foregroundBar.backgroundColor = color
+    }
+    
     func animateProgress(newValue: CGFloat){
         print("entered async")
       
@@ -103,29 +111,30 @@ class FindingProgressBar: UIView {
         self.foregroundBarConstraint = newConstraint
     }
     
-}
+    private class Bar: UIView {
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            self.translatesAutoresizingMaskIntoConstraints = false
+            self.backgroundColor = .red
+            self.roundCorners()
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        func roundCorners(){
+            self.layer.cornerRadius = 20
+        }
+        
+        func setColor (_ color: UIColor) {
+            self.backgroundColor = color
+        }
+        
+        //TODO: this view
+        
+    }
 
-class Bar: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .red
-        self.roundCorners()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func roundCorners(){
-        self.layer.cornerRadius = 20
-    }
-    
-    func setColor (_ color: UIColor) {
-        self.backgroundColor = color
-    }
-    
-    //TODO: this view
     
 }
