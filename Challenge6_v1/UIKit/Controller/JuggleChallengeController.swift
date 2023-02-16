@@ -191,11 +191,16 @@ extension JuggleChallengeController: VisionResultsDelegate {
                 self.resetButtonPressed()
             }
             
-            if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm {
-                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: CGFloat(self.model.framesWithBall) - self.model.framesTarget/3)
+            if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm + 20 {
+                
+                let correctedValue:CGFloat = (CGFloat(self.model.framesWithBall) - CGFloat(framesToConfirm/3))
+                
+                let value: CGFloat = (self.model.framesWithBall > framesToConfirm) ? self.model.framesTarget : correctedValue
+                
+                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: value)
                 self.model.ballTrackingStatus = .finding
             }
-            else if self.model.framesWithBall >= framesToConfirm {
+            else if self.model.framesWithBall >= framesToConfirm + 20 {
 //                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: CGFloat(framesToConfirm))
                 self.model.ballTrackingStatus = .found
             }

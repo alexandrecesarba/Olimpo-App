@@ -11,8 +11,8 @@ import CoreFoundation
 
 class FindingProgressBar: UIView {
     
-    private let backgroundBar = Bar()
-    private let foregroundBar = Bar()
+    private let backgroundBar = Bar(frame: .zero, cornerRadius: 20)
+    private let foregroundBar = Bar(frame: .zero, cornerRadius: 18)
     
     /// Size of the bar. Goes from 0.0 to 1.0
     let size: CGFloat = 0.9
@@ -59,11 +59,12 @@ class FindingProgressBar: UIView {
         self.foregroundBarConstraint = foregroundBarConstraint
         self.foregroundBarConstraint?.isActive = true
         
-        foregroundBar.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-//        foregroundBar.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+       
+        backgroundBar.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        foregroundBar.heightAnchor.constraint(equalTo: self.backgroundBar.heightAnchor, multiplier: 0.9).isActive = true
+        foregroundBar.centerYAnchor.constraint(equalTo: self.backgroundBar.centerYAnchor).isActive = true
         
         backgroundBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: size).isActive = true
-        backgroundBar.heightAnchor.constraint(equalTo: self.foregroundBar.heightAnchor).isActive = true
 //        backgroundBar.centerYAnchor.constraint(equalTo: self.foregroundBar.centerYAnchor).isActive = true
         
         NSLayoutConstraint.activate([
@@ -116,15 +117,20 @@ class FindingProgressBar: UIView {
             super.init(frame: frame)
             self.translatesAutoresizingMaskIntoConstraints = false
             self.backgroundColor = .red
-            self.roundCorners()
+        }
+        
+        init(frame: CGRect, cornerRadius: CGFloat){
+            super.init(frame: frame)
+            self.translatesAutoresizingMaskIntoConstraints = false
+            self.roundCorners(cornerRadius: cornerRadius)
         }
         
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
         
-        func roundCorners(){
-            self.layer.cornerRadius = 20
+        func roundCorners(cornerRadius: CGFloat){
+            self.layer.cornerRadius = cornerRadius
         }
         
         func setColor (_ color: UIColor) {
