@@ -10,10 +10,10 @@ import UIKit
 
 class JuggleChallengeView: UIView {
     
-    let targetView = RoundedLabelView.create(name: "")
+//    let targetView = RoundedLabelView.create(name: "")
     let directionView = RoundedLabelView.create(name: "")
     let cameraSwitch = CameraSwitchView()
-    let ballStatusView = BallStatusView()
+//    let ballStatusView = BallStatusView()
     let resetButtonView = ResetButtonView()
     let keepyUpCounterView = KeepyUpCounterView()
     let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
@@ -25,7 +25,7 @@ class JuggleChallengeView: UIView {
 //    let progressBar = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 40)
     
     
-    var infoViews: [UIView] {[targetView, directionView, ballStatusView, resetButtonView, keepyUpCounterView, cameraFeedView, userGoalView]}
+    var infoViews: [UIView] {[directionView, resetButtonView, keepyUpCounterView, cameraFeedView, userGoalView]}
     
     
     func setupEverything() {
@@ -51,9 +51,9 @@ class JuggleChallengeView: UIView {
 //        addSubview(cameraFeedView)
         
         addSubview(visionDetectionView)
-        addSubview(targetView)
+//        addSubview(targetView)
         addSubview(directionView)
-        addSubview(ballStatusView)
+//        addSubview(ballStatusView)
         addSubview(resetButtonView)
         addSubview(keepyUpCounterView)
         addSubview(bouncyBallView)
@@ -73,14 +73,14 @@ class JuggleChallengeView: UIView {
         
         cameraSwitch.widthAnchor.constraint(equalToConstant: 60).isActive = true
         cameraSwitch.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        targetView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+//        targetView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         directionView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         directionView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         resetButtonView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         resetButtonView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
-        ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+//        ballStatusView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        ballStatusView.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
         userGoalView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
         userGoalView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
@@ -92,14 +92,14 @@ class JuggleChallengeView: UIView {
         
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: self.targetView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),
-            NSLayoutConstraint(item: self.targetView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
-            NSLayoutConstraint(item: self.directionView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.75, constant: 0),
-            NSLayoutConstraint(item: self.directionView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
+//            NSLayoutConstraint(item: self.targetView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),
+//            NSLayoutConstraint(item: self.targetView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.8, constant: 0),
+            NSLayoutConstraint(item: self.directionView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.25, constant: 0),
+            NSLayoutConstraint(item: self.directionView, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 0.9, constant: 0),
             NSLayoutConstraint(item: self.resetButtonView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: self.resetButtonView, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -10),
-            NSLayoutConstraint(item: self.ballStatusView, attribute: .leading, relatedBy: .equal, toItem: self.targetView, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self.ballStatusView, attribute: .top, relatedBy: .equal, toItem: self.targetView, attribute: .bottom, multiplier: 1, constant: 20),
+//            NSLayoutConstraint(item: self.ballStatusView, attribute: .leading, relatedBy: .equal, toItem: self.targetView, attribute: .leading, multiplier: 1, constant: 0),
+//            NSLayoutConstraint(item: self.ballStatusView, attribute: .top, relatedBy: .equal, toItem: self.targetView, attribute: .bottom, multiplier: 1, constant: 20),
             NSLayoutConstraint(item: self.cameraSwitch, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -15),
             NSLayoutConstraint(item: self.cameraSwitch, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.95, constant: 0),
             NSLayoutConstraint(item: self.userGoalView, attribute: .trailing, relatedBy: .equal, toItem: self.layoutMarginsGuide, attribute: .trailing, multiplier: 0.95, constant: 0)

@@ -11,14 +11,14 @@ import SwiftUI
 
 class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
-    var model = JuggleChallengeModel(target: 10, framesTarget: 40)
+    var model = JuggleChallengeModel.shared
     let juggleChallengeView = JuggleChallengeView()
 
     override func loadView() {
         super.loadView()
         view = juggleChallengeView
         juggleChallengeView.directionView.text = model.direction.rawValue.capitalized
-        juggleChallengeView.targetView.text = "Target: \(model.target)"
+//        juggleChallengeView.targetView.text = "Target: \(model.target)"
         juggleChallengeView.visionDetectionView.delegate = self
         self.model.ballTrackingStatus = .notFound
         hideOtherViews()
@@ -46,7 +46,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         EventMessenger.shared.addScore()
 
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
-        if EventMessenger.shared.pointsCounted == self.model.target {
+        if EventMessenger.shared.pointsCounted == EventMessenger.shared.highScore {
             self.juggleChallengeView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
         }
         self.juggleChallengeView.keepyUpCounterView.setScore(score: EventMessenger.shared.pointsCounted)
@@ -92,7 +92,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
 
         EventMessenger.shared.pointsCounted = 0
 
-
+        self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.gray)
         self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
         self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
         self.juggleChallengeView.keepyUpCounterView.hideBackgroundCircle()
@@ -180,13 +180,21 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         let framesToConfirm = Int(self.model.framesTarget + self.model.framesTarget/3)
         
+        let ballIsBeingFound = self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm + 20
+        let ballNotFound = self.model.ballTrackingStatus != .found
+        
+        let resultsExist = amountOfResults > 0
+        
+        let ballIsFound = self.model.framesWithBall >= framesToConfirm + 20
+        
+        let ballIsLost = self.model.framesWithBall == 0
         // two behaviours, one before a ball is located, another when a ball has already been located
         
         // if it sees the ball, adds one, else, resets
         
-        if self.model.ballTrackingStatus != .found {
+        if ballNotFound {
             
-            if amountOfResults > 0 {
+            if resultsExist {
                 self.model.framesWithBall += 1
             }
             
@@ -197,29 +205,37 @@ extension JuggleChallengeController: VisionResultsDelegate {
                 self.resetButtonPressed()
             }
             
-            if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm + 20 {
+            if ballIsBeingFound {
                 
                 let correctedValue:CGFloat = (CGFloat(self.model.framesWithBall) - CGFloat(framesToConfirm/3))
                 
                 let value: CGFloat = (self.model.framesWithBall > framesToConfirm) ? self.model.framesTarget : correctedValue
                 
+                let ballIsDetected =  self.model.framesWithBall == framesToConfirm
+                
+                if ballIsDetected {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.greenCircle)
+                    })
+                }
+                
                 self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: value)
                 self.model.ballTrackingStatus = .finding
             }
-            else if self.model.framesWithBall >= framesToConfirm + 20 {
-//                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: CGFloat(framesToConfirm))
+            else if ballIsFound {
                 self.model.ballTrackingStatus = .found
             }
         }
         
+        // second behaviour, ball has already been found
         else {
             
-            if amountOfResults == 0 {
+            if !resultsExist {
                 self.model.framesWithBall -= 2
                 if self.model.framesWithBall < 0 {self.model.framesWithBall = 0}
             }
             
-            if self.model.framesWithBall == 0 {
+            if ballIsLost {
                 self.model.ballTrackingStatus = .notFound
                 self.resetButtonPressed()
             }
@@ -230,10 +246,10 @@ extension JuggleChallengeController: VisionResultsDelegate {
         self.updateStatusView(state: self.model.ballTrackingStatus)
         
         
-        UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
-            self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
-            self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
-        })
+//        UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
+//            self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
+//            self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
+//        })
     }
     
 }

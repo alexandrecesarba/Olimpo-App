@@ -13,23 +13,32 @@ class FindingBallView: UIView {
     let keepSteadyTextView = UILabel()
     let instructionTextView = UILabel()
     let progressBarView = FindingProgressBar(fromFrame: .zero, usingMaximumValueAs: 60, color: .greenCircle)
+    let checkmarkView = CheckmarkView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         addSubview(progressBarView)
         addSubview(keepSteadyTextView)
         addSubview(instructionTextView)
-       
+        addSubview(checkmarkView)
         progressBarConstraints()
         keepSteadyConfiguration()
         keepSteadyConstraints()
         instructionTextConfiguration()
         instructionTextConstraints()
+        checkmarkConstraints()
         self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func checkmarkConstraints() {
+        checkmarkView.trailingAnchor.constraint(equalTo: progressBarView.trailingAnchor, constant: -10).isActive = true
+        checkmarkView.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.08).isActive = true
+        checkmarkView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.08).isActive = true
+        checkmarkView.centerYAnchor.constraint(equalTo: progressBarView.centerYAnchor).isActive = true
     }
     
     func progressBarConstraints() {

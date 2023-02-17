@@ -8,12 +8,10 @@
 import Foundation
 
 struct JuggleChallengeModel {
-
+    
+    public static var shared = JuggleChallengeModel(framesTarget: 40)
     /// Indicates if the ball is going downwards or upwards.
     var direction: Direction = .stopped
-
-    /// The user's target score.
-    var target: Int
 
     /// Indicates if the ball has been located, is being located or hasn't been located.
     var ballTrackingStatus: BallTrackingStatus = .notFound

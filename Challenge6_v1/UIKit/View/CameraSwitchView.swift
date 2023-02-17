@@ -42,7 +42,7 @@ class CameraSwitchView: UIView {
         button.contentHorizontalAlignment = .fill
         button.contentMode = .scaleAspectFill
 //        button.backgroundColor = .red
-        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.contentMode = .scaleAspectFit
         button.setImage(UIImage(systemName: "arrow.triangle.2.circlepath.camera")!, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
