@@ -11,7 +11,7 @@ import UIKit
 class JuggleChallengeView: UIView {
     
 //    let targetView = RoundedLabelView.create(name: "")
-    let directionView = RoundedLabelView.create(name: "")
+    let directionView = RoundedLabelView.create(name: "", fontSize: 30)
     let cameraSwitch = CameraSwitchView()
 //    let ballStatusView = BallStatusView()
     let resetButtonView = ResetButtonView()

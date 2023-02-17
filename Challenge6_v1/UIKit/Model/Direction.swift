@@ -7,7 +7,7 @@
 import Foundation
 
 enum Direction: String {
-    case upwards
-    case downwards
+    case upwards = "⬆️"
+    case downwards = "⬇️"
     case stopped
 }
