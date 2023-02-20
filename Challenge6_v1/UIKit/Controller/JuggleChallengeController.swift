@@ -149,30 +149,66 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
 
 extension JuggleChallengeController: VisionResultsDelegate {
     
+    func updateOld (objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
+        switch self.model.direction {
+        case .upwards:
+            if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
+                self.model.direction = .downwards
+            }
+        case .downwards:
+            if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
+                self.model.direction = .upwards
+                if (self.model.ballTrackingStatus == .found){
+                    addScore()
+                }
+            }
+        case .stopped:
+            currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+        }
+        
+        self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
+        
+        setLastHeight(currentHeight)
+    }
+    
     func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
         
+        let ballIsFound = self.model.ballTrackingStatus == .found
+        
+        guard ballIsFound else {return}
+        
         let minimumConfidence = 0.96
+        
+        let threshold = objectVerticalSize/2
+        
+        let goingUp = (currentHeight - self.model.lastHeight) < -threshold
+        let goingDown = (currentHeight - self.model.lastHeight) > threshold
+        
+        
+        
+        print(currentHeight - self.model.lastHeight)
         
         if confidence > minimumConfidence {
             switch self.model.direction {
             case .upwards:
-                if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
-                    self.model.direction = .downwards
-                }
-            case .downwards:
-                if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
-                    self.model.direction = .upwards
-                    if (self.model.ballTrackingStatus == .found){
-                        addScore()
+                if goingDown {
+                        self.model.direction = .downwards
                     }
+            case .downwards:
+                if goingUp {
+                    self.model.direction = .upwards
+                    addScore()
+                    
                 }
             case .stopped:
                 currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
             }
             
-            self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
+            self.juggleChallengeView.directionView.text = self.model.direction.rawValue
             
-            setLastHeight(currentHeight)
+            if goingUp || goingDown {
+                setLastHeight(currentHeight)
+            }
         }
     }
     
