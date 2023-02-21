@@ -15,6 +15,14 @@ class UserGoalView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(goalTextView)
+        addSubview(goalNumberView)
+        setGoalValue(goalValue)
+        goalTextConfiguration()
+        goalNumberConfiguration()
+        goalTextConstraints()
+        goalNumberConstraints()
     }
     
     override func layoutSubviews() {
@@ -43,8 +51,6 @@ class UserGoalView: UIView {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.whiteCircle.cgColor
         self.layer.masksToBounds = true
-        print(bounds)
-        print(frame)
         self.layer.cornerRadius = bounds.size.width/2
         self.layer.backgroundColor = UIColor.greenCircle.cgColor
     }

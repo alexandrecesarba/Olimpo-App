@@ -16,7 +16,8 @@ class FindingBallView: UIView {
     let checkmarkView = CheckmarkView(frame: .zero)
     
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: frame)
+        self.translatesAutoresizingMaskIntoConstraints = false
         addSubview(progressBarView)
         addSubview(keepSteadyTextView)
         addSubview(instructionTextView)
@@ -50,7 +51,7 @@ class FindingBallView: UIView {
     }
     
     func instructionTextConfiguration() {
-        instructionTextView.text = "Keep you camera very still\nwhile the ball is still being detected"
+        instructionTextView.text = "Keep you camera very still\nwhile the ball is still being detected..."
         instructionTextView.numberOfLines = 2
         instructionTextView.textAlignment = .center
         instructionTextView.font = UIFont.getRoundedFont(size: 18, weight: .regular)

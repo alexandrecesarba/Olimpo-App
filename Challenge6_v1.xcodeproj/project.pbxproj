@@ -23,7 +23,6 @@
 		064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B66298F0805007BA722 /* VisionDetectionView.swift */; };
 		066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001AF299016C700E82177 /* KeepyUpCounterController.swift */; };
 		066001B229917CB700E82177 /* VisionResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B129917CB700E82177 /* VisionResultsDelegate.swift */; };
-		066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B329917CEB00E82177 /* BallNotFoundView.swift */; };
 		066BE238299EAC7B00D9195F /* UserGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066BE237299EAC7B00D9195F /* UserGoalView.swift */; };
 		066BE23C299FF40300D9195F /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066BE23B299FF40300D9195F /* CheckmarkView.swift */; };
 		068FD27E299C0A500085C1E5 /* FindingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD27D299C0A500085C1E5 /* FindingBallView.swift */; };
@@ -31,6 +30,7 @@
 		069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 069151E32993348E0088F135 /* BallBouncingScene.sks */; };
 		069151E629934CE20088F135 /* MissingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E529934CE20088F135 /* MissingBallView.swift */; };
 		069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151F329956DC40088F135 /* CameraSwitchView.swift */; };
+		06E80D5729A43CEE00F26E14 /* FoundBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E80D5629A43CEE00F26E14 /* FoundBallView.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -79,7 +79,6 @@
 		064E7B66298F0805007BA722 /* VisionDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetectionView.swift; sourceTree = "<group>"; };
 		066001AF299016C700E82177 /* KeepyUpCounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterController.swift; sourceTree = "<group>"; };
 		066001B129917CB700E82177 /* VisionResultsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultsDelegate.swift; sourceTree = "<group>"; };
-		066001B329917CEB00E82177 /* BallNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallNotFoundView.swift; sourceTree = "<group>"; };
 		066BE237299EAC7B00D9195F /* UserGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalView.swift; sourceTree = "<group>"; };
 		066BE23B299FF40300D9195F /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		068FD27D299C0A500085C1E5 /* FindingBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingBallView.swift; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		069151E32993348E0088F135 /* BallBouncingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallBouncingScene.sks; sourceTree = "<group>"; };
 		069151E529934CE20088F135 /* MissingBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingBallView.swift; sourceTree = "<group>"; };
 		069151F329956DC40088F135 /* CameraSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSwitchView.swift; sourceTree = "<group>"; };
+		06E80D5629A43CEE00F26E14 /* FoundBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundBallView.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 				069151E0299330CC0088F135 /* BallBouncingScene.swift */,
 				069151E529934CE20088F135 /* MissingBallView.swift */,
 				068FD27D299C0A500085C1E5 /* FindingBallView.swift */,
+				06E80D5629A43CEE00F26E14 /* FoundBallView.swift */,
 				062EC058299C14940036AEA2 /* BouncyBallView.swift */,
 				064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */,
 				064E7B56298DEE70007BA722 /* RoundedLabelView.swift */,
@@ -159,7 +160,6 @@
 				064E7B60298E008B007BA722 /* CameraFeedView.swift */,
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
 				069151F329956DC40088F135 /* CameraSwitchView.swift */,
-				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
 				062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */,
 				066BE237299EAC7B00D9195F /* UserGoalView.swift */,
 				066BE23B299FF40300D9195F /* CheckmarkView.swift */,
@@ -405,9 +405,9 @@
 				97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */,
 				069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */,
 				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
-				066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */,
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,
 				064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */,
+				06E80D5729A43CEE00F26E14 /* FoundBallView.swift in Sources */,
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,

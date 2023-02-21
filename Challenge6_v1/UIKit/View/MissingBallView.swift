@@ -17,7 +17,8 @@ class MissingBallView: UIView {
     
     
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: frame)
+        self.translatesAutoresizingMaskIntoConstraints = false
         addSubview(missingBallTextView)
         addSubview(instructionTextView)
         addSubview(alertImageView)
