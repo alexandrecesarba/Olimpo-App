@@ -12,7 +12,7 @@ class EventMessenger: ObservableObject {
     // Singleton
     public static var shared: EventMessenger = EventMessenger()
 
-    /// Amount of points accumulated aka Last Score
+    /// Amount of points accumulated
     @Published var pointsCounted: Int = 0
 
     /// User High Score
@@ -38,6 +38,17 @@ class EventMessenger: ObservableObject {
         }
     }
 
+    /// Array of scores from the user
+    public var scoreArray: [Int] {
+        get {
+            return UserDefaults.standard.object(forKey: "scoreArray") as! [Int]
+        }
+
+        set {
+            UserDefaults.standard.set(newValue, forKey: "scoreArray")
+        }
+    }
+
     /// Increases the number of points
     public func addScore(){
         self.pointsCounted += 1
@@ -47,11 +58,14 @@ class EventMessenger: ObservableObject {
     public func saveHighScore(){
         if self.pointsCounted > self.highScore{
             self.highScore = self.pointsCounted
+            self.scoreArray.append(self.highScore)
         }
     }
 
     /// Locally stores the last score
     public func saveLastScore(){
         self.lastScore = self.pointsCounted
+        self.scoreArray.append(self.lastScore)
     }
+
 }

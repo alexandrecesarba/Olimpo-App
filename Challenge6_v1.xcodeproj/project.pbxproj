@@ -56,6 +56,7 @@
 		97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A6F2991999C0097A723 /* Model4.mlmodel */; };
 		97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */; };
 		97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A8A299ABC290097A723 /* Model.mlmodel */; };
+		97EE2A8E299C13730097A723 /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A8D299C13730097A723 /* Achievements.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMessenger.swift; sourceTree = "<group>"; };
 		97EE2A8A299ABC290097A723 /* Model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model.mlmodel; sourceTree = "<group>"; };
 		97EE2A8C299ABC2E0097A723 /* Model_utilizado.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model_utilizado.mlmodel; sourceTree = "<group>"; };
+		97EE2A8D299C13730097A723 /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			children = (
 				972F1485298601AD002087AF /* Challenge.swift */,
 				972F148F298712F9002087AF /* CurrentTab.swift */,
+				97EE2A8D299C13730097A723 /* Achievements.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				972F146D2985EADE002087AF /* ContentView.swift in Sources */,
+				97EE2A8E299C13730097A723 /* Achievements.swift in Sources */,
 				972F1486298601AE002087AF /* Challenge.swift in Sources */,
 				069151E629934CE20088F135 /* BallBouncingView.swift in Sources */,
 				064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */,
