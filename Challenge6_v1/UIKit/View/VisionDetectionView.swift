@@ -28,7 +28,20 @@ class VisionDetectionView: CameraFeedView {
 //    func setBufferSize (_ bufferSize: CGSize){
 //        self.bufferSize = bufferSize
 //    }
-//    
+//
+    
+    override func layoutSubviews() {
+        setupAVCapture()
+       
+        //        visionDetectionView.setupAVCapture()
+        // setup Vision parts
+        setupLayers()
+        updateLayerGeometry()
+        print(setupVision() ?? "no error")
+                // start the capture
+        startCaptureSession()
+    }
+    
     @discardableResult
     func setupVision() -> NSError? {
         // Setup Vision parts

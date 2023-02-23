@@ -11,29 +11,33 @@ import SwiftUI
 
 class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
-    var model = JuggleChallengeModel(target: 10)
+    var model = JuggleChallengeModel.shared
     let juggleChallengeView = JuggleChallengeView()
 
     override func loadView() {
         super.loadView()
         view = juggleChallengeView
-        juggleChallengeView.directionView.text = model.direction.rawValue.capitalized
-        juggleChallengeView.targetView.text = "Target: \(model.target)"
+        juggleChallengeView.foundBallView.directionView.text = model.direction.rawValue.capitalized
+//        juggleChallengeView.targetView.text = "Target: \(model.target)"
         juggleChallengeView.visionDetectionView.delegate = self
+        self.model.ballTrackingStatus = .notFound
+        hideOtherViews()
     }
     
     override func viewDidLoad() {
-        self.juggleChallengeView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
+        self.juggleChallengeView.foundBallView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         self.juggleChallengeView.cameraSwitch.button.addTarget(self, action: #selector(cameraSwitchPressed), for: .touchUpInside)
+        self.juggleChallengeView.findingBallView.progressBarView.setMaximumValue(self.model.framesTarget)
         var panGesture = UIPanGestureRecognizer()
-        juggleChallengeView.keepyUpCounterView.isUserInteractionEnabled = true
+        juggleChallengeView.foundBallView.keepyUpCounterView.isUserInteractionEnabled = true
         //        juggleChallengeView.isUserInteractionEnabled = true
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedView(_:)))
         panGesture.delegate = self
-        juggleChallengeView.keepyUpCounterView.addGestureRecognizer(panGesture)
+        juggleChallengeView.foundBallView.keepyUpCounterView.addGestureRecognizer(panGesture)
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.scalePiece(_:)))
         pinchGesture.delegate = self
-        self.juggleChallengeView.keepyUpCounterView.addGestureRecognizer(pinchGesture)
+        self.juggleChallengeView.foundBallView.keepyUpCounterView.addGestureRecognizer(pinchGesture)
+        self.juggleChallengeView.foundBallView.setGoalValue(EventMessenger.shared.highScore)
     }
 
 
@@ -41,31 +45,33 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     func addScore(){
         EventMessenger.shared.addScore()
 
-        self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
-        if EventMessenger.shared.pointsCounted == self.model.target {
-            self.juggleChallengeView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
+        self.juggleChallengeView.foundBallView.keepyUpCounterView.bounceAnimation()
+        if EventMessenger.shared.pointsCounted == EventMessenger.shared.highScore {
+            self.juggleChallengeView.foundBallView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
         }
-        self.juggleChallengeView.keepyUpCounterView.setScore(score: EventMessenger.shared.pointsCounted)
+        self.juggleChallengeView.foundBallView.keepyUpCounterView.setScore(score: EventMessenger.shared.pointsCounted)
     }
     
     func setLastHeight(_ lastHeight: CGFloat){
         self.model.lastHeight = lastHeight
     }
-
     
-    func updateNotFoundView(state: BallTrackingStatus){
-        
-        var found = false
-        
-        if state != .notFound {
-            found.toggle()
-        }
+    /// Hides the finding ball and found ball views. Run by the controller in the start of the app.
+    func hideOtherViews(){
+        self.juggleChallengeView.foundBallView.alpha = 0
+        self.juggleChallengeView.findingBallView.alpha = 0
+    }
+   
+    
+    func updateStatusView(state: BallTrackingStatus){
         
         UIView.animate(withDuration: 0.4, delay: .zero, options: .curveEaseInOut, animations: { [self] in
-            self.juggleChallengeView.ballBouncingView.alpha = (found) ? 0.0 : 1.0
-            for view in self.juggleChallengeView.infoViews{
-                view.alpha = (found) ? 1.0 : 0.0
-            }
+            self.juggleChallengeView.missingBallView.alpha = (state == .notFound) ? 1.0 : 0.0
+            self.juggleChallengeView.findingBallView.alpha = (state == .finding) ? 1.0 : 0.0
+            self.juggleChallengeView.foundBallView.alpha = (state == .found) ? 1.0 : 0.0
+            self.juggleChallengeView.bouncyBallView.alpha = (state != .found) ? 1.0 : 0.0
+            
+            
         })
         
     }
@@ -84,10 +90,9 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
 
         EventMessenger.shared.pointsCounted = 0
 
-
-        self.juggleChallengeView.keepyUpCounterView.pointCounterView.text = "0"
-        self.juggleChallengeView.keepyUpCounterView.bounceAnimation()
-        self.juggleChallengeView.keepyUpCounterView.hideBackgroundCircle()
+        self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.gray)
+        self.juggleChallengeView.foundBallView.keepyUpCounterView.pointCounterView.text = "0"
+        self.juggleChallengeView.foundBallView.keepyUpCounterView.hideBackgroundCircle()
     }
     
     @objc func scalePiece(_ gestureRecognizer : UIPinchGestureRecognizer) {   guard gestureRecognizer.view != nil else { return }
@@ -115,25 +120,20 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
-        let pointCounter = self.juggleChallengeView.keepyUpCounterView
-        let center = pointCounter.hitbox.frame.customCenter
+        let pointCounter = sender.view! as! KeepyUpCounterView
+        let center = pointCounter.center
         
         self.view.bringSubviewToFront(pointCounter.hitbox)
         let translation = sender.translation(in: self.view)
         
         let distance :CGFloat = abs((center.x + translation.x) - self.model.pointCounterLastPosition.x) + abs((center.y + translation.y) - self.model.pointCounterLastPosition.y)
-
-        print(center)
-        print(self.model.pointCounterLastPosition)
-
-        print(distance)
-        
+       
+        pointCounter.center = pointCounter.center + translation
         if Int(distance) > 7 {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-            self.model.pointCounterLastPosition = center
+            self.model.pointCounterLastPosition = pointCounter.center
         }
-        pointCounter.center = pointCounter.center + translation
-        //        pointCounter.repositionViews(point: pointCounter.outerCircle.center, translation: translation)
+        
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
@@ -141,68 +141,126 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
 
 extension JuggleChallengeController: VisionResultsDelegate {
     
+    func updateOld (objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
+        switch self.model.direction {
+        case .upwards:
+            if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
+                self.model.direction = .downwards
+            }
+        case .downwards:
+            if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
+                self.model.direction = .upwards
+                if (self.model.ballTrackingStatus == .found){
+                    addScore()
+                }
+            }
+        case .stopped:
+            currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+        }
+        
+        self.juggleChallengeView.foundBallView.directionView.text = self.model.direction.rawValue.capitalized
+        
+        setLastHeight(currentHeight)
+    }
+    
     func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
         
+        let ballIsFound = self.model.ballTrackingStatus == .found
+        
+        guard ballIsFound else {return}
+        
         let minimumConfidence = 0.96
+        
+        let threshold = objectVerticalSize/2
+        
+        let goingUp = (currentHeight - self.model.lastHeight) < -threshold
+        let goingDown = (currentHeight - self.model.lastHeight) > threshold
+        
         
         if confidence > minimumConfidence {
             switch self.model.direction {
             case .upwards:
-                if currentHeight > self.model.lastHeight + objectVerticalSize/6 {
-                    self.model.direction = .downwards
-                }
-            case .downwards:
-                if currentHeight < self.model.lastHeight - objectVerticalSize/6 {
-                    self.model.direction = .upwards
-                    if (self.model.ballTrackingStatus == .found){
-                        addScore()
+                if goingDown {
+                        self.model.direction = .downwards
                     }
+            case .downwards:
+                if goingUp {
+                    self.model.direction = .upwards
+                    addScore()
+                    
                 }
             case .stopped:
                 currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
             }
             
-            self.juggleChallengeView.directionView.text = self.model.direction.rawValue.capitalized
+            self.juggleChallengeView.foundBallView.directionView.text = self.model.direction.rawValue
             
-            setLastHeight(currentHeight)
+            if goingUp || goingDown {
+                setLastHeight(currentHeight)
+            }
         }
     }
     
     func updateStatusView(_ amountOfResults: Int) {
         
-        let framesToConfirm = 50
+        let framesToConfirm = Int(self.model.framesTarget + self.model.framesTarget/3)
         
+        let ballIsBeingFound = self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm + 20
+        let ballNotFound = self.model.ballTrackingStatus != .found
+        
+        let resultsExist = amountOfResults > 0
+        
+        let ballIsFound = self.model.framesWithBall >= framesToConfirm + 20
+        
+        let ballIsLost = self.model.framesWithBall == 0
         // two behaviours, one before a ball is located, another when a ball has already been located
         
         // if it sees the ball, adds one, else, resets
         
-        if self.model.ballTrackingStatus != .found {
+        if ballNotFound {
             
-            if amountOfResults > 0 {
+            if resultsExist {
                 self.model.framesWithBall += 1
             }
             
             else {
                 self.model.framesWithBall = 0
                 self.model.ballTrackingStatus = .notFound
+                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: 0)
                 self.resetButtonPressed()
             }
             
-            if self.model.framesWithBall > framesToConfirm/3 && self.model.framesWithBall < framesToConfirm {
+            if ballIsBeingFound {
+                
+                let correctedValue:CGFloat = (CGFloat(self.model.framesWithBall) - CGFloat(framesToConfirm/3))
+                
+                let value: CGFloat = (self.model.framesWithBall > framesToConfirm) ? self.model.framesTarget : correctedValue
+                
+                let ballIsDetected =  self.model.framesWithBall == framesToConfirm
+                
+                if ballIsDetected {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.greenCircle)
+                    })
+                }
+                
+                self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: value)
                 self.model.ballTrackingStatus = .finding
             }
-            else if self.model.framesWithBall >= framesToConfirm {
+            else if ballIsFound {
                 self.model.ballTrackingStatus = .found
             }
         }
         
+        // second behaviour, ball has already been found
         else {
-            if amountOfResults == 0 {
+            
+            if !resultsExist {
                 self.model.framesWithBall -= 2
                 if self.model.framesWithBall < 0 {self.model.framesWithBall = 0}
             }
             
-            if self.model.framesWithBall == 0 {
+            if ballIsLost {
                 self.model.ballTrackingStatus = .notFound
                 self.resetButtonPressed()
             }
@@ -210,13 +268,13 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         // new loading view tests
         
-        self.updateNotFoundView(state: self.model.ballTrackingStatus)
+        self.updateStatusView(state: self.model.ballTrackingStatus)
         
         
-        UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
-            self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
-            self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
-        })
+//        UIView.animate(withDuration: 0.6, delay: .zero,options: .curveEaseInOut, animations: {
+//            self.juggleChallengeView.ballStatusView.text = self.model.ballTrackingStatus.rawValue
+//            self.juggleChallengeView.ballStatusView.backgroundColor = self.model.ballTrackingStatus.color
+//        })
     }
     
 }

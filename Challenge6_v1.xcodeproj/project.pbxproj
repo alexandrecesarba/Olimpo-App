@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0606D59C299AB1B8009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59B299AB1B8009F126E /* .gitignore */; };
 		0606D5A0299AB935009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59F299AB935009F126E /* .gitignore */; };
+		062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC058299C14940036AEA2 /* BouncyBallView.swift */; };
+		062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */; };
 		064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */; };
 		064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B56298DEE70007BA722 /* RoundedLabelView.swift */; };
 		064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B58298DF0A5007BA722 /* ResetButtonView.swift */; };
@@ -21,11 +23,14 @@
 		064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B66298F0805007BA722 /* VisionDetectionView.swift */; };
 		066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001AF299016C700E82177 /* KeepyUpCounterController.swift */; };
 		066001B229917CB700E82177 /* VisionResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B129917CB700E82177 /* VisionResultsDelegate.swift */; };
-		066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066001B329917CEB00E82177 /* BallNotFoundView.swift */; };
+		066BE238299EAC7B00D9195F /* UserGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066BE237299EAC7B00D9195F /* UserGoalView.swift */; };
+		066BE23C299FF40300D9195F /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066BE23B299FF40300D9195F /* CheckmarkView.swift */; };
+		068FD27E299C0A500085C1E5 /* FindingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD27D299C0A500085C1E5 /* FindingBallView.swift */; };
 		069151E2299330CD0088F135 /* BallBouncingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E0299330CC0088F135 /* BallBouncingScene.swift */; };
 		069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 069151E32993348E0088F135 /* BallBouncingScene.sks */; };
-		069151E629934CE20088F135 /* BallBouncingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E529934CE20088F135 /* BallBouncingView.swift */; };
+		069151E629934CE20088F135 /* MissingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E529934CE20088F135 /* MissingBallView.swift */; };
 		069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151F329956DC40088F135 /* CameraSwitchView.swift */; };
+		06E80D5729A43CEE00F26E14 /* FoundBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E80D5629A43CEE00F26E14 /* FoundBallView.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -45,7 +50,6 @@
 		97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A806298ADADF00BA92A2 /* Extensions.swift */; };
 		97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */; };
 		97A7A819298ADAE000BA92A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */; };
-		97A7A81D298ADBF900BA92A2 /* Model2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */; };
 		97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */; };
 		97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */; };
 		97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */; };
@@ -62,6 +66,8 @@
 /* Begin PBXFileReference section */
 		0606D59B299AB1B8009F126E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0606D59F299AB935009F126E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		062EC058299C14940036AEA2 /* BouncyBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyBallView.swift; sourceTree = "<group>"; };
+		062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingProgressBar.swift; sourceTree = "<group>"; };
 		064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeView.swift; sourceTree = "<group>"; };
 		064E7B56298DEE70007BA722 /* RoundedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabelView.swift; sourceTree = "<group>"; };
 		064E7B58298DF0A5007BA722 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
@@ -74,11 +80,14 @@
 		064E7B66298F0805007BA722 /* VisionDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetectionView.swift; sourceTree = "<group>"; };
 		066001AF299016C700E82177 /* KeepyUpCounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterController.swift; sourceTree = "<group>"; };
 		066001B129917CB700E82177 /* VisionResultsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultsDelegate.swift; sourceTree = "<group>"; };
-		066001B329917CEB00E82177 /* BallNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallNotFoundView.swift; sourceTree = "<group>"; };
+		066BE237299EAC7B00D9195F /* UserGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalView.swift; sourceTree = "<group>"; };
+		066BE23B299FF40300D9195F /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		068FD27D299C0A500085C1E5 /* FindingBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingBallView.swift; sourceTree = "<group>"; };
 		069151E0299330CC0088F135 /* BallBouncingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallBouncingScene.swift; sourceTree = "<group>"; };
 		069151E32993348E0088F135 /* BallBouncingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallBouncingScene.sks; sourceTree = "<group>"; };
-		069151E529934CE20088F135 /* BallBouncingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallBouncingView.swift; sourceTree = "<group>"; };
+		069151E529934CE20088F135 /* MissingBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingBallView.swift; sourceTree = "<group>"; };
 		069151F329956DC40088F135 /* CameraSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSwitchView.swift; sourceTree = "<group>"; };
+		06E80D5629A43CEE00F26E14 /* FoundBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundBallView.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,7 +108,6 @@
 		97A7A806298ADADF00BA92A2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterView.swift; sourceTree = "<group>"; };
 		97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model2.mlmodel; sourceTree = "<group>"; };
 		97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model_Original.mlmodel; sourceTree = "<group>"; };
 		97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YoloConvertedNoCricketReal.mlmodel; sourceTree = "<group>"; };
 		97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BallGams.mlmodel; sourceTree = "<group>"; };
@@ -142,7 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				069151E0299330CC0088F135 /* BallBouncingScene.swift */,
-				069151E529934CE20088F135 /* BallBouncingView.swift */,
+				069151E529934CE20088F135 /* MissingBallView.swift */,
+				068FD27D299C0A500085C1E5 /* FindingBallView.swift */,
+				06E80D5629A43CEE00F26E14 /* FoundBallView.swift */,
+				062EC058299C14940036AEA2 /* BouncyBallView.swift */,
 				064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */,
 				064E7B56298DEE70007BA722 /* RoundedLabelView.swift */,
 				064E7B58298DF0A5007BA722 /* ResetButtonView.swift */,
@@ -151,7 +162,9 @@
 				064E7B60298E008B007BA722 /* CameraFeedView.swift */,
 				064E7B66298F0805007BA722 /* VisionDetectionView.swift */,
 				069151F329956DC40088F135 /* CameraSwitchView.swift */,
-				066001B329917CEB00E82177 /* BallNotFoundView.swift */,
+				062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */,
+				066BE237299EAC7B00D9195F /* UserGoalView.swift */,
+				066BE23B299FF40300D9195F /* CheckmarkView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,7 +311,6 @@
 				97EE2A8C299ABC2E0097A723 /* Model_utilizado.mlmodel */,
 				97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */,
 				97EE2A8A299ABC290097A723 /* Model.mlmodel */,
-				97A7A81C298ADBF900BA92A2 /* Model2.mlmodel */,
 				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
 				97EE2A6F2991999C0097A723 /* Model4.mlmodel */,
@@ -392,18 +404,19 @@
 				972F146D2985EADE002087AF /* ContentView.swift in Sources */,
 				97EE2A8E299C13730097A723 /* Achievements.swift in Sources */,
 				972F1486298601AE002087AF /* Challenge.swift in Sources */,
-				069151E629934CE20088F135 /* BallBouncingView.swift in Sources */,
+				069151E629934CE20088F135 /* MissingBallView.swift in Sources */,
 				064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */,
 				97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */,
 				069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */,
 				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
-				066001B429917CEB00E82177 /* BallNotFoundView.swift in Sources */,
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,
 				064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */,
+				06E80D5729A43CEE00F26E14 /* FoundBallView.swift in Sources */,
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
+				062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */,
 				97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
@@ -411,17 +424,20 @@
 				972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */,
 				97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */,
 				97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */,
+				062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */,
 				972F1490298712F9002087AF /* CurrentTab.swift in Sources */,
-				97A7A81D298ADBF900BA92A2 /* Model2.mlmodel in Sources */,
 				972F14842985FE3B002087AF /* ChallengeView.swift in Sources */,
 				064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */,
 				97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */,
 				064E7B5D298DF989007BA722 /* BallStatusView.swift in Sources */,
+				066BE23C299FF40300D9195F /* CheckmarkView.swift in Sources */,
 				97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */,
 				064E7B61298E008B007BA722 /* CameraFeedView.swift in Sources */,
 				064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */,
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 				97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */,
+				068FD27E299C0A500085C1E5 /* FindingBallView.swift in Sources */,
+				066BE238299EAC7B00D9195F /* UserGoalView.swift in Sources */,
 				97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */,
 				064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */,
 				064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */,
@@ -557,16 +573,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge6_v1/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = R5TN67Z99H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Challenge6-v1-Info.plist";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera to start the exercise";
+				INFOPLIST_KEY_CFBundleDisplayName = Olimpo;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture the ball's location.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,16 +607,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge6_v1/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = R5TN67Z99H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Challenge6-v1-Info.plist";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera to start the exercise";
+				INFOPLIST_KEY_CFBundleDisplayName = Olimpo;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture the ball's location.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

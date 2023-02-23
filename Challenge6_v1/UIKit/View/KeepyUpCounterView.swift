@@ -22,7 +22,7 @@ class KeepyUpCounterView: UIView {
     
     var pointCounterView: UILabel = {
         let amountOfKeepyUps = UILabel()
-        amountOfKeepyUps.font = UIFont.preferredFont(forTextStyle: .title1, compatibleWith: UITraitCollection(legibilityWeight: .bold))
+        amountOfKeepyUps.font = UIFont.getRoundedFont(size: 28, weight: .semibold)
         //        amountOfKeepyUps.font = UIFont.systemFont(ofSize: 15)
         amountOfKeepyUps.layer.masksToBounds = true
         amountOfKeepyUps.backgroundColor = UIColor.whiteCircle

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class RoundedLabelView {
-    static func create(name: String, textColor: UIColor = .black, backgroundColor: UIColor = UIColor.white.withAlphaComponent(0.5), textAlignment: NSTextAlignment = .center) -> UILabel {
+    static func create(name: String, textColor: UIColor = .black, backgroundColor: UIColor = UIColor.white.withAlphaComponent(0.5), textAlignment: NSTextAlignment = .center, fontSize: CGFloat = 12) -> UILabel {
         let roundedLabel:UILabel = {
             let roundedLabel = UILabel()
             roundedLabel.layer.cornerRadius = 20
@@ -18,6 +18,7 @@ class RoundedLabelView {
             roundedLabel.text = name
             roundedLabel.textAlignment = textAlignment
             roundedLabel.textColor = textColor
+            roundedLabel.font = UIFont.systemFont(ofSize: fontSize)
             roundedLabel.translatesAutoresizingMaskIntoConstraints = false
             return roundedLabel
         }()
