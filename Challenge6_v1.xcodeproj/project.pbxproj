@@ -576,7 +576,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Challenge6-v1-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Olimpo;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera to start the exercise";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture the ball's location.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -610,7 +610,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Challenge6-v1-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Olimpo;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera to start the exercise";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture the ball's location.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
