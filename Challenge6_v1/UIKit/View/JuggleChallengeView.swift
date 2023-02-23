@@ -11,8 +11,8 @@ import UIKit
 class JuggleChallengeView: UIView {
     
     let cameraSwitch = CameraSwitchView()
-    let cameraFeedView = CameraFeedView()
-    let visionDetectionView = VisionDetectionView()
+    let cameraFeedView = CameraFeedView(frame: UIScreen.main.bounds)
+    let visionDetectionView = VisionDetectionView(frame: UIScreen.main.bounds)
     let bouncyBallView = BouncyBallView()
     let missingBallView = MissingBallView()
     let findingBallView = FindingBallView()
@@ -20,6 +20,28 @@ class JuggleChallengeView: UIView {
     
     func fixBufferSize() {
         visionDetectionView.bufferSize = cameraFeedView.bufferSize
+    }
+    
+    func setupVisionCamera() {
+        cameraFeedView.setupAVCapture()
+       
+        //        visionDetectionView.setupAVCapture()
+        // setup Vision parts
+
+                
+                // start the capture
+        cameraFeedView.startCaptureSession()
+        fixBufferSize()
+        visionDetectionView.setupAVCapture()
+       
+        //        visionDetectionView.setupAVCapture()
+        // setup Vision parts
+        visionDetectionView.setupLayers()
+        visionDetectionView.updateLayerGeometry()
+        print(visionDetectionView.setupVision() ?? "no error")
+                // start the capture
+        visionDetectionView.startCaptureSession()
+        
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -36,10 +58,7 @@ class JuggleChallengeView: UIView {
         addSubview(findingBallView)
         addSubview(foundBallView)
         addSubview(cameraSwitch)
-        
-        visionDetectionView.translatesAutoresizingMaskIntoConstraints = false
-        visionDetectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        visionDetectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        setupVisionCamera()
         fixBufferSize()
         foundBallView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         foundBallView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true

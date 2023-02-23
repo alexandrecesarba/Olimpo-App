@@ -20,17 +20,6 @@ class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     var videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
     var rootLayer: CALayer! = nil
     
-    override func layoutSubviews() {
-        setupAVCapture()
-       
-        //        visionDetectionView.setupAVCapture()
-        // setup Vision parts
-
-                
-                // start the capture
-        startCaptureSession()
-    }
-    
     func setupAVCapture() {
         var deviceInput: AVCaptureDeviceInput!
       

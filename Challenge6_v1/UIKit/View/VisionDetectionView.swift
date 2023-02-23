@@ -30,17 +30,6 @@ class VisionDetectionView: CameraFeedView {
 //    }
 //
     
-    override func layoutSubviews() {
-        setupAVCapture()
-       
-        //        visionDetectionView.setupAVCapture()
-        // setup Vision parts
-        setupLayers()
-        updateLayerGeometry()
-        print(setupVision() ?? "no error")
-                // start the capture
-        startCaptureSession()
-    }
     
     @discardableResult
     func setupVision() -> NSError? {
