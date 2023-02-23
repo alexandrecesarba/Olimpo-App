@@ -27,4 +27,9 @@ struct JuggleChallengeModel {
     /// Last position of the point counter. Used in vibration calculations.
     var pointCounterLastPosition: CGPoint = .zero
     
+    ///  Indicates wether the ball is making contact with the floor or not
+    var isTouchingFloor: Bool
+    
+    var trace: [CGFloat] = [CGFloat(0),CGFloat(0),CGFloat(0),CGFloat(0)]
+    
 }

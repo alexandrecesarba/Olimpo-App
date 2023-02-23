@@ -33,7 +33,8 @@ class VisionDetectionView: CameraFeedView {
     func setupVision() -> NSError? {
         // Setup Vision parts
         let error: NSError! = nil
-        guard let modelURL = Bundle.main.url(forResource: "Model", withExtension: "mlmodelc") else {
+        // Esolhe o modelo a ser utilizado
+        guard let modelURL = Bundle.main.url(forResource: "JugglingDetection_100_training", withExtension: "mlmodelc") else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
         do {
@@ -73,7 +74,11 @@ class VisionDetectionView: CameraFeedView {
         let normalizedBoundingBox = biggestObject.boundingBox
         let objectBounds = VNImageRectForNormalizedRect(normalizedBoundingBox, Int(bufferSize.width), Int(bufferSize.height))
         self.delegate?.updateDirectionStatus(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, confidence: CGFloat(biggestObject.confidence))
-        
+        if objectBounds.area > 1 {
+            self.delegate?.isTouchingFloor(objectVerticalSize: objectBounds.height, currentHeight: objectBounds.midX, floorLevel: CGFloat(500))
+
+        }
+
         let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, color: .greenCircle)
 //        if cameraPosition == .front {
 //            shapeLayer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0);

@@ -26,6 +26,8 @@
 		069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 069151E32993348E0088F135 /* BallBouncingScene.sks */; };
 		069151E629934CE20088F135 /* BallBouncingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E529934CE20088F135 /* BallBouncingView.swift */; };
 		069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151F329956DC40088F135 /* CameraSwitchView.swift */; };
+		55AA1DB9299C154E0091729C /* JugglingDetection_100_training.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55AA1DB8299C154E0091729C /* JugglingDetection_100_training.mlmodel */; };
+		55AA1DBF299C29C60091729C /* FloorLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA1DBE299C29C60091729C /* FloorLineView.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -78,6 +80,8 @@
 		069151E32993348E0088F135 /* BallBouncingScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallBouncingScene.sks; sourceTree = "<group>"; };
 		069151E529934CE20088F135 /* BallBouncingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallBouncingView.swift; sourceTree = "<group>"; };
 		069151F329956DC40088F135 /* CameraSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSwitchView.swift; sourceTree = "<group>"; };
+		55AA1DB8299C154E0091729C /* JugglingDetection_100_training.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = JugglingDetection_100_training.mlmodel; sourceTree = "<group>"; };
+		55AA1DBE299C29C60091729C /* FloorLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorLineView.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				069151E0299330CC0088F135 /* BallBouncingScene.swift */,
 				069151E529934CE20088F135 /* BallBouncingView.swift */,
 				064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */,
+				55AA1DBE299C29C60091729C /* FloorLineView.swift */,
 				064E7B56298DEE70007BA722 /* RoundedLabelView.swift */,
 				064E7B58298DF0A5007BA722 /* ResetButtonView.swift */,
 				97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */,
@@ -292,6 +297,7 @@
 		97EE2A862999527D0097A723 /* ML Models */ = {
 			isa = PBXGroup;
 			children = (
+				55AA1DB8299C154E0091729C /* JugglingDetection_100_training.mlmodel */,
 				97EE2A8C299ABC2E0097A723 /* Model_utilizado.mlmodel */,
 				97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */,
 				97EE2A8A299ABC290097A723 /* Model.mlmodel */,
@@ -407,6 +413,7 @@
 				972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */,
 				97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */,
 				97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */,
+				55AA1DB9299C154E0091729C /* JugglingDetection_100_training.mlmodel in Sources */,
 				972F1490298712F9002087AF /* CurrentTab.swift in Sources */,
 				97A7A81D298ADBF900BA92A2 /* Model2.mlmodel in Sources */,
 				972F14842985FE3B002087AF /* ChallengeView.swift in Sources */,
@@ -416,6 +423,7 @@
 				97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */,
 				064E7B61298E008B007BA722 /* CameraFeedView.swift in Sources */,
 				064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */,
+				55AA1DBF299C29C60091729C /* FloorLineView.swift in Sources */,
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 				97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */,
 				97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */,

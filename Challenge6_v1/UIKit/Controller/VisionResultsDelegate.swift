@@ -11,4 +11,5 @@ import Foundation
 protocol VisionResultsDelegate: AnyObject {
     func updateStatusView (_ amountOfResults: Int)
     func updateDirectionStatus (objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat)
+    func isTouchingFloor (objectVerticalSize: CGFloat, currentHeight: CGFloat, floorLevel: CGFloat)
 }
