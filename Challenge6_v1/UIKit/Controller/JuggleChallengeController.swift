@@ -168,33 +168,38 @@ extension JuggleChallengeController: VisionResultsDelegate {
     }
     
     func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
+        updateUsingHalfBall(objectVerticalSize: objectVerticalSize, currentHeight: currentHeight, confidence: confidence)
+    }
+    
+    func updateUsingHalfBall(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
         
-        let ballIsFound = self.model.ballTrackingStatus == .found
+            
+            let ballIsFound = self.model.ballTrackingStatus == .found
+            
+            guard ballIsFound else {return}
+            
+            let minimumConfidence = 0.96
+            
+            let threshold = objectVerticalSize/2
+            
+            let goingUp = (currentHeight - self.model.lastHeight) < -threshold
+            let goingDown = (currentHeight - self.model.lastHeight) > threshold
+            
+            let startingDirection: Direction = self.model.direction
+            
+        if startingDirection == .stopped {
+            self.model.direction = .downwards
+        }
         
-        guard ballIsFound else {return}
         
-        let minimumConfidence = 0.96
-        
-        let threshold = objectVerticalSize/2
-        
-        let goingUp = (currentHeight - self.model.lastHeight) < -threshold
-        let goingDown = (currentHeight - self.model.lastHeight) > threshold
-        
-        
-        if confidence > minimumConfidence {
-            switch self.model.direction {
-            case .upwards:
-                if goingDown {
-                        self.model.direction = .downwards
-                    }
-            case .downwards:
-                if goingUp {
-                    self.model.direction = .upwards
-                    addScore()
-                    
-                }
-            case .stopped:
-                currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+        else if confidence > minimumConfidence{
+            
+            if goingDown {
+                self.model.direction = .downwards
+            }
+            
+            else if goingUp {
+                self.model.direction = .upwards
             }
             
             self.juggleChallengeView.foundBallView.directionView.text = self.model.direction.rawValue
@@ -202,7 +207,13 @@ extension JuggleChallengeController: VisionResultsDelegate {
             if goingUp || goingDown {
                 setLastHeight(currentHeight)
             }
+            
+            if self.model.direction == .upwards && startingDirection == .downwards {
+                addScore()
+            }
+            
         }
+        
     }
     
     func updateStatusView(_ amountOfResults: Int) {
