@@ -41,7 +41,7 @@ class EventMessenger: ObservableObject {
     /// Array of scores from the user
     public var scoreArray: [Int] {
         get {
-            return UserDefaults.standard.object(forKey: "scoreArray") as! [Int]
+            return UserDefaults.standard.object(forKey: "scoreArray") as? [Int] ?? []
         }
 
         set {
