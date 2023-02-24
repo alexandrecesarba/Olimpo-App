@@ -167,8 +167,44 @@ extension JuggleChallengeController: VisionResultsDelegate {
         setLastHeight(currentHeight)
     }
     
+    
+    
     func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
         updateUsingHalfBall(objectVerticalSize: objectVerticalSize, currentHeight: currentHeight, confidence: confidence)
+    }
+    
+    func updateGameleira(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
+        
+        let ballIsFound = self.model.ballTrackingStatus == .found
+        
+        guard ballIsFound else {return}
+        
+        let minimumConfidence = 0.8
+        
+        self.model.trace.append(currentHeight)
+        self.model.trace.remove(at: 0)
+        
+        
+        switch self.model.direction {
+        case .upwards:
+            if self.model.trace[0] < self.model.trace[1] && self.model.trace[1] < self.model.trace[2] && self.model.trace[2] < self.model.trace[3]{
+                self.model.direction = .downwards
+            }
+        case .downwards:
+            if self.model.trace[0] > self.model.trace[1] && self.model.trace[1] > self.model.trace[2] && self.model.trace[2] > self.model.trace[3] {
+                self.model.direction = .upwards
+                addScore()
+                
+            }
+        case .stopped:
+            currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+        }
+        
+        self.juggleChallengeView.foundBallView.directionView.text = self.model.direction.rawValue
+        
+        //            if goingUp || goingDown {
+        //                setLastHeight(currentHeight)
+        //            }
     }
     
     func updateUsingHalfBall(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {

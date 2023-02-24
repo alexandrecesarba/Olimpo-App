@@ -28,5 +28,11 @@ struct JuggleChallengeModel {
     /// Last position of the point counter. Used in vibration calculations.
     var pointCounterLastPosition: CGPoint = .zero
     
+    var trace: [CGFloat] = [CGFloat(0),CGFloat(0),CGFloat(0),CGFloat(0)]
+
+  
+
+
+
     
 }
