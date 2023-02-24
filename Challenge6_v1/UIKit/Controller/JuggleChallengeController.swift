@@ -13,6 +13,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
     var model = JuggleChallengeModel.shared
     let juggleChallengeView = JuggleChallengeView()
+    let swiftUI_View = UIHostingController(rootView: ContentView())
 
     override func loadView() {
         super.loadView()
@@ -78,7 +79,18 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func backButtonPressed() {
-        //MARK: BACK BUTTON ACTION GOES HERE
+        //MARK: Check frame rate drop
+        let returnSwiftUIView = swiftUI_View
+//        returnSwiftUIView.modalPresentationStyle = .fullScreen
+//        returnSwiftUIView.modalTransitionStyle = .flipHorizontal
+//        self.present(returnSwiftUIView, animated: true)
+        returnSwiftUIView.view.window?.becomeKey()
+        view.window?.rootViewController = returnSwiftUIView
+        view.window?.makeKeyAndVisible()
+
+
+        EventMessenger.shared.saveLastScore()
+        EventMessenger.shared.saveHighScore()
     }
     
     @objc func cameraSwitchPressed() {
@@ -122,6 +134,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         
         keepyUpView.center = centerPoint
     }
+
     
     @objc func draggedView(_ sender:UIPanGestureRecognizer){
         let pointCounter = sender.view! as! KeepyUpCounterView

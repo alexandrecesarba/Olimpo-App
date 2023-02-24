@@ -91,7 +91,7 @@ struct ChallengeView: View {
             ForEach(challenge) { item in
                 if item.opacity == 1{
                     JugglingExplanationView(challenge: $challenge[0])
-                        .environmentObject(self.notifier)
+        
                 }
 
 

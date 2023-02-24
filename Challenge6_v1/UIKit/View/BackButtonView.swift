@@ -7,11 +7,14 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class BackButtonView: UIView {
     
     let backImage = UIImage(systemName: "chevron.left")!
     let backButton = UIButton(type: .custom)
+    let contentView = UIHostingController(rootView: ContentView())
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +40,7 @@ class BackButtonView: UIView {
 //      backButtonon.backgroundColor = .red
         backButton.imageView?.contentMode = .scaleAspectFit
         backButton.setImage(backImage, for: .normal)
+       
     }
     
     func backButtonConstraints() {
@@ -45,5 +49,7 @@ class BackButtonView: UIView {
         backButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         backButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
+
+
 }
 

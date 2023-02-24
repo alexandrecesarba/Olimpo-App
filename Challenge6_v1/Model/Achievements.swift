@@ -12,7 +12,9 @@ class VipAchievement: Identifiable{
 
 
 
-    static var all = [VipAchievement(name: "Common", badge: "stamp", goal: 10, completed: false), VipAchievement(name: "Epic", badge: "stamp", goal: 50, completed: false), VipAchievement(name: "Legend", badge: "stamp", goal: 100, completed: false)]
+    static var firstLine = [VipAchievement(name: "NOVATO", badge: "stamp", goal: 5, completed: false), VipAchievement(name: "VALENTE", badge: "stamp", goal: 10, completed: false), VipAchievement(name: "CRAQUE", badge: "stamp", goal: 25, completed: false)]
+
+    static var secondLine = [VipAchievement(name: "FENÔMENO", badge: "stamp", goal: 50, completed: false), VipAchievement(name: "REI", badge: "stamp", goal: 100, completed: false)]
 
     var id = UUID()
     var name: String
