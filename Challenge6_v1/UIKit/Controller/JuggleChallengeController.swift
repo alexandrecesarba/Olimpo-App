@@ -25,6 +25,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewDidLoad() {
+        self.juggleChallengeView.backButtonView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         self.juggleChallengeView.foundBallView.resetButtonView.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         self.juggleChallengeView.cameraSwitch.button.addTarget(self, action: #selector(cameraSwitchPressed), for: .touchUpInside)
         self.juggleChallengeView.findingBallView.progressBarView.setMaximumValue(self.model.framesTarget)
@@ -76,9 +77,12 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    @objc func backButtonPressed() {
+        //MARK: BACK BUTTON ACTION GOES HERE
+    }
+    
     @objc func cameraSwitchPressed() {
         self.juggleChallengeView.visionDetectionView.switchCameraTapped()
-        print("tapped")
     }
     
     @objc func resetButtonPressed() {

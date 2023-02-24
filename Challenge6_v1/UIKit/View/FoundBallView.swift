@@ -32,14 +32,12 @@ class FoundBallView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        for view in views {
-            addSubview(view)
-        }
+        addSubview(userGoalView)
         addSubview(keepyUpCounterView)
         
         enableConstraints()
-        directionViewConstraints()
-        resetButtonConstraints()
+//        directionViewConstraints()
+//        resetButtonConstraints()
         userGoalViewConstraints()
         self.backgroundColor = .clear
     }

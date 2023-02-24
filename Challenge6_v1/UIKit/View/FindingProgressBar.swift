@@ -15,7 +15,7 @@ class FindingProgressBar: UIView {
     private let foregroundBar = Bar(frame: .zero, cornerRadius: 18)
     
     /// Size of the bar. Goes from 0.0 to 1.0
-    let size: CGFloat = 0.9
+    let size: CGFloat = 0.8
     
     var maximumValue:CGFloat = 0
     

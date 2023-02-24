@@ -31,6 +31,7 @@
 		069151E629934CE20088F135 /* MissingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151E529934CE20088F135 /* MissingBallView.swift */; };
 		069151F429956DC40088F135 /* CameraSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069151F329956DC40088F135 /* CameraSwitchView.swift */; };
 		06E80D5729A43CEE00F26E14 /* FoundBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E80D5629A43CEE00F26E14 /* FoundBallView.swift */; };
+		06E80D5929A804A100F26E14 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E80D5829A804A100F26E14 /* BackButtonView.swift */; };
 		972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146A2985EADE002087AF /* Challenge6_v1App.swift */; };
 		972F146D2985EADE002087AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F146C2985EADE002087AF /* ContentView.swift */; };
 		972F146F2985EAE1002087AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972F146E2985EAE1002087AF /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		069151E529934CE20088F135 /* MissingBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingBallView.swift; sourceTree = "<group>"; };
 		069151F329956DC40088F135 /* CameraSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSwitchView.swift; sourceTree = "<group>"; };
 		06E80D5629A43CEE00F26E14 /* FoundBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundBallView.swift; sourceTree = "<group>"; };
+		06E80D5829A804A100F26E14 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		972F14672985EADE002087AF /* Challenge6_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge6_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972F146A2985EADE002087AF /* Challenge6_v1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge6_v1App.swift; sourceTree = "<group>"; };
 		972F146C2985EADE002087AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */,
 				066BE237299EAC7B00D9195F /* UserGoalView.swift */,
 				066BE23B299FF40300D9195F /* CheckmarkView.swift */,
+				06E80D5829A804A100F26E14 /* BackButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
 				062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */,
+				06E80D5929A804A100F26E14 /* BackButtonView.swift in Sources */,
 				97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
