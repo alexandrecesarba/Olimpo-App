@@ -7,11 +7,82 @@
 
 import SwiftUI
 
+
 struct TrophyView: View {
+
+    @State var vipAchievement = VipAchievement.all
+    @State private var completed = false
+
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+        ZStack {
+            Color.theme.background
+
+            VStack{
+                selectedActivity
+
+                achievements
+
+                Spacer()
+            }
+            .padding(.top, 80)
+        }
+        .ignoresSafeArea()
+    }
+
+
+    var selectedActivity: some View {
+        HStack{
+            // MARK: Ajeitar para todas as atividades, não apenas juggling
+            VStack{
+                Text("Juggling")
+                    .font(.title)
+                    .foregroundColor(.primary)
+                    .fontWeight(.regular)
+                    .italic()
+                Text("Soccer / Football")
+                    .foregroundColor(Color.theme.gray)
+                    .fontWeight(.light)
+                    .padding(.trailing, -20)
+
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+
+    }
+
+    var achievements: some View {
+        HStack{
+
+
+            ForEach(vipAchievement) {
+                item in
+                VStack{
+                        Image(item.badge)
+                            .resizable()
+                            .scaledToFit()
+                            .overlay {
+                                Text("\(item.goal)")
+                                    .padding()
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black)
+                                }
+                    Text(item.name)
+                }
+                .opacity(item.checkCompletion(scores: EventMessenger.shared.scoreArray) ? 1.0 : 0.2)
+                .padding()
+
+
+            }
+        }
+
     }
 }
+
+
+
 
 struct TrophyView_Previews: PreviewProvider {
     static var previews: some View {

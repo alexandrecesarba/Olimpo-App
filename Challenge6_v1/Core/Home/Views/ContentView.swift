@@ -73,7 +73,7 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
     var title: String {
         switch self {
         case .trophy:
-            return "Trophy"
+            return "Achievements"
         case .challenges:
             return "Challenges"
         case .person:
