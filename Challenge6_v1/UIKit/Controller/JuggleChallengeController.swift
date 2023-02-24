@@ -170,7 +170,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
     
     
     func updateDirectionStatus(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
-        updateUsingHalfBall(objectVerticalSize: objectVerticalSize, currentHeight: currentHeight, confidence: confidence)
+        updateGameleira(objectVerticalSize: objectVerticalSize, currentHeight: currentHeight, confidence: confidence)
     }
     
     func updateGameleira(objectVerticalSize: CGFloat, currentHeight: CGFloat, confidence: CGFloat) {
