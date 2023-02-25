@@ -175,7 +175,7 @@ struct JugglingExplanationView: View {
                     }
 
                 VStack(spacing: 20){
-                    Text("Best Score:")
+                    Text("Best Score: ")
                         .fontWeight(.regular) +
                     Text("\(EventMessenger.shared.highScore)")
                         .fontWeight(.heavy)

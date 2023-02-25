@@ -192,19 +192,25 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         guard ballIsFound else {return}
         
-        let minimumConfidence = 0.8
-        
         self.model.trace.append(currentHeight)
         self.model.trace.remove(at: 0)
         
+        let maxTraceDistance = abs(self.model.trace[0] - self.model.trace[3])
+        
+        guard (maxTraceDistance > objectVerticalSize/4) else {return}
+                
+        
+        let goingDown = self.model.trace[0] < self.model.trace[1] && self.model.trace[1] < self.model.trace[2] && self.model.trace[2] < self.model.trace[3]
+        
+        let goingUp = self.model.trace[0] > self.model.trace[1] && self.model.trace[1] > self.model.trace[2] && self.model.trace[2] > self.model.trace[3]
         
         switch self.model.direction {
         case .upwards:
-            if self.model.trace[0] < self.model.trace[1] && self.model.trace[1] < self.model.trace[2] && self.model.trace[2] < self.model.trace[3]{
+            if goingDown {
                 self.model.direction = .downwards
             }
         case .downwards:
-            if self.model.trace[0] > self.model.trace[1] && self.model.trace[1] > self.model.trace[2] && self.model.trace[2] > self.model.trace[3] {
+            if goingUp {
                 self.model.direction = .upwards
                 addScore()
                 
