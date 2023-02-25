@@ -11,6 +11,7 @@
 		0606D5A0299AB935009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59F299AB935009F126E /* .gitignore */; };
 		062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC058299C14940036AEA2 /* BouncyBallView.swift */; };
 		062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */; };
+		063960CA29AA6F530043C07B /* PedroDemoVideoCut.mov in Resources */ = {isa = PBXBuildFile; fileRef = 063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */; };
 		064E7B55298DEE3B007BA722 /* JuggleChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */; };
 		064E7B57298DEE70007BA722 /* RoundedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B56298DEE70007BA722 /* RoundedLabelView.swift */; };
 		064E7B59298DF0A5007BA722 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E7B58298DF0A5007BA722 /* ResetButtonView.swift */; };
@@ -69,6 +70,7 @@
 		0606D59F299AB935009F126E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		062EC058299C14940036AEA2 /* BouncyBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyBallView.swift; sourceTree = "<group>"; };
 		062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingProgressBar.swift; sourceTree = "<group>"; };
+		063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = PedroDemoVideoCut.mov; sourceTree = "<group>"; };
 		064E7B54298DEE3B007BA722 /* JuggleChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuggleChallengeView.swift; sourceTree = "<group>"; };
 		064E7B56298DEE70007BA722 /* RoundedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabelView.swift; sourceTree = "<group>"; };
 		064E7B58298DF0A5007BA722 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				97A7A7FA2989B6B400BA92A2 /* DiogoVideo.mov */,
+				063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */,
 				972F14812985ECB6002087AF /* TabBar.swift */,
 				97A7A82B298BDE0000BA92A2 /* LoadingView.swift */,
 			);
@@ -388,6 +391,7 @@
 			files = (
 				0606D5A0299AB935009F126E /* .gitignore in Resources */,
 				972F14722985EAE1002087AF /* Preview Assets.xcassets in Resources */,
+				063960CA29AA6F530043C07B /* PedroDemoVideoCut.mov in Resources */,
 				0606D59C299AB1B8009F126E /* .gitignore in Resources */,
 				972F146F2985EAE1002087AF /* Assets.xcassets in Resources */,
 				97A7A7FB2989B6B400BA92A2 /* DiogoVideo.mov in Resources */,
@@ -507,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -561,7 +565,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -577,9 +581,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGreen;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge6_v1/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = R5TN67Z99H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Challenge6-v1-Info.plist";
@@ -611,9 +615,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGreen;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge6_v1/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = R5TN67Z99H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Challenge6-v1-Info.plist";

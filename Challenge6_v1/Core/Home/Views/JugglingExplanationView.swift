@@ -304,14 +304,14 @@ class LoopingPlayerUIView: UIView {
         super.init(frame: frame)
 
         // Load the resource
-        let fileUrl = Bundle.main.url(forResource: "DiogoVideo", withExtension: "mov")!
+        let fileUrl = Bundle.main.url(forResource: "PedroDemoVideoCut", withExtension: "mov")!
         let asset = AVAsset(url: fileUrl)
         let item = AVPlayerItem(asset: asset)
 
         // Setup the player
         let player = AVQueuePlayer()
         playerLayer.player = player
-        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.videoGravity = .resizeAspect
         layer.addSublayer(playerLayer)
 
         // Create a new player looper with the queue player and template item
@@ -323,6 +323,6 @@ class LoopingPlayerUIView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        playerLayer.frame = bounds
+        playerLayer.frame = frame
     }
 }
