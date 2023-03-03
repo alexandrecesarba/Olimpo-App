@@ -44,13 +44,16 @@
 		972F148C29860627002087AF /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148B29860627002087AF /* PersonView.swift */; };
 		972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148D298608A1002087AF /* JugglingExplanationView.swift */; };
 		972F1490298712F9002087AF /* CurrentTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F148F298712F9002087AF /* CurrentTab.swift */; };
+		978CAC4329AD5EFA00E181C6 /* AuthenticatePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978CAC4229AD5EFA00E181C6 /* AuthenticatePlayer.swift */; };
+		978CAC4529AD5FC000E181C6 /* AuthenticatePlayer_Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978CAC4429AD5FC000E181C6 /* AuthenticatePlayer_Representable.swift */; };
+		978CAC4729AE727300E181C6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978CAC4629AE727200E181C6 /* WelcomeView.swift */; };
+		978CAC4F29AE910000E181C6 /* ProfileGameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978CAC4E29AE910000E181C6 /* ProfileGameCenter.swift */; };
+		978CAC5229AE92CF00E181C6 /* ProfileGameCenter_Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978CAC5129AE92CF00E181C6 /* ProfileGameCenter_Representable.swift */; };
+		978CAC5429AE9B6800E181C6 /* Challenge6-v1-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 978CAC5329AE9B6800E181C6 /* Challenge6-v1-Info.plist */; };
 		97A7A7FB2989B6B400BA92A2 /* DiogoVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 97A7A7FA2989B6B400BA92A2 /* DiogoVideo.mov */; };
-		97A7A80D298ADAE000BA92A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A7A7FF298ADADF00BA92A2 /* Main.storyboard */; };
 		97A7A80F298ADAE000BA92A2 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A801298ADADF00BA92A2 /* Direction.swift */; };
-		97A7A813298ADAE000BA92A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A805298ADADF00BA92A2 /* AppDelegate.swift */; };
 		97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A806298ADADF00BA92A2 /* Extensions.swift */; };
 		97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */; };
-		97A7A819298ADAE000BA92A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */; };
 		97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */; };
 		97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */; };
 		97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */; };
@@ -103,18 +106,21 @@
 		972F148B29860627002087AF /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		972F148D298608A1002087AF /* JugglingExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JugglingExplanationView.swift; sourceTree = "<group>"; };
 		972F148F298712F9002087AF /* CurrentTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTab.swift; sourceTree = "<group>"; };
+		978CAC4029AD2E5D00E181C6 /* Challenge6_v1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Challenge6_v1.entitlements; sourceTree = "<group>"; };
+		978CAC4229AD5EFA00E181C6 /* AuthenticatePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatePlayer.swift; sourceTree = "<group>"; };
+		978CAC4429AD5FC000E181C6 /* AuthenticatePlayer_Representable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatePlayer_Representable.swift; sourceTree = "<group>"; };
+		978CAC4629AE727200E181C6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		978CAC4E29AE910000E181C6 /* ProfileGameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGameCenter.swift; sourceTree = "<group>"; };
+		978CAC5129AE92CF00E181C6 /* ProfileGameCenter_Representable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGameCenter_Representable.swift; sourceTree = "<group>"; };
+		978CAC5329AE9B6800E181C6 /* Challenge6-v1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Challenge6-v1-Info.plist"; sourceTree = "<group>"; };
 		97A7A7FA2989B6B400BA92A2 /* DiogoVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DiogoVideo.mov; sourceTree = "<group>"; };
-		97A7A7FF298ADADF00BA92A2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		97A7A801298ADADF00BA92A2 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
-		97A7A805298ADADF00BA92A2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97A7A806298ADADF00BA92A2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		97A7A807298ADADF00BA92A2 /* KeepyUpCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepyUpCounterView.swift; sourceTree = "<group>"; };
-		97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model_Original.mlmodel; sourceTree = "<group>"; };
 		97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YoloConvertedNoCricketReal.mlmodel; sourceTree = "<group>"; };
 		97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BallGams.mlmodel; sourceTree = "<group>"; };
 		97A7A824298AF25500BA92A2 /* CurrentExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentExerciseView.swift; sourceTree = "<group>"; };
-		97A7A826298AF62D00BA92A2 /* Challenge6-v1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Challenge6-v1-Info.plist"; sourceTree = SOURCE_ROOT; };
 		97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		97A7A829298B0C9E00BA92A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		97A7A82B298BDE0000BA92A2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -205,7 +211,8 @@
 		972F14692985EADE002087AF /* Challenge6_v1 */ = {
 			isa = PBXGroup;
 			children = (
-				97A7A826298AF62D00BA92A2 /* Challenge6-v1-Info.plist */,
+				978CAC4029AD2E5D00E181C6 /* Challenge6_v1.entitlements */,
+				978CAC5329AE9B6800E181C6 /* Challenge6-v1-Info.plist */,
 				97A7A81A298ADAEA00BA92A2 /* UIKit */,
 				972F147E2985EB91002087AF /* Extension */,
 				972F14792985EB2F002087AF /* Core */,
@@ -273,6 +280,7 @@
 		972F147D2985EB6B002087AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				978CAC4629AE727200E181C6 /* WelcomeView.swift */,
 				97EE2A87299952BB0097A723 /* Test */,
 				972F146C2985EADE002087AF /* ContentView.swift */,
 				972F14832985FE3B002087AF /* ChallengeView.swift */,
@@ -292,16 +300,41 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		978CAC4129AD5EEA00E181C6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				978CAC4229AD5EFA00E181C6 /* AuthenticatePlayer.swift */,
+				978CAC4429AD5FC000E181C6 /* AuthenticatePlayer_Representable.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		978CAC4D29AE90B900E181C6 /* GameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				978CAC5029AE92BA00E181C6 /* Profile */,
+				978CAC4129AD5EEA00E181C6 /* Auth */,
+			);
+			path = GameCenter;
+			sourceTree = "<group>";
+		};
+		978CAC5029AE92BA00E181C6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				978CAC4E29AE910000E181C6 /* ProfileGameCenter.swift */,
+				978CAC5129AE92CF00E181C6 /* ProfileGameCenter_Representable.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		97A7A81A298ADAEA00BA92A2 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				978CAC4D29AE90B900E181C6 /* GameCenter */,
 				97EE2A862999527D0097A723 /* ML Models */,
 				064E7B53298DD28F007BA722 /* Controller */,
 				064E7B52298DD27F007BA722 /* View */,
 				064E7B51298DD26E007BA722 /* Model */,
-				97A7A805298ADADF00BA92A2 /* AppDelegate.swift */,
-				97A7A80B298ADAE000BA92A2 /* LaunchScreen.storyboard */,
-				97A7A7FF298ADADF00BA92A2 /* Main.storyboard */,
 				97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */,
 				97A7A829298B0C9E00BA92A2 /* ViewController.swift */,
 			);
@@ -391,9 +424,8 @@
 				0606D59C299AB1B8009F126E /* .gitignore in Resources */,
 				972F146F2985EAE1002087AF /* Assets.xcassets in Resources */,
 				97A7A7FB2989B6B400BA92A2 /* DiogoVideo.mov in Resources */,
-				97A7A819298ADAE000BA92A2 /* LaunchScreen.storyboard in Resources */,
+				978CAC5429AE9B6800E181C6 /* Challenge6-v1-Info.plist in Resources */,
 				069151E42993348E0088F135 /* BallBouncingScene.sks in Resources */,
-				97A7A80D298ADAE000BA92A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,12 +451,12 @@
 				97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
+				978CAC5229AE92CF00E181C6 /* ProfileGameCenter_Representable.swift in Sources */,
 				062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */,
 				06E80D5929A804A100F26E14 /* BackButtonView.swift in Sources */,
 				97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */,
 				97A7A825298AF25500BA92A2 /* CurrentExerciseView.swift in Sources */,
 				972F148C29860627002087AF /* PersonView.swift in Sources */,
-				97A7A813298ADAE000BA92A2 /* AppDelegate.swift in Sources */,
 				972F148E298608A1002087AF /* JugglingExplanationView.swift in Sources */,
 				97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */,
 				97A7A821298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel in Sources */,
@@ -435,6 +467,7 @@
 				97A7A823298ADC7B00BA92A2 /* BallGams.mlmodel in Sources */,
 				064E7B5D298DF989007BA722 /* BallStatusView.swift in Sources */,
 				066BE23C299FF40300D9195F /* CheckmarkView.swift in Sources */,
+				978CAC4329AD5EFA00E181C6 /* AuthenticatePlayer.swift in Sources */,
 				97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */,
 				064E7B61298E008B007BA722 /* CameraFeedView.swift in Sources */,
 				064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */,
@@ -448,7 +481,10 @@
 				069151E2299330CD0088F135 /* BallBouncingScene.swift in Sources */,
 				97A7A80F298ADAE000BA92A2 /* Direction.swift in Sources */,
 				064E7B65298E03D9007BA722 /* BallTrackingStatus.swift in Sources */,
+				978CAC4729AE727300E181C6 /* WelcomeView.swift in Sources */,
 				97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */,
+				978CAC4F29AE910000E181C6 /* ProfileGameCenter.swift in Sources */,
+				978CAC4529AD5FC000E181C6 /* AuthenticatePlayer_Representable.swift in Sources */,
 				064E7B5F298DFD31007BA722 /* JuggleChallengeController.swift in Sources */,
 				066001B229917CB700E82177 /* VisionResultsDelegate.swift in Sources */,
 			);
@@ -576,6 +612,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGreen;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Challenge6_v1/Challenge6_v1.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge6_v1/Preview Content\"";
@@ -587,15 +625,17 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture the ball's location.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "academy.les.inf.puc-rio.br.alexandre.Challenge6-v1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -610,6 +650,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGreen;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Challenge6_v1/Challenge6_v1.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge6_v1/Preview Content\"";
@@ -621,15 +663,17 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture the ball's location.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "academy.les.inf.puc-rio.br.alexandre.Challenge6-v1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

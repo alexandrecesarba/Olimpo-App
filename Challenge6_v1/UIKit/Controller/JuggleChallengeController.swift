@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import GameKit
 
 class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -91,6 +92,19 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
 
         EventMessenger.shared.saveLastScore()
         EventMessenger.shared.saveHighScore()
+        submitScore()
+    }
+
+    func submitScore(){
+        let score = GKScore(leaderboardIdentifier: "juggling")
+        score.value = Int64(EventMessenger.shared.lastScore)
+        GKScore.report([score]){
+            error in guard error == nil else{
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            print("Score sent!")
+        }
     }
     
     @objc func cameraSwitchPressed() {
@@ -98,13 +112,6 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func resetButtonPressed() {
-
-        // Save everything
-        EventMessenger.shared.saveHighScore()
-        EventMessenger.shared.saveLastScore()
-
-
-        EventMessenger.shared.pointsCounted = 0
 
         self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.gray)
         self.juggleChallengeView.foundBallView.keepyUpCounterView.pointCounterView.text = "0"

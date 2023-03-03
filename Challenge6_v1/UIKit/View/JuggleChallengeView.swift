@@ -62,6 +62,9 @@ class JuggleChallengeView: UIView {
         addSubview(backButtonView)
         setupVisionCamera()
         fixBufferSize()
+
+
+        // MARK: View constraints declaration
         foundBallView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         foundBallView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         findingBallView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true

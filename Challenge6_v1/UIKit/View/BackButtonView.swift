@@ -13,7 +13,6 @@ class BackButtonView: UIView {
     
     let backImage = UIImage(systemName: "chevron.left")!
     let backButton = UIButton(type: .custom)
-    let contentView = UIHostingController(rootView: ContentView())
 
     
     override init(frame: CGRect) {
