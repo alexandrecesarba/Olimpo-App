@@ -68,6 +68,7 @@ struct JugglingExplanationView: View {
             }
 
             .ignoresSafeArea(edges: .bottom)
+            .animation(.easeInOut, value: isLoading)
         }
 
 

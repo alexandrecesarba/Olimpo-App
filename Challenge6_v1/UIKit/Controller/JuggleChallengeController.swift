@@ -197,7 +197,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
         
         let maxTraceDistance = abs(self.model.trace[0] - self.model.trace[3])
         
-        guard (maxTraceDistance > objectVerticalSize/4) else {return}
+        guard (maxTraceDistance > objectVerticalSize/2) else {return}
                 
         
         let goingDown = self.model.trace[0] < self.model.trace[1] && self.model.trace[1] < self.model.trace[2] && self.model.trace[2] < self.model.trace[3]
