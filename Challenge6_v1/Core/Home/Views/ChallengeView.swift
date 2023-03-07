@@ -11,7 +11,7 @@ import SwiftUI
 struct ChallengeView: View {
 
     @State var challenge = Challenge.challengeData
-    @Binding var showContent:Bool
+    @Binding var showContent: Bool
     @EnvironmentObject var notifier: EventMessenger
     @State private var showingAlert = false
 

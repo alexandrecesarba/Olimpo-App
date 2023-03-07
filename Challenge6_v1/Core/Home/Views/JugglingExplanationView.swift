@@ -35,57 +35,50 @@ struct JugglingExplanationView: View {
     @EnvironmentObject var notifier: EventMessenger
 
     var body: some View {
-
-        if !returnScreen && !openCamera {
-            ZStack{
-                
-
-
-                if isLoading{
-                    ZStack{
-                        Color.theme.background
-                        LoadingView()
-//                        backButton
-//                            .padding(.top, 100)
-
-
+        
+        ZStack{
+            if !returnScreen && !openCamera {
+                ZStack{
+                    
+                    
+                    
+                   
+                        PlayerView()
+                        
+                        backButton
+                            .padding(.top, 100)
+                        
                         draggableExerciseView
-                    }
+                        
+                    
+                    
                 }
-
-                else {
-                    PlayerView()
-
-                    backButton
-                        .padding(.top, 100)
-
-                    draggableExerciseView
-
-                }
-
-            }     .onAppear{
-                startLoading()
+                
+                .ignoresSafeArea(edges: .bottom)
+                .animation(.easeInOut, value: isLoading)
+                
             }
-
-            .ignoresSafeArea(edges: .bottom)
-            .animation(.easeInOut, value: isLoading)
-        }
-
-
-
-        else{
-            if openCamera{
-                CurrentExerciseView()
-            }
-
+            
+            
+            
             else {
-                ContentView()
-
+                
+                if openCamera{
+                    CurrentExerciseView(isPresenting: $openCamera)
+                    
+                }
+                
+                else {
+                    ContentView()
+                    
+                }
             }
-        }
+        }.animation(.easeInOut, value: openCamera)
+        
 
 
     }
+    
 
     var draggableExerciseView: some View {
         exerciseView
@@ -261,12 +254,6 @@ struct JugglingExplanationView: View {
 
     }
 
-    private func startLoading() {
-        isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            isLoading = false
-        }
-    }
 }
 
 
@@ -292,11 +279,24 @@ struct PlayerView: UIViewRepresentable {
     }
 }
 
+class LoopingUIPlayerViewController: UIViewController {
+    let loopingPlayerUIView = LoopingPlayerUIView()
+    
+    override func loadView() {
+        self.view = loopingPlayerUIView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if loopingPlayerUIView.player.isPlaying == false {
+            loopingPlayerUIView.player.play()
+        }
+    }
+}
 
 class LoopingPlayerUIView: UIView {
     private let playerLayer = AVPlayerLayer()
     private var playerLooper: AVPlayerLooper?
-
+    let player = AVQueuePlayer()
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -310,7 +310,7 @@ class LoopingPlayerUIView: UIView {
         let item = AVPlayerItem(asset: asset)
 
         // Setup the player
-        let player = AVQueuePlayer()
+        
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspect
         layer.addSublayer(playerLayer)
@@ -325,5 +325,12 @@ class LoopingPlayerUIView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         playerLayer.frame = frame
+    }
+}
+
+extension AVPlayer{
+
+    var isPlaying: Bool{
+        return rate != 0 && error == nil
     }
 }

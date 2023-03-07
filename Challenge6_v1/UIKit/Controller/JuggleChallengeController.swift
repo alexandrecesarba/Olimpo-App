@@ -12,6 +12,12 @@ import GameKit
 
 class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
+    convenience init(isPresented: Binding<Bool>) {
+        self.init()
+        self.isPresented = isPresented
+    }
+    
+    var isPresented: Binding<Bool>?
     var model = JuggleChallengeModel.shared
     let juggleChallengeView = JuggleChallengeView()
     let swiftUI_View = UIHostingController(rootView: ContentView())
@@ -81,15 +87,14 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func backButtonPressed() {
         //MARK: Check frame rate drop
-        let returnSwiftUIView = swiftUI_View
-//        returnSwiftUIView.modalPresentationStyle = .fullScreen
-//        returnSwiftUIView.modalTransitionStyle = .flipHorizontal
-//        self.present(returnSwiftUIView, animated: true)
-        returnSwiftUIView.view.window?.becomeKey()
-        view.window?.rootViewController = returnSwiftUIView
-        view.window?.makeKeyAndVisible()
-
-
+        
+        withAnimation(.easeInOut){
+            self.isPresented?.wrappedValue = false
+        }
+           
+        
+        
+        
         EventMessenger.shared.saveLastScore()
         EventMessenger.shared.saveHighScore()
         submitScore()

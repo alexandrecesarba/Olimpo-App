@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CurrentExerciseView: View {
     
-    @State private var isLoading:Bool = true
+    @State private var isLoading:Bool = false
+    @Binding var isPresenting: Bool
     // Solution: Observable Object sent to UIKit
     // With that, we can use the same value in both frameworks (UIKit and SwiftUI)
     var body: some View {
@@ -23,41 +24,41 @@ struct CurrentExerciseView: View {
             }
 
             else {
-                ExerciseView()
+                ExerciseView(isPresentedUIKit: $isPresenting)
             }
         }
-        .onAppear{startLoading()}
         .ignoresSafeArea()
+       
     }
 
-    private func startLoading() {
-        isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            isLoading = false
+  
+    
+    
+    
+    
+    struct ExerciseView: UIViewControllerRepresentable {
+        @Binding var isPresentedUIKit: Bool
+        func makeUIViewController(context: Context) -> JuggleChallengeController {
+            return JuggleChallengeController(isPresented: $isPresentedUIKit)
         }
+
+        func updateUIViewController(_ uiViewController: JuggleChallengeController, context: Context) {
+
+        }
+
+        typealias UIViewControllerType = JuggleChallengeController
+
+
     }
 
 }
+//
+//
+//
+//struct CurrentExerciseView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        CurrentExerciseView()
+//    }
+//}
 
-
-
-struct CurrentExerciseView_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrentExerciseView()
-    }
-}
-
-struct ExerciseView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> JuggleChallengeController {
-        return JuggleChallengeController()
-    }
-
-    func updateUIViewController(_ uiViewController: JuggleChallengeController, context: Context) {
-
-    }
-
-    typealias UIViewControllerType = JuggleChallengeController
-
-
-}
 
