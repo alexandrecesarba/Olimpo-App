@@ -62,6 +62,11 @@ class EventMessenger: ObservableObject {
         }
     }
 
+    public func updateHighScore(){
+        self.highScore = self.pointsCounted
+    }
+    
+    
     /// Locally stores the last score
     public func saveLastScore(){
         self.lastScore = self.pointsCounted

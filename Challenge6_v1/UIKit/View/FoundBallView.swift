@@ -46,18 +46,18 @@ class FoundBallView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func enableConstraints() {
+    private func enableConstraints() {
         self.translatesAutoresizingMaskIntoConstraints = false
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    func keepyUpCounterViewConfiguration() {
+    private func keepyUpCounterViewConfiguration() {
         keepyUpCounterView.frame = CGRect(x: self.frame.midX - 70, y: self.frame.midY - 70, width: 140, height: 140)
     }
     
-    func directionViewConstraints() {
+    private func directionViewConstraints() {
         directionView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         directionView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         NSLayoutConstraint.activate([
@@ -66,7 +66,7 @@ class FoundBallView: UIView {
         ])
     }
     
-    func resetButtonConstraints() {
+    private func resetButtonConstraints() {
         resetButtonView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         resetButtonView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45).isActive = true
         NSLayoutConstraint.activate([
@@ -75,7 +75,7 @@ class FoundBallView: UIView {
         ])
     }
     
-    func userGoalViewConstraints() {
+    private func userGoalViewConstraints() {
         userGoalView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
         userGoalView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
         userGoalView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
@@ -88,4 +88,7 @@ class FoundBallView: UIView {
         self.userGoalView.setGoalValue(value)
     }
     
+    func setGoalText (_ value: String) {
+        self.userGoalView.goalNumberView.text = value
+    }
 }

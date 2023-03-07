@@ -20,7 +20,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
     var isPresented: Binding<Bool>?
     var model = JuggleChallengeModel.shared
     let juggleChallengeView = JuggleChallengeView()
-    let swiftUI_View = UIHostingController(rootView: ContentView())
+    var recordWasBeaten = false
 
     override func loadView() {
         super.loadView()
@@ -60,12 +60,22 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
     
     func addScore(){
         EventMessenger.shared.addScore()
-
         self.juggleChallengeView.foundBallView.keepyUpCounterView.bounceAnimation()
-        if EventMessenger.shared.pointsCounted == EventMessenger.shared.highScore {
-            self.juggleChallengeView.foundBallView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
-        }
         self.juggleChallengeView.foundBallView.keepyUpCounterView.setScore(score: EventMessenger.shared.pointsCounted)
+        updateHighScore()
+
+    }
+    
+    func updateHighScore() {
+        if EventMessenger.shared.pointsCounted >= EventMessenger.shared.highScore {
+            if !recordWasBeaten {
+                self.juggleChallengeView.foundBallView.keepyUpCounterView.showBackgroundCircle(color: .greenCircle)
+            }
+            recordWasBeaten = true
+            EventMessenger.shared.updateHighScore()
+            self.juggleChallengeView.foundBallView.setGoalText(String(EventMessenger.shared.highScore))
+        }
+       
     }
     
     func setLastHeight(_ lastHeight: CGFloat){
@@ -312,6 +322,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
             else {
                 self.model.framesWithBall = 0
                 self.model.ballTrackingStatus = .notFound
+                self.recordWasBeaten = false
                 self.juggleChallengeView.findingBallView.progressBarView.animateProgress(newValue: 0)
                 self.resetButtonPressed()
             }
@@ -348,6 +359,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
             
             if ballIsLost {
                 self.model.ballTrackingStatus = .notFound
+                self.recordWasBeaten = false
                 self.resetButtonPressed()
             }
         }
