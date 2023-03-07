@@ -131,9 +131,9 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
     }
     
     @objc func resetButtonPressed() {
-
         self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.gray)
         self.juggleChallengeView.foundBallView.keepyUpCounterView.pointCounterView.text = "0"
+        EventMessenger.shared.pointsCounted = 0
         self.juggleChallengeView.foundBallView.keepyUpCounterView.hideBackgroundCircle()
     }
     

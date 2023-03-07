@@ -35,7 +35,7 @@ class VisionDetectionView: CameraFeedView {
     func setupVision() -> NSError? {
         // Setup Vision parts
         let error: NSError! = nil
-        guard let modelURL = Bundle.main.url(forResource: "Model", withExtension: "mlmodelc") else {
+        guard let modelURL = Bundle.main.url(forResource: "PersonAndBall1200", withExtension: "mlmodelc") else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
         do {
@@ -63,12 +63,16 @@ class VisionDetectionView: CameraFeedView {
 
     
     
-    func drawVisionRequestResults(_ results: [Any]) {
+    func drawVisionRequestResults(_ results: [VNObservation]) {
         CATransaction.begin()
         //MARK: resetting all objects
         detectionOverlay.sublayers = nil
-        //        filterResults(results: results)
-        let biggestObject:VNRecognizedObjectObservation = getBiggestObject(results)
+        
+      
+//        [<VNClassificationObservation: 0x281bc2f40> C1F34A47-6726-4243-B6A1-D91DCF2ADF70 VNCoreMLRequestRevision1 confidence=0.998752 "ball", <VNClassificationObservation: 0x281bc3f00> B45AE649-0C6A-4F2C-8EA7-45E2015B9499 VNCoreMLRequestRevision1 confidence=0.001248 "person"]
+
+        let filteredArray = filterResults(results: results)
+        let biggestObject:VNRecognizedObjectObservation = getBiggestObject(filteredArray)
         //        if biggestObject.confidence > 0.96 {
         //                let averageFromArray = ballXCenterHistory.reduce(0 as CGFloat) { $0 + CGFloat($1) } / CGFloat(ballXCenterHistory.count)}
         
@@ -145,13 +149,17 @@ class VisionDetectionView: CameraFeedView {
         session.commitConfiguration()
     }
     
-    func filterResults(results: [Any]){
+    func filterResults(results: [VNObservation]) -> [VNRecognizedObjectObservation] {
         
-        for observation in results where observation is VNRecognizedObjectObservation{
+        var finalArray: [VNRecognizedObjectObservation] = []
+        
+        for observation in results where observation is VNRecognizedObjectObservation {
             let object = observation as! VNRecognizedObjectObservation
-            print(object.labels)
+            if ((object.labels.first?.identifier == "ball") && (object.labels.first!.confidence > 0.98)) {
+                finalArray.append(object)
+            }
         }
-        
+        return finalArray
     }
     
     

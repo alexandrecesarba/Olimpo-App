@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0606D59C299AB1B8009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59B299AB1B8009F126E /* .gitignore */; };
 		0606D5A0299AB935009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59F299AB935009F126E /* .gitignore */; };
+		062AD99229B73F1C004A4FB6 /* PersonAndBall800.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 062AD99129B73F1C004A4FB6 /* PersonAndBall800.mlmodel */; };
+		062AD99429B7C0BA004A4FB6 /* PersonAndBall1200.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 062AD99329B7C0B9004A4FB6 /* PersonAndBall1200.mlmodel */; };
 		062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC058299C14940036AEA2 /* BouncyBallView.swift */; };
 		062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */; };
 		063960CA29AA6F530043C07B /* PedroDemoVideoCut.mov in Resources */ = {isa = PBXBuildFile; fileRef = 063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */; };
@@ -71,6 +73,8 @@
 /* Begin PBXFileReference section */
 		0606D59B299AB1B8009F126E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0606D59F299AB935009F126E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		062AD99129B73F1C004A4FB6 /* PersonAndBall800.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PersonAndBall800.mlmodel; sourceTree = "<group>"; };
+		062AD99329B7C0B9004A4FB6 /* PersonAndBall1200.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PersonAndBall1200.mlmodel; sourceTree = "<group>"; };
 		062EC058299C14940036AEA2 /* BouncyBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyBallView.swift; sourceTree = "<group>"; };
 		062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingProgressBar.swift; sourceTree = "<group>"; };
 		063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = PedroDemoVideoCut.mov; sourceTree = "<group>"; };
@@ -349,6 +353,8 @@
 			children = (
 				97EE2A8C299ABC2E0097A723 /* Model_utilizado.mlmodel */,
 				97A7A81E298ADC6800BA92A2 /* Model_Original.mlmodel */,
+				062AD99129B73F1C004A4FB6 /* PersonAndBall800.mlmodel */,
+				062AD99329B7C0B9004A4FB6 /* PersonAndBall1200.mlmodel */,
 				97EE2A8A299ABC290097A723 /* Model.mlmodel */,
 				97A7A820298ADC7100BA92A2 /* YoloConvertedNoCricketReal.mlmodel */,
 				97A7A822298ADC7B00BA92A2 /* BallGams.mlmodel */,
@@ -450,9 +456,11 @@
 				97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */,
 				972F146B2985EADE002087AF /* Challenge6_v1App.swift in Sources */,
 				064E7B67298F0805007BA722 /* VisionDetectionView.swift in Sources */,
+				062AD99429B7C0BA004A4FB6 /* PersonAndBall1200.mlmodel in Sources */,
 				06E80D5729A43CEE00F26E14 /* FoundBallView.swift in Sources */,
 				972F14802985EBA5002087AF /* Color.swift in Sources */,
 				97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */,
+				062AD99229B73F1C004A4FB6 /* PersonAndBall800.mlmodel in Sources */,
 				066001B0299016C700E82177 /* KeepyUpCounterController.swift in Sources */,
 				972F148A29860614002087AF /* TrophyView.swift in Sources */,
 				978CAC5229AE92CF00E181C6 /* ProfileGameCenter_Representable.swift in Sources */,
