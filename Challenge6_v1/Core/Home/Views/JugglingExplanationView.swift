@@ -199,12 +199,12 @@ struct JugglingExplanationView: View {
                         self.returnScreen.toggle()
                     }
                 } label: {
-
-                    Image(systemName: "arrow.left")
+                    Image(systemName: "chevron.left")
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(Color.theme.blackButton)
-                        .frame(width: screenWidth/14)
+                        .foregroundColor(.white)
+                        .frame(width: 30, height: 30, alignment: .center)
+                        .contentShape(Rectangle())
                 }
                 Spacer()
             }

@@ -85,6 +85,7 @@ fileprivate struct TabsLayoutView: View {
                             .padding(.horizontal, selectedTab != tab ? 50 : 0)
                             .offset(y: selectedOffset)
                             .animation(.default, value: selectedOffset)
+                            .contentShape(Capsule())
 
                         if isSelected {
                             Text(tab.title)
