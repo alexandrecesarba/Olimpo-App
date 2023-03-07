@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 import GameKit
 
-class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
+class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, UIApplicationDelegate {
     
     convenience init(isPresented: Binding<Bool>) {
         self.init()
@@ -30,7 +30,9 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         juggleChallengeView.visionDetectionView.delegate = self
         self.model.ballTrackingStatus = .notFound
         hideOtherViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.restartVideoFeed), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
+    
     
     override func viewDidLoad() {
         self.juggleChallengeView.backButtonView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -47,6 +49,11 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
         pinchGesture.delegate = self
         self.juggleChallengeView.foundBallView.keepyUpCounterView.addGestureRecognizer(pinchGesture)
         self.juggleChallengeView.foundBallView.setGoalValue(EventMessenger.shared.highScore)
+    }
+    
+    @objc func restartVideoFeed() {
+        self.juggleChallengeView.visionDetectionView.session.stopRunning()
+        self.juggleChallengeView.visionDetectionView.session.startRunning()
     }
 
 
@@ -92,9 +99,6 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate {
             self.isPresented?.wrappedValue = false
         }
            
-        
-        
-        
         EventMessenger.shared.saveLastScore()
         EventMessenger.shared.saveHighScore()
         submitScore()

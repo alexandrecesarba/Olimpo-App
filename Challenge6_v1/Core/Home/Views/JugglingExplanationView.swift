@@ -279,20 +279,6 @@ struct PlayerView: UIViewRepresentable {
     }
 }
 
-class LoopingUIPlayerViewController: UIViewController {
-    let loopingPlayerUIView = LoopingPlayerUIView()
-    
-    override func loadView() {
-        self.view = loopingPlayerUIView
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if loopingPlayerUIView.player.isPlaying == false {
-            loopingPlayerUIView.player.play()
-        }
-    }
-}
-
 class LoopingPlayerUIView: UIView {
     private let playerLayer = AVPlayerLayer()
     private var playerLooper: AVPlayerLooper?
@@ -315,11 +301,20 @@ class LoopingPlayerUIView: UIView {
         playerLayer.videoGravity = .resizeAspect
         layer.addSublayer(playerLayer)
 
+       
+        
         // Create a new player looper with the queue player and template item
         playerLooper = AVPlayerLooper(player: player, templateItem: item)
 
+        // Allows video to resume playing after app was closed
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playVideo), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
         // Start the movie
         player.play()
+    }
+    
+    @objc func playVideo() {
+        self.player.play()
     }
 
     override func layoutSubviews() {
