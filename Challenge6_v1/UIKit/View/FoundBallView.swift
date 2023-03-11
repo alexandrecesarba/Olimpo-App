@@ -17,7 +17,7 @@ class FoundBallView: UIView {
     let directionView = RoundedLabelView.create(name: "", fontSize: 30)
     
     /// This is a debug view. Should be removed in production.
-    let resetButtonView = ResetButtonView()
+    let resetButtonView = ResetButtonView(title: "Reset Score")
     
     /// Circular, moveable and resizable counter displayed on screen.
     let keepyUpCounterView = KeepyUpCounterView()
@@ -34,7 +34,6 @@ class FoundBallView: UIView {
         
         addSubview(userGoalView)
         addSubview(keepyUpCounterView)
-        
         enableConstraints()
 //        directionViewConstraints()
 //        resetButtonConstraints()

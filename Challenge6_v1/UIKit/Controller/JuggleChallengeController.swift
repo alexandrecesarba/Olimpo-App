@@ -26,7 +26,6 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
         super.loadView()
         view = juggleChallengeView
         juggleChallengeView.foundBallView.directionView.text = model.direction.rawValue.capitalized
-//        juggleChallengeView.targetView.text = "Target: \(model.target)"
         juggleChallengeView.visionDetectionView.delegate = self
         self.model.ballTrackingStatus = .notFound
         hideOtherViews()
