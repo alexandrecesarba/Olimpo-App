@@ -53,7 +53,9 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
     
     @objc func restartVideoFeed() {
         self.juggleChallengeView.visionDetectionView.session.stopRunning()
-        self.juggleChallengeView.visionDetectionView.session.startRunning()
+        DispatchQueue.global(qos: .userInteractive).async {[weak self] in
+            self?.juggleChallengeView.visionDetectionView.session.startRunning()
+        }
     }
 
 
@@ -112,6 +114,7 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
         EventMessenger.shared.saveLastScore()
         EventMessenger.shared.saveHighScore()
         submitScore()
+        EventMessenger.shared.resetPointsCounted()
     }
 
     func submitScore(){
@@ -132,8 +135,9 @@ class JuggleChallengeController: UIViewController, UIGestureRecognizerDelegate, 
     
     @objc func resetButtonPressed() {
         self.juggleChallengeView.findingBallView.checkmarkView.setBackgroundColor(.gray)
-        self.juggleChallengeView.foundBallView.keepyUpCounterView.pointCounterView.text = "0"
-        EventMessenger.shared.pointsCounted = 0
+        
+        EventMessenger.shared.resetPointsCounted()
+        self.juggleChallengeView.foundBallView.keepyUpCounterView.pointCounterView.text = String(EventMessenger.shared.pointsCounted)
         self.juggleChallengeView.foundBallView.keepyUpCounterView.hideBackgroundCircle()
     }
     
@@ -198,7 +202,7 @@ extension JuggleChallengeController: VisionResultsDelegate {
                 }
             }
         case .stopped:
-            currentHeight > self.model.lastHeight + objectVerticalSize/7 ? (self.model.direction = .downwards) : (self.model.direction = .upwards)
+                self.model.direction = .downwards
         }
         
         self.juggleChallengeView.foundBallView.directionView.text = self.model.direction.rawValue.capitalized
@@ -269,6 +273,8 @@ extension JuggleChallengeController: VisionResultsDelegate {
             let startingDirection: Direction = self.model.direction
             
         if startingDirection == .stopped {
+            // It needs to count the first time the ball goes up.
+            
             self.model.direction = .downwards
         }
         

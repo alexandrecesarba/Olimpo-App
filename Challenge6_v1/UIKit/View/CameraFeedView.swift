@@ -32,6 +32,7 @@ class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
         
         session.beginConfiguration()
         session.sessionPreset = .vga640x480 // Model image size is smaller.
+        
     
         // Add a video input
         guard session.canAddInput(deviceInput) else {
@@ -68,6 +69,7 @@ class CameraFeedView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         session.commitConfiguration()
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        //MARK: Change to resizeAspect later to implement own ball tracker.
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         previewLayer.frame = self.frame
         self.layer.bounds = self.bounds

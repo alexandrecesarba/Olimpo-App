@@ -68,9 +68,7 @@ class FindingProgressBar: UIView {
 //        backgroundBar.centerYAnchor.constraint(equalTo: self.foregroundBar.centerYAnchor).isActive = true
         
         NSLayoutConstraint.activate([
-            
             NSLayoutConstraint(item: backgroundBar, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0 - size, constant: 0)
-            
         ])
         
         foregroundBar.leadingAnchor.constraint(equalTo: self.backgroundBar.leadingAnchor, constant: 1.03).isActive = true

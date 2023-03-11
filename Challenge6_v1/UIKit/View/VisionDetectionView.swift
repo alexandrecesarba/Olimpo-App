@@ -35,11 +35,14 @@ class VisionDetectionView: CameraFeedView {
     func setupVision() -> NSError? {
         // Setup Vision parts
         let error: NSError! = nil
+        
+        let objectDetection = try! PersonAndBall1200()
+        
         guard let modelURL = Bundle.main.url(forResource: "PersonAndBall1200", withExtension: "mlmodelc") else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
         do {
-            let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
+            let visionModel = try VNCoreMLModel(for: objectDetection.model)
             let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
                 DispatchQueue.main.async(execute: {
                     // perform all the UI updates on the main queue
@@ -155,7 +158,7 @@ class VisionDetectionView: CameraFeedView {
         
         for observation in results where observation is VNRecognizedObjectObservation {
             let object = observation as! VNRecognizedObjectObservation
-            if ((object.labels.first?.identifier == "ball") && (object.labels.first!.confidence > 0.98)) {
+            if ((object.labels.first?.identifier == "ball") && (object.labels.first!.confidence > 0.99)) {
                 finalArray.append(object)
             }
         }
