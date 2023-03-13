@@ -111,7 +111,7 @@ struct ChallengeView_Previews: PreviewProvider {
 
 struct ChallengeScroll: View {
 
-    var title = "Juggling"
+    var title = "Keep-Ups"
     var subtitle = "Soccer/Football"
     var image = "Illustration1"
     var color = Color.theme.green
