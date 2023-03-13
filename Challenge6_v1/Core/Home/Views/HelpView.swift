@@ -50,9 +50,6 @@ struct HelpView: View {
             .offset(y: startOffsetY)
             .offset(y: currentDragOffsetY)
             .offset(y: endOffsetY)
-            .onTapGesture {
-
-            }
             .gesture(
                 DragGesture()
                     .onChanged({ value in
