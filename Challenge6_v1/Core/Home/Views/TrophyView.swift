@@ -39,7 +39,7 @@ struct TrophyView: View {
         HStack{
             // MARK: Ajeitar para todas as atividades, não apenas juggling
             VStack{
-                Text("Juggling")
+                Text("Keep-Ups")
                     .font(.title)
                     .foregroundColor(.primary)
                     .fontWeight(.regular)

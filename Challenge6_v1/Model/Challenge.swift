@@ -11,7 +11,7 @@ import SwiftUI
 struct Challenge: Identifiable {
 
     static let challengeData = [
-        Challenge(title: "Juggling",
+        Challenge(title: "Keep-Ups",
                   subTitle: "Soccer / Football",
                   description: "Test your ball skills as you use your feet to juggle the ball. Be careful to not let it touch the ground!", image: "juggling",
                   color: Color.theme.greenCard,

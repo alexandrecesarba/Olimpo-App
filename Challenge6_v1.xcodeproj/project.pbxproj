@@ -65,6 +65,8 @@
 		97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */; };
 		97A7A82A298B0C9E00BA92A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A829298B0C9E00BA92A2 /* ViewController.swift */; };
 		97A7A82C298BDE0000BA92A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7A82B298BDE0000BA92A2 /* LoadingView.swift */; };
+		97BE4D8229B92943002CE21F /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BE4D8129B92943002CE21F /* HelpView.swift */; };
+		97BE4D8429BBB99A002CE21F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BE4D8329BBB99A002CE21F /* PlayerView.swift */; };
 		97EE2A702991999C0097A723 /* Model4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A6F2991999C0097A723 /* Model4.mlmodel */; };
 		97EE2A7F2996CFFF0097A723 /* EventMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */; };
 		97EE2A8B299ABC2A0097A723 /* Model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 97EE2A8A299ABC290097A723 /* Model.mlmodel */; };
@@ -132,6 +134,8 @@
 		97A7A827298B0C8100BA92A2 /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		97A7A829298B0C9E00BA92A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		97A7A82B298BDE0000BA92A2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		97BE4D8129B92943002CE21F /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		97BE4D8329BBB99A002CE21F /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		97EE2A6F2991999C0097A723 /* Model4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model4.mlmodel; sourceTree = "<group>"; };
 		97EE2A7E2996CFFF0097A723 /* EventMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMessenger.swift; sourceTree = "<group>"; };
 		97EE2A8A299ABC290097A723 /* Model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Model.mlmodel; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 				972F148B29860627002087AF /* PersonView.swift */,
 				972F148D298608A1002087AF /* JugglingExplanationView.swift */,
 				97A7A824298AF25500BA92A2 /* CurrentExerciseView.swift */,
+				97BE4D8129B92943002CE21F /* HelpView.swift */,
+				97BE4D8329BBB99A002CE21F /* PlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 				972F146D2985EADE002087AF /* ContentView.swift in Sources */,
 				97EE2A8E299C13730097A723 /* Achievements.swift in Sources */,
 				972F1486298601AE002087AF /* Challenge.swift in Sources */,
+				97BE4D8429BBB99A002CE21F /* PlayerView.swift in Sources */,
 				069151E629934CE20088F135 /* MissingBallView.swift in Sources */,
 				064E7B5B298DF0F8007BA722 /* ResetButtonController.swift in Sources */,
 				97A7A81F298ADC6900BA92A2 /* Model_Original.mlmodel in Sources */,
@@ -499,6 +506,7 @@
 				064E7B65298E03D9007BA722 /* BallTrackingStatus.swift in Sources */,
 				978CAC4729AE727300E181C6 /* WelcomeView.swift in Sources */,
 				97A7A815298ADAE000BA92A2 /* KeepyUpCounterView.swift in Sources */,
+				97BE4D8229B92943002CE21F /* HelpView.swift in Sources */,
 				978CAC4F29AE910000E181C6 /* ProfileGameCenter.swift in Sources */,
 				978CAC4529AD5FC000E181C6 /* AuthenticatePlayer_Representable.swift in Sources */,
 				064E7B5F298DFD31007BA722 /* JuggleChallengeController.swift in Sources */,
