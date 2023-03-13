@@ -18,6 +18,8 @@ class JuggleChallengeView: UIView {
     let missingBallView = MissingBallView()
     let findingBallView = FindingBallView()
     let foundBallView = FoundBallView()
+//    let bouncingBallView = BouncingBallView(ballImage: UIImageView(image: UIImage(named: "ball_inverted")))
+    
     
     func fixBufferSize() {
         visionDetectionView.bufferSize = cameraFeedView.bufferSize
@@ -58,6 +60,7 @@ class JuggleChallengeView: UIView {
         addSubview(missingBallView)
         addSubview(findingBallView)
         addSubview(foundBallView)
+//        addSubview(bouncingBallView)
         addSubview(cameraSwitch)
         addSubview(backButtonView)
         setupVisionCamera()
@@ -77,7 +80,11 @@ class JuggleChallengeView: UIView {
         backButtonView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         backButtonView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         backButtonView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-                        
+        
+//        bouncingBallView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
+//        bouncingBallView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
+//        bouncingBallView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        bouncingBallView.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.cameraSwitch, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -15),
             NSLayoutConstraint(item: self.cameraSwitch, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.95, constant: 0)

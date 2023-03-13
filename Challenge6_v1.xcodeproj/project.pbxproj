@@ -11,6 +11,7 @@
 		0606D5A0299AB935009F126E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0606D59F299AB935009F126E /* .gitignore */; };
 		062AD99229B73F1C004A4FB6 /* PersonAndBall800.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 062AD99129B73F1C004A4FB6 /* PersonAndBall800.mlmodel */; };
 		062AD99429B7C0BA004A4FB6 /* PersonAndBall1200.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 062AD99329B7C0B9004A4FB6 /* PersonAndBall1200.mlmodel */; };
+		062AD99829BD0FE5004A4FB6 /* BouncingBallUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AD99729BD0FE5004A4FB6 /* BouncingBallUIView.swift */; };
 		062EC059299C14940036AEA2 /* BouncyBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC058299C14940036AEA2 /* BouncyBallView.swift */; };
 		062EC05B299C18CD0036AEA2 /* FindingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */; };
 		063960CA29AA6F530043C07B /* PedroDemoVideoCut.mov in Resources */ = {isa = PBXBuildFile; fileRef = 063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */; };
@@ -75,6 +76,7 @@
 		0606D59F299AB935009F126E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		062AD99129B73F1C004A4FB6 /* PersonAndBall800.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PersonAndBall800.mlmodel; sourceTree = "<group>"; };
 		062AD99329B7C0B9004A4FB6 /* PersonAndBall1200.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PersonAndBall1200.mlmodel; sourceTree = "<group>"; };
+		062AD99729BD0FE5004A4FB6 /* BouncingBallUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncingBallUIView.swift; sourceTree = "<group>"; };
 		062EC058299C14940036AEA2 /* BouncyBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyBallView.swift; sourceTree = "<group>"; };
 		062EC05A299C18CD0036AEA2 /* FindingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingProgressBar.swift; sourceTree = "<group>"; };
 		063960C929AA6F530043C07B /* PedroDemoVideoCut.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = PedroDemoVideoCut.mov; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				066BE237299EAC7B00D9195F /* UserGoalView.swift */,
 				066BE23B299FF40300D9195F /* CheckmarkView.swift */,
 				06E80D5829A804A100F26E14 /* BackButtonView.swift */,
+				062AD99729BD0FE5004A4FB6 /* BouncingBallUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				978CAC4329AD5EFA00E181C6 /* AuthenticatePlayer.swift in Sources */,
 				97A7A814298ADAE000BA92A2 /* Extensions.swift in Sources */,
 				064E7B61298E008B007BA722 /* CameraFeedView.swift in Sources */,
+				062AD99829BD0FE5004A4FB6 /* BouncingBallUIView.swift in Sources */,
 				064E7B63298E0329007BA722 /* JuggleChallengeModel.swift in Sources */,
 				972F14822985ECB6002087AF /* TabBar.swift in Sources */,
 				97A7A828298B0C8100BA92A2 /* ObjectDetectionViewController.swift in Sources */,
